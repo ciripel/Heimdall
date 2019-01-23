@@ -1,13 +1,13 @@
 {
   "commands": ["-- `!commands` | This are your commands.",
                "-- `!links` | Useful links.",
-               "-- `!netinfo` | Show current network stats.",
-               "-- `!mninfo` | Masternodes info.",
+               "-- `!net` | Show current network stats.",
+               "-- `!mn` | Masternodes info.",
                "-- `!hpow [your Sols/s]` | Approximate XSG per hour/day.",
                "-- `!xsgusd [amount]` | Current price in USD.",
-               "-- `!mnrewards [no. of nodes]` | Approximate XSG reward per day.",
+               "-- `!mnrew [no. of nodes]` | Approximate XSG reward per day.",
                "-- `!roadmap` | Link to Snowgem Road-map.",
-               "-- `!coininfo` | Show coin info.",
+               "-- `!coin` | Show coin info.",
                "-- `!about` | Info about this bot."
              ],
   "links": ["**Snowgem Website** • <https://snowgem.org/>",

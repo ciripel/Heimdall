@@ -58,14 +58,14 @@ async def on_message(msg):
 
     args = msg.content[1:].split()
     cmd = args[0].lower()
-    # -------- <help> --------
+    # -------- <commands> --------
     if cmd == "commands":
-        message = "\n".join(data["help"])
+        message = "\n".join(data["commands"])
     # -------- <links> --------
     elif cmd == "links":
         message = "\n".join(data["links"])
-    # -------- <netinfo> --------
-    elif cmd == "netinfo":
+    # -------- <net> --------
+    elif cmd == "net":
         async with get(data["blocks_info"]) as blocks_info:
             if blocks_info.status == 200:
                 blocks_api = await blocks_info.json()
@@ -95,8 +95,8 @@ async def on_message(msg):
             f"• Block Height• **{last_block:,}**\n• Avg Block Time• **{round(avg_bt, 2)} s**\n• Network Hashrate• **"
             + f"{int(hashrate)/1000} kSol/s**\n• Network Difficulty• **{diff:1.3f}**"
         )
-    # -------- <mninfo> --------
-    elif cmd == "mninfo":
+    # -------- <mn> --------
+    elif cmd == "mn":
         async with get(data["blocks_info"]) as blocks_info:
             if blocks_info.status == 200:
                 blocks_api = await blocks_info.json()
@@ -177,8 +177,8 @@ async def on_message(msg):
                 + f"{cmd1/hashrate*3600*mnr_rwd*24/avg_bt*xsg_usd_price:1.2f}$***)_ per **day** at current "
                 + "network difficulty."
             )
-    # -------- <mnrewards> --------
-    elif cmd == "mnrewards":
+    # -------- <mnrew> --------
+    elif cmd == "mnrew":
         async with get(data["blocks_info"]) as blocks_info:
             if blocks_info.status == 200:
                 blocks_api = await blocks_info.json()
@@ -252,8 +252,8 @@ async def on_message(msg):
     # -------- <roadmap> --------
     elif cmd == "roadmap":
         message = f"{data['roadmap']}"
-    # -------- <coininfo> --------
-    elif cmd == "coininfo":
+    # -------- <coin> --------
+    elif cmd == "coin":
         async with get(data["masternodes"]["link"]) as masternodes:
             if masternodes.status == 200:
                 mn_raw = await masternodes.text()
