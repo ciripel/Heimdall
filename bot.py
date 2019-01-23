@@ -15,7 +15,7 @@ with open("links.json") as data_file:
 TOKEN = auth["token"]
 HEADERS = {}
 HEADERS["X-CMC_PRO_API_KEY"] = auth["cmc_headers"]
-BOT_PREFIX = "?"
+BOT_PREFIX = "!"
 
 
 client = Bot(BOT_PREFIX)

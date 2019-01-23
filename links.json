@@ -1,14 +1,14 @@
 {
-  "help": ["-- `?help` | This is your help.",
-           "-- `?links` | Useful links.",
-           "-- `?netinfo` | Show current network stats.",
-           "-- `?mninfo` | Masternodes info.",
-           "-- `?hpow [your Sols/s]` | Approximate XSG per hour/day.",
-           "-- `?xsgusd [amount]` | Current price in USD.",
-           "-- `?mnrewards [no. of nodes]` | Approximate XSG reward per day.",
-           "-- `?roadmap` | Link to Snowgem Road-map.",
-           "-- `?coininfo` | Show coin info.",
-           "-- `?about` | Info about this bot."
+  "help": ["-- `!help` | This is your help.",
+           "-- `!links` | Useful links.",
+           "-- `!netinfo` | Show current network stats.",
+           "-- `!mninfo` | Masternodes info.",
+           "-- `!hpow [your Sols/s]` | Approximate XSG per hour/day.",
+           "-- `!xsgusd [amount]` | Current price in USD.",
+           "-- `!mnrewards [no. of nodes]` | Approximate XSG reward per day.",
+           "-- `!roadmap` | Link to Snowgem Road-map.",
+           "-- `!coininfo` | Show coin info.",
+           "-- `!about` | Info about this bot."
          ],
   "links": ["**Snowgem Website** • <https://snowgem.org/>",
             "**Snowgem Announcement** • <https://bitcointalk.org/index.php?topic=2630198>",
@@ -28,7 +28,7 @@
             "• Author: ciripel _(Discord: Amitabha#0517)_",
             "• Source Code: <https://github.com/ciripel/Heimdall>"
           ],
-  "unknown": "Command not recognized. `?help` to get a list of commands.",
+  "unknown": "Command not recognized. `!help` to get a list of commands.",
   "default": "Beep beep... oooh a young one! Please try to speak with me in <#405033839417753640> channel or you can wisper me your secrets...",
   "blocks_info": "https://insight.snowgem.org/api/blocks?limit=101",
   "difficulty": "https://insight.snowgem.org/api/status?q=getDifficulty",
@@ -43,11 +43,11 @@
              "zero": "Welcome young one! We have all started with **0 XSG** zilions of aeons ago!",
              "neg": "Hmm! Yup! I feel sorry for you! You owe **XSG**... I feel your pain friend!"
           },
-  "hpow": {"default": "Input your hashpower in Sols/s, like `?hpow 123`.",
+  "hpow": {"default": "Input your hashpower in Sols/s, like `!hpow 123`.",
            "zero": "And you call yourself a miner?! Ha :smile: Even my grandma's processor can mine more than this!",
            "neg": "You deffinatly have reached something umbelievable! Nobody have **unmined** anything till now! Do not forget to register the tech! :joy:"
          },
-  "mnrewards": {"default": "Input the the number of nodes, like `?mnrewards 1`.",
+  "mnrewards": {"default": "Input the the number of nodes, like `!mnrewards 1`.",
                 "zero": "Wow, You did it friend! You have reached the unmeasurable valor of zero masternodes!",
                 "neg": "Are you in debt my friend?! How have you arrived in this position in the crypto world?! How can you be in debt in a world without banks?! :thinking:"
               }
