@@ -59,7 +59,7 @@ async def on_message(msg):
     args = msg.content[1:].split()
     cmd = args[0].lower()
     # -------- <help> --------
-    if cmd == "help":
+    if cmd == "commands":
         message = "\n".join(data["help"])
     # -------- <links> --------
     elif cmd == "links":
