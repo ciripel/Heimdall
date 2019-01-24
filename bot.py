@@ -58,9 +58,13 @@ async def on_message(msg):
 
     args = msg.content[1:].split()
     cmd = args[0].lower()
+    # ---- <ignored commands> ----
+    if cmd == "help" or cmd == "rank" or cmd == "levels":
+        return
     # -------- <commands> --------
-    if cmd == "commands":
+    elif cmd == "commands":
         message = "\n".join(data["commands"])
+    # ---- <ignored commands> ----
     # -------- <links> --------
     elif cmd == "links":
         message = "\n".join(data["links"])
