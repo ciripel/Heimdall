@@ -64,12 +64,11 @@ async def on_message(msg):
     # -------- <commands> --------
     elif cmd == "commands":
         message = "\n".join(data["commands"])
-    # ---- <ignored commands> ----
     # -------- <links> --------
     elif cmd == "links":
         message = "\n".join(data["links"])
-    # -------- <net> --------
-    elif cmd == "net":
+    # -------- <net/netinfo> --------
+    elif cmd == "net" or cmd == "netinfo":
         async with get(data["blocks_info"]) as blocks_info:
             if blocks_info.status == 200:
                 blocks_api = await blocks_info.json()
@@ -99,8 +98,8 @@ async def on_message(msg):
             f"• Block Height• **{last_block:,}**\n• Avg Block Time• **{round(avg_bt, 2)} s**\n• Network Hashrate• **"
             + f"{int(hashrate)/1000} kSol/s**\n• Network Difficulty• **{diff:1.3f}**"
         )
-    # -------- <mn> --------
-    elif cmd == "mn":
+    # -------- <mn/mninfo> --------
+    elif cmd == "mn" or cmd == "mninfo":
         async with get(data["blocks_info"]) as blocks_info:
             if blocks_info.status == 200:
                 blocks_api = await blocks_info.json()
@@ -126,8 +125,8 @@ async def on_message(msg):
             f"• Active masternodes • ** {mn_count: 1.0f} **\n• Coins Locked: **{mn_count*10000:,} XSG**\n• ROI "
             + f"• ** {mn_roi: 1.3f} % **\n{guide_link}"
         )
-    # -------- <hpow> --------
-    elif cmd == "hpow":
+    # -------- <hpow/calc> --------
+    elif cmd == "hpow" or cmd == "calc":
         async with get(data["blocks_info"]) as blocks_info:
             if blocks_info.status == 200:
                 blocks_api = await blocks_info.json()
@@ -181,8 +180,8 @@ async def on_message(msg):
                 + f"{cmd1/hashrate*3600*mnr_rwd*24/avg_bt*xsg_usd_price:1.2f}$***)_ per **day** at current "
                 + "network difficulty."
             )
-    # -------- <mnrew> --------
-    elif cmd == "mnrew":
+    # -------- <mnrew/mnrewards> --------
+    elif cmd == "mnrew" or cmd == "mnrewards":
         async with get(data["blocks_info"]) as blocks_info:
             if blocks_info.status == 200:
                 blocks_api = await blocks_info.json()
@@ -256,8 +255,8 @@ async def on_message(msg):
     # -------- <roadmap> --------
     elif cmd == "roadmap":
         message = f"{data['roadmap']}"
-    # -------- <coin> --------
-    elif cmd == "coin":
+    # -------- <coin/coininfo> --------
+    elif cmd == "coin" or cmd == "coininfo":
         async with get(data["masternodes"]["link"]) as masternodes:
             if masternodes.status == 200:
                 mn_raw = await masternodes.text()
