@@ -1,8 +1,8 @@
 {
   "commands": ["-- `!commands` | This are your commands.",
                "-- `!links` | Useful links.",
-               "-- `!net` or `!netinfo` Show current network stats.",
-               "-- `!mn` or `!mninfo` Masternodes info.",
+               "-- `!net` or `!netinfo` | Show current network stats.",
+               "-- `!mn` or `!mninfo` | Masternodes info.",
                "-- `!hpow` or `!calc [your Sols/s]` | Approximate XSG per hour/day.",
                "-- `!xsgusd [amount]` | Current price in USD.",
                "-- `!mnrew` or `!mnrewards [no. of nodes]` | Approximate XSG reward per day.",
