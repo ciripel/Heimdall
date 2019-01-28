@@ -2,6 +2,7 @@
 # Work with Python 3.6
 
 import json
+import random
 
 import discord
 from aiohttp import get
@@ -288,6 +289,9 @@ async def on_message(msg):
     # -------- <about> --------
     elif cmd == "about":
         message = "\n".join(data["about"])
+    # -------- <whenmoon> --------
+    elif cmd == "whenmoon":
+        message = random.choice(data["whenmoon"])
     # -------- <members(CoreTeam only)> --------
     elif (
         cmd == "members"
