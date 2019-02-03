@@ -29,7 +29,8 @@
             "• Source Code: <https://github.com/ciripel/Heimdall>"
           ],
   "unknown": "Command not recognized. `!commands` to get a list of commands.",
-  "default": "Beep beep... oooh a young one! Please try to speak with me in <#405033839417753640> channel or you can wisper me your secrets...",
+  "default": "All the bot calls are allowed only in <#405033839417753640> channel or you can wisper me your secrets...",
+  "mee6": "My little brother Mee6 is awaiting commands just like me in <#405033839417753640> channel only.",
   "blocks_info": "https://insight.snowgem.org/api/blocks?limit=101",
   "difficulty": "https://insight.snowgem.org/api/status?q=getDifficulty",
   "net_hash": "https://insight.snowgem.org/api/status",

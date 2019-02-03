@@ -44,6 +44,13 @@ async def on_message(msg):
     if msg.type is not discord.MessageType.default:
         return
 
+    args = msg.content[1:].split()
+    cmd = args[0].lower()
+
+    if (not msg.channel.name == "bot-commands" and (cmd == "help" or cmd == "rank" or cmd == "levels")):
+        message = f"{data['mee6']}"
+        await client.send_message(msg.channel, message)
+        return
     # Bot runs in #bot-commands channel and private channels for everyone
     # Bot runs in all channels for specific roles
     if not (
@@ -57,9 +64,7 @@ async def on_message(msg):
         await client.send_message(msg.channel, message)
         return
 
-    args = msg.content[1:].split()
-    cmd = args[0].lower()
-    # ---- <ignored commands> ----
+    # ---- <ignored commands in bot-commands> ----
     if cmd == "help" or cmd == "rank" or cmd == "levels":
         return
     # -------- <commands> --------
