@@ -17,7 +17,7 @@
             "**Snowgem Forums** • <https://forums.snowgem.org/>",
             "**Snowgem Github** • <https://github.com/Snowgem>",
             "**Snowgem Wallets** • <https://github.com/Snowgem/ModernWallet/releases> <https://wallet.snowgem.org/>",
-            "**Snowgem Block Explorers** • <https://insight.snowgem.org/> <https://explorer.snowgem.org/>",
+            "**Snowgem Block Explorers** • <https://explorer.snowgem.org/>",
             "**Snowgem Masternodes Map** • <https://masternodesmap.snowgem.org/>",
             "**Snowgem Explorer API** • <https://explorer.snowgem.org/info> <https://github.com/snowgem/insight-api-snowgem>",
             "**Snowgem Community** • <https://www.reddit.com/r/SnowGem/> <https://t.me/snowgemofficial> <https://www.facebook.com/snowgemofficial/> <https://twitter.com/snowgemofficial>"
@@ -31,9 +31,9 @@
   "unknown": "Command not recognized. `!commands` to get a list of commands.",
   "default": "All the bot calls are allowed only in <#405033839417753640> channel or you can wisper me your secrets...",
   "mee6": "My little brother Mee6 is awaiting commands just like me in <#405033839417753640> channel only.",
-  "blocks_info": "https://insight.snowgem.org/api/blocks?limit=101",
-  "difficulty": "https://insight.snowgem.org/api/status?q=getDifficulty",
-  "net_hash": "https://insight.snowgem.org/api/status",
+  "blocks_info": "https://explorer.snowgem.org/api/blocks?limit=101",
+  "difficulty": "https://explorer.snowgem.org/api/status?q=getDifficulty",
+  "net_hash": "https://explorer.snowgem.org/api/status",
   "masternodes": {"link": "https://data.snowgem.org/masternode.html",
               "guide_link": "• Install Guide • <https://snowgem.org/resources/masternode-setup/masternode-windows-linux>"
             },
