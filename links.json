@@ -28,7 +28,7 @@
             "• Author: ciripel _(Discord: Amitabha#0517)_",
             "• Source Code: <https://github.com/ciripel/Heimdall>"
           ],
-  "unknown": "Command not recognized. `!commands` to get a list of commands.",
+  "unknown": "Command not recognized. `!commands` to get a list of my commands or `!help` if you need the list of commands for my little brother Mee6",
   "default": "All the bot calls are allowed only in <#405033839417753640> channel or you can wisper me your secrets...",
   "mee6": "My little brother Mee6 is awaiting commands just like me in <#405033839417753640> channel only.",
   "blocks_info": "https://explorer.snowgem.org/api/blocks?limit=101",
