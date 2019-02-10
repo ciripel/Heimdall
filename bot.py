@@ -261,6 +261,9 @@ async def on_message(msg):
     # -------- <roadmap> --------
     elif cmd == "roadmap":
         message = f"{data['roadmap']}"
+    # -------- <proof of review> --------
+    elif cmd == "por":
+        message = f"{data['por']}"
     # -------- <coin/coininfo> --------
     elif cmd == "coin" or cmd == "coininfo":
         async with get(data["masternodes"]["link"]) as masternodes:
