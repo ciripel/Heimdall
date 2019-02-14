@@ -47,7 +47,7 @@ async def on_message(msg):
     args = msg.content[1:].split()
     cmd = args[0].lower()
 
-    if (not msg.channel.name == "bot-commands" and (cmd == "help" or cmd == "rank" or cmd == "levels")):
+    if not msg.channel.name == "bot-commands" and (cmd == "help" or cmd == "rank" or cmd == "levels"):
         message = f"{data['mee6']}"
         await client.send_message(msg.channel, message)
         return
@@ -65,7 +65,7 @@ async def on_message(msg):
         return
 
     # ---- <ignored commands in bot-commands> ----
-    if cmd == "help" or cmd == "rank" or cmd == "levels":
+    if cmd == "help" or cmd == "rank" or cmd == "levels" or cmd == "tip":
         return
     # -------- <commands> --------
     elif cmd == "commands":
