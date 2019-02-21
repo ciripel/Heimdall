@@ -15,12 +15,13 @@
             "**Snowgem Announcement** • <https://bitcointalk.org/index.php?topic=2630198>",
             "**Snowgem Whitepaper** • <https://snowgem.org/whitepaper/SnowGem_Whitepaper.pdf>",
             "**Snowgem Blog** • <https://snowgem.org/blog>",
+            "**Snowgem Book** • Online - <https://snowgem.org/files/snowgem_book.pdf> | Amazon - <https://www.amazon.com/SnowGem-Seamless-Solutions-Concise-History-ebook/dp/B07NS7FLDC>",
             "**Snowgem Forums** • <https://forums.snowgem.org/>",
             "**Snowgem Github** • <https://github.com/Snowgem>",
             "**Snowgem Wallets** • <https://github.com/Snowgem/ModernWallet/releases> <https://wallet.snowgem.org/>",
             "**Snowgem Block Explorers** • <https://explorer.snowgem.org/>",
-            "**Snowgem Masternodes Map** • <https://masternodesmap.snowgem.org/>",
-            "**Snowgem Explorer API** • <https://explorer.snowgem.org/info> <https://github.com/snowgem/insight-api-snowgem>",
+            "**Snowgem Asgard** • <https://asgard.snowgem.org/>",
+            "**Snowgem Explorer API** • <https://github.com/snowgem/insight-api-snowgem>",
             "**Snowgem Community** • <https://www.reddit.com/r/SnowGem/> <https://t.me/snowgemofficial> <https://www.facebook.com/snowgemofficial/> <https://twitter.com/snowgemofficial>"
           ],
   "roadmap": "• **Snowgem Road-map** •\n<https://snowgem.org/blog/snowgem-roadmap-2019>",
@@ -37,7 +38,8 @@
   "difficulty": "https://explorer.snowgem.org/api/status?q=getDifficulty",
   "net_hash": "https://explorer.snowgem.org/api/status",
   "masternodes": {"link": "https://data.snowgem.org/masternode.html",
-              "guide_link": "• Install Guide • <https://snowgem.org/resources/masternode-setup/masternode-windows-linux>"
+                  "asgard": "• Monitoring & management tool • <https://asgard.snowgem.org/>",
+                  "guide_link": "• Install Guide • <https://snowgem.org/resources/masternode-setup/masternode-windows-linux>"
             },
   "cmc": {"cmc_btc": "https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest?symbol=BTC",
           "cmc_xsg": "https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest?symbol=XSG"

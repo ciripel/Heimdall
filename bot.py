@@ -126,10 +126,11 @@ async def on_message(msg):
                 print(f"{data['masternodes']['link']} is down")
         mn_count = mn_raw.count("ENABLED")
         guide_link = data["masternodes"]["guide_link"]
+        asgard = data["masternodes"]["asgard"]
         mn_roi = 9 * 3153600 / avg_bt / mn_count / 10
         message = (
             f"• Active masternodes • ** {mn_count: 1.0f} **\n• Coins Locked: **{mn_count*10000:,} XSG**\n• ROI "
-            + f"• ** {mn_roi: 1.3f} % **\n{guide_link}"
+            + f"• ** {mn_roi: 1.3f} % **\n{asgard}\n{guide_link}"
         )
     # -------- <hpow/calc> --------
     elif cmd == "hpow" or cmd == "calc":
