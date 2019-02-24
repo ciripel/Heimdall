@@ -317,6 +317,12 @@ async def on_message(msg):
 
 
 @client.event
+async def on_member_join(mbr):
+    message = f"{data['welcome']}"
+    await client.send_message(mbr, message)
+
+
+@client.event
 async def on_ready():
     print(f"Logged in as: {client.user.name} {{{client.user.id}}}")
 
