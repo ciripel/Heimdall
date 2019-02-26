@@ -46,10 +46,10 @@
         },
         "discord": {
             "hashes": [
-                "sha256:4ee1e605c41ea91d3607df0ca7ee7deaf787fb188d35e01395d5fa7d06c91b0d"
+                "sha256:e6892abef55f66c918832afc57a8ec86ee82b6dd649cc4dd50aae024901be634"
             ],
             "index": "pypi",
-            "version": "==0.0.2"
+            "version": "==0.16.12"
         },
         "discord.py": {
             "hashes": [
