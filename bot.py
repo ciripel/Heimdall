@@ -200,8 +200,8 @@ async def on_message(msg):
             mnr_rwd = 9.5
             cmd1 = float(cmd1)
             message = (
-                f"Current network hashrate is **{int(hashrate)/1000} **.\nA hashrate of **{cmd1:1.0f} Sols/s** will "
-                + f"get you approximately **{cmd1/hashrate*3600*mnr_rwd/avg_bt:1.2f} XSG** _(***"
+                f"Current network hashrate is **{int(hashrate)/1000:1.2f} KSols/s**.\nA hashrate of **{cmd1:1.0f}"
+                + f" Sols/s** will get you approximately **{cmd1/hashrate*3600*mnr_rwd/avg_bt:1.2f} XSG** _(***"
                 + f"{cmd1/hashrate*3600*mnr_rwd/avg_bt*xsg_usd_price:1.2f}$***)_ per **hour** and **"
                 + f"{cmd1/hashrate*3600*mnr_rwd*24/avg_bt:1.2f} XSG** _(***"
                 + f"{cmd1/hashrate*3600*mnr_rwd*24/avg_bt*xsg_usd_price:1.2f}$***)_ per **day** at current "
