@@ -148,9 +148,11 @@ async def on_message(msg):
         guide_link = data["masternodes"]["guide_link"]
         asgard = data["masternodes"]["asgard"]
         mn_roi = 9 * 3153600 / avg_bt / mn_count / 10
+        time_first_payment = 2.6 * mn_count / 60
         message = (
             f"• Active masternodes • ** {mn_count: 1.0f} **\n• Coins Locked: **{mn_count*10000:,} XSG**\n• ROI "
-            + f"• ** {mn_roi: 1.3f} % **\n{asgard}\n{guide_link}"
+            + f"• ** {mn_roi: 1.3f} % **\n• Minimum time before first payment • ** {time_first_payment: 1.2f} hours **"
+            + f"\n{asgard}\n{guide_link}"
         )
     # -------- <hpow/calc> --------
     elif cmd == "hpow" or cmd == "calc":
