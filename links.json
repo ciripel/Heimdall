@@ -8,6 +8,7 @@
                "-- `!mnrew` or `!mnrewards [no. of nodes]` | Approximate XSG reward per day.",
                "-- `!roadmap` | Link to Snowgem Road-map.",
                "-- `!por` | Proof of Review",
+               "-- `!halving` | Time left until halving",
                "-- `!coin` or `!coininfo` | Show coin info.",
                "-- `!about` | Info about this bot."
              ],
