@@ -299,6 +299,27 @@ async def on_message(msg):
     # -------- <proof of review> --------
     elif cmd == "por":
         message = f"{data['por']}"
+    # -------- <halving> --------
+    elif cmd == "halving":
+        async with aiohttp.ClientSession() as session:
+            async with session.get(data["blocks_info"]) as blocks_info:
+                if blocks_info.status == 200:
+                    blocks_api = await blocks_info.json()
+                else:
+                    print(f"{data['blocks_info']} is down")
+        now = blocks_api["blocks"][0]["time"]
+        if len(blocks_api["blocks"]) > 1:
+            max_blocks = len(blocks_api["blocks"]) - 1
+            before = blocks_api["blocks"][max_blocks]["time"]
+            avg_bt = (now - before) / max_blocks
+        else:
+            avg_bt = 60
+        last_block = blocks_api["blocks"][0]["height"]
+        halving_time = (2102400 - last_block) * avg_bt / 86400
+        message = (
+            f"The next halving will be in approximately **{halving_time:1.2f}** days (**{halving_time/365:1.3f}"
+            + "** years).\nThe block reward after the halving will be **10** XSG."
+        )
     # -------- <coin/coininfo> --------
     elif cmd == "coin" or cmd == "coininfo":
         async with aiohttp.ClientSession() as session:
