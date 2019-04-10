@@ -5,8 +5,8 @@ import ftplib
 import json
 import random
 
-import discord
 import aiohttp
+import discord
 
 with open("auth.json") as data_file:
     auth = json.load(data_file)
@@ -123,8 +123,8 @@ async def on_message(msg):
                     print(f"{data['net_hash']} is down")
         hashrate = net_hash_api["info"]["networksolps"]
         message = (
-            f"• Block Height• **{last_block:,}**\n• Avg Block Time• **{round(avg_bt, 2)} s**\n• Network Hashrate• **"
-            + f"{int(hashrate)/1000} kSol/s**\n• Network Difficulty• **{diff:1.3f}**"
+            f"• Block Height • **{last_block:,}**\n• Avg Block Time • **{round(avg_bt, 2)} s**\n• Network Hashrate • **"
+            + f"{int(hashrate)/1000} kSol/s**\n• Network Difficulty • **{diff:1.3f}**"
         )
     # -------- <mn/mninfo> --------
     elif cmd == "mn" or cmd == "mninfo":
@@ -154,8 +154,8 @@ async def on_message(msg):
         mn_roi = 9 * 3153600 / avg_bt / mn_count / 10
         time_first_payment = 2.6 * mn_count / 60
         message = (
-            f"• Active masternodes • ** {mn_count: 1.0f} **\n• Coins Locked: **{mn_count*10000:,} XSG**\n• ROI "
-            + f"• ** {mn_roi: 1.3f} % **\n• Minimum time before first payment • ** {time_first_payment: 1.2f} hours **"
+            f"• Active masternodes • **{mn_count: 1.0f} **\n• Coins Locked • **{mn_count*10000:,} XSG**\n• ROI "
+            + f"• **{mn_roi: 1.3f} % **\n• Minimum time before first payment • **{time_first_payment: 1.2f} hours **"
             + f"\n{asgard}\n{guide_link}"
         )
     # -------- <hpow/calc> --------
@@ -327,10 +327,10 @@ async def on_message(msg):
                 else:
                     print(f"{data['cmc']['cmc_btc']} is down")
         message = (
-            f"• Current Price•**{xsg_usd_price/btc_usd_price:22.8f} BTC ** | **{xsg_usd_price:8.4f}$**\n• 24h Volume •"
-            + f"**{xsg_24vol/btc_usd_price:19.3f} BTC ** | **{xsg_24vol:10,.2f}$**\n• Market Cap•**{xsg_mcap:22,.0f}$**"
-            + f"\n• Circulating Supply• **{xsg_circ_supply:12,.0f} XSG **\n• Locked Coins•            **"
-            + f"{mn_count*10000:,} XSG **\n• 24h Change•**{xsg_24change:19.2f} % **"
+            f"• Current Price • **{xsg_usd_price/btc_usd_price:1.8f} BTC ** | **{xsg_usd_price:1.4f}$**\n• 24h Volume •"
+            + f" **{xsg_24vol/btc_usd_price:1.3f} BTC ** | **{xsg_24vol:1,.2f}$**\n• Market Cap • **{xsg_mcap:1,.0f}$**"
+            + f"\n• Circulating Supply • **{xsg_circ_supply:1,.0f} XSG **\n• Locked Coins • **"
+            + f"{mn_count*10000:,} XSG **\n• 24h Change • **{xsg_24change:1.2f} % **"
         )
     # -------- <about> --------
     elif cmd == "about":
