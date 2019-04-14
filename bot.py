@@ -12,6 +12,8 @@ with open("auth.json") as data_file:
     auth = json.load(data_file)
 with open("links.json") as data_file:
     data = json.load(data_file)
+with open("market.json") as data_file:
+    markets = json.load(data_file)
 
 TOKEN = auth["token"]
 HEADERS = {}
@@ -299,6 +301,131 @@ async def on_message(msg):
     # -------- <proof of review> --------
     elif cmd == "por":
         message = f"{data['por']}"
+    # -------- <market [stats]> --------
+    elif cmd == "market":
+        async with aiohttp.ClientSession() as session:
+            async with session.get(data["cmc"]["cmc_xsg"], headers=HEADERS) as cmc_xsg:
+                if cmc_xsg.status == 200:
+                    cmc_xsg_api = await cmc_xsg.json()
+                    xsg_usd_price = float(cmc_xsg_api["data"]["XSG"]["quote"]["USD"]["price"])
+                else:
+                    print(f"{data['cmc']['cmc_xsg']} is down")
+        async with aiohttp.ClientSession() as session:
+            async with session.get(data["cmc"]["cmc_btc"], headers=HEADERS) as cmc_btc:
+                if cmc_btc.status == 200:
+                    cmc_btc_api = await cmc_btc.json()
+                    btc_usd_price = float(cmc_btc_api["data"]["BTC"]["quote"]["USD"]["price"])
+                else:
+                    print(f"{data['cmc']['cmc_btc']} is down")
+        async with aiohttp.ClientSession() as session:
+            async with session.get(data["cmc"]["cmc_eth"], headers=HEADERS) as cmc_eth:
+                if cmc_eth.status == 200:
+                    cmc_eth_api = await cmc_eth.json()
+                    eth_usd_price = float(cmc_eth_api["data"]["ETH"]["quote"]["USD"]["price"])
+                else:
+                    print(f"{data['cmc']['cmc_btc']} is down")
+        message_list = []
+        message_list.append("**SnowGem** is listed on the following exchanges:")
+        for a in range(len(markets)):
+            message_list.append(f"{a+1}. <{markets[a]['link']}>")
+        message_list.append("\n_Use `!market info` for stats of the markets_")
+        if len(args) < 2 or args[1].lower() != "info":
+            message = "\n".join(message_list)
+        else:
+            vol_total = 0
+            for a in range(len(markets)):
+                if markets[a]["link"] == "https://graviex.net/markets/xsgbtc":
+                    async with aiohttp.ClientSession() as session:
+                        async with session.get(markets[a]["api"]) as api:
+                            if api.status == 200:
+                                markets_api = await api.json()
+                                markets[a]["volume_24h"] = xsg_usd_price * float(markets_api["ticker"]["vol"])
+                                usd_price = btc_usd_price * float(markets_api["ticker"]["last"])
+                                markets[a]["price"] = usd_price
+                            else:
+                                print(f"{markets[a]['api']} is down")
+                    vol_total = vol_total + float(markets[a]["volume_24h"])
+                elif markets[a]["link"] == "https://app.stex.com/en/trade/pair/BTC/XSG":
+                    async with aiohttp.ClientSession() as session:
+                        async with session.get(markets[a]["api"]) as api:
+                            if api.status == 200:
+                                markets_api = await api.json()
+                                for i in range(len(markets_api)):
+                                    if markets_api[i]["market_name"] == "XSG_BTC":
+                                        markets[a]["volume_24h"] = xsg_usd_price * float(markets_api[i]["vol"])
+                                        usd_price = btc_usd_price * float(markets_api[i]["last"])
+                                        markets[a]["price"] = usd_price
+                            else:
+                                print(f"{markets[a]['api']} is down")
+                    vol_total = vol_total + float(markets[a]["volume_24h"])
+                elif markets[a]["link"] == "https://mercatox.com/exchange/XSG/BTC":
+                    async with aiohttp.ClientSession() as session:
+                        async with session.get(markets[a]["api"]) as api:
+                            if api.status == 200:
+                                markets_api = await api.json(content_type='text/html')
+                                markets[a]["volume_24h"] = xsg_usd_price * \
+                                    float(markets_api["pairs"]["XSG_BTC"]["baseVolume"])
+                                usd_price = btc_usd_price * float(markets_api["pairs"]["XSG_BTC"]["last"])
+                                markets[a]["price"] = usd_price
+                            else:
+                                print(f"{markets[a]['api']} is down")
+                    vol_total = vol_total + float(markets[a]["volume_24h"])
+                elif markets[a]["link"] == "https://mercatox.com/exchange/XSG/ETH":
+                    async with aiohttp.ClientSession() as session:
+                        async with session.get(markets[a]["api"]) as api:
+                            if api.status == 200:
+                                markets_api = await api.json(content_type='text/html')
+                                markets[a]["volume_24h"] = xsg_usd_price * \
+                                    float(markets_api["pairs"]["XSG_ETH"]["baseVolume"])
+                                usd_price = eth_usd_price * float(markets_api["pairs"]["XSG_ETH"]["last"])
+                                markets[a]["price"] = usd_price
+                            else:
+                                print(f"{markets[a]['api']} is down")
+                    vol_total = vol_total + float(markets[a]["volume_24h"])
+                elif markets[a]["link"] == "https://wallet.crypto-bridge.org/market/BRIDGE.XSG_BRIDGE.BTC":
+                    async with aiohttp.ClientSession() as session:
+                        async with session.get(markets[a]["api"]) as api:
+                            if api.status == 200:
+                                markets_api = await api.json()
+                                for i in range(len(markets_api)):
+                                    if markets_api[i]["id"] == "XSG_BTC":
+                                        markets[a]["volume_24h"] = btc_usd_price * float(markets_api[i]["volume"])
+                                        usd_price = btc_usd_price * float(markets_api[i]["last"])
+                                        markets[a]["price"] = usd_price
+                            else:
+                                print(f"{markets[a]['api']} is down")
+                    vol_total = vol_total + float(markets[a]["volume_24h"])
+            max_source = 0
+            for a in range(len(markets)):
+                markets[a]["vol_percent"] = float(markets[a]["volume_24h"]) / vol_total * 100
+                max_source = max(6, max_source, len(markets[a]["source"]))
+            markets.sort(key=lambda x: x["volume_24h"], reverse=True)
+            with open("market.json", "w") as file:
+                json.dump(markets, file, indent=2)
+            message = """
+```
++--+-------{a}-+-----------+-------------+----------+---------+
+| #| Source{0} | Pair      |   Vol (24h) |    Price | Vol (%) |
++--+-------{a}-+-----------+-------------+----------+---------+
+{markets}
++--+-------{a}-+-----------+-------------+----------+---------+
+```
+""".format(
+                " " * (max_source - 6),
+                a="-" * (max_source - 6),
+                markets="\n".join(
+                    "|{:>2d}| {:<{max_source}} | {:<9} | {:>10.2f}$ | {:>7.3f}$ | {:>6.2f}% |".format(
+                        i + 1,
+                        markets[i]["source"],
+                        markets[i]["pair"],
+                        markets[i]["volume_24h"],
+                        markets[i]["price"],
+                        markets[i]["vol_percent"],
+                        max_source=max_source,
+                    )
+                    for i in range(len(markets))
+                ),
+            )
     # -------- <halving> --------
     elif cmd == "halving":
         async with aiohttp.ClientSession() as session:
