@@ -153,12 +153,13 @@ async def on_message(msg):
         mn_count = mn_raw.count("ENABLED")
         guide_link = data["masternodes"]["guide_link"]
         asgard = data["masternodes"]["asgard"]
+        asgard_vid = data["masternodes"]["asgard_vid"]
         mn_roi = 9 * 3153600 / avg_bt / mn_count / 10
         time_first_payment = 2.6 * mn_count / 60
         message = (
             f"• Active masternodes • **{mn_count: 1.0f} **\n• Coins Locked • **{mn_count*10000:,} XSG**\n• ROI "
             + f"• **{mn_roi: 1.3f} % **\n• Minimum time before first payment • **{time_first_payment: 1.2f} hours **"
-            + f"\n{asgard}\n{guide_link}"
+            + f"\n{asgard}\n{asgard_vid}\n{guide_link}"
         )
     # -------- <hpow/calc> --------
     elif cmd == "hpow" or cmd == "calc":
@@ -362,9 +363,10 @@ async def on_message(msg):
                     async with aiohttp.ClientSession() as session:
                         async with session.get(markets[a]["api"]) as api:
                             if api.status == 200:
-                                markets_api = await api.json(content_type='text/html')
-                                markets[a]["volume_24h"] = xsg_usd_price * \
-                                    float(markets_api["pairs"]["XSG_BTC"]["baseVolume"])
+                                markets_api = await api.json(content_type="text/html")
+                                markets[a]["volume_24h"] = xsg_usd_price * float(
+                                    markets_api["pairs"]["XSG_BTC"]["baseVolume"]
+                                )
                                 usd_price = btc_usd_price * float(markets_api["pairs"]["XSG_BTC"]["last"])
                                 markets[a]["price"] = usd_price
                             else:
@@ -374,9 +376,10 @@ async def on_message(msg):
                     async with aiohttp.ClientSession() as session:
                         async with session.get(markets[a]["api"]) as api:
                             if api.status == 200:
-                                markets_api = await api.json(content_type='text/html')
-                                markets[a]["volume_24h"] = xsg_usd_price * \
-                                    float(markets_api["pairs"]["XSG_ETH"]["baseVolume"])
+                                markets_api = await api.json(content_type="text/html")
+                                markets[a]["volume_24h"] = xsg_usd_price * float(
+                                    markets_api["pairs"]["XSG_ETH"]["baseVolume"]
+                                )
                                 usd_price = eth_usd_price * float(markets_api["pairs"]["XSG_ETH"]["last"])
                                 markets[a]["price"] = usd_price
                             else:

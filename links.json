@@ -41,7 +41,8 @@
   "net_hash": "https://explorer.snowgem.org/api/status",
   "masternodes": {"link": "https://data.snowgem.org/masternode.html",
                   "asgard": "• Monitoring & management tool • <https://asgard.snowgem.org/>",
-                  "guide_link": "• Install Guide • <https://snowgem.org/resources/masternode-setup/masternode-windows-linux>"
+                  "asgard_vid": "• Asgard Install Guide • <https://www.youtube.com/watch?v=X8jIZv9JtvU>",
+                  "guide_link": "• Classic Install Guide • <https://snowgem.org/resources/masternode-setup/masternode-windows-linux>"
             },
   "cmc": {"cmc_btc": "https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest?symbol=BTC",
           "cmc_eth": "https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest?symbol=ETH",
