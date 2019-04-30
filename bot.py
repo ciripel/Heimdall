@@ -465,8 +465,8 @@ async def on_message(msg):
                     cmc_xsg_api = await cmc_xsg.json()
                     xsg_usd_price = float(cmc_xsg_api["data"]["XSG"]["quote"]["USD"]["price"])
                     xsg_24vol = float(cmc_xsg_api["data"]["XSG"]["quote"]["USD"]["volume_24h"])
-                    xsg_mcap = float(cmc_xsg_api["data"]["XSG"]["quote"]["USD"]["market_cap"])
-                    xsg_circ_supply = float(cmc_xsg_api["data"]["XSG"]["circulating_supply"])
+                    # xsg_mcap = float(cmc_xsg_api["data"]["XSG"]["quote"]["USD"]["market_cap"])
+                    # xsg_circ_supply = float(cmc_xsg_api["data"]["XSG"]["circulating_supply"])
                     xsg_24change = float(cmc_xsg_api["data"]["XSG"]["quote"]["USD"]["percent_change_24h"])
                 else:
                     print(f"{data['cmc']['cmc_xsg']} is down")
@@ -477,6 +477,15 @@ async def on_message(msg):
                     btc_usd_price = float(cmc_btc_api["data"]["BTC"]["quote"]["USD"]["price"])
                 else:
                     print(f"{data['cmc']['cmc_btc']} is down")
+        async with aiohttp.ClientSession() as session:
+            async with session.get(data["blocks_info"]) as blocks_info:
+                if blocks_info.status == 200:
+                    blocks_api = await blocks_info.json()
+                    last_block = blocks_api["blocks"][0]["height"]
+                    xsg_circ_supply = 80000 + (last_block - 7999) * 20
+                    xsg_mcap = xsg_circ_supply * xsg_usd_price
+                else:
+                    print(f"{data['blocks_info']} is down")
         message = (
             f"• Current Price • **{xsg_usd_price/btc_usd_price:1.8f} BTC ** | **{xsg_usd_price:1.4f}$**\n• 24h Volume •"
             + f" **{xsg_24vol/btc_usd_price:1.3f} BTC ** | **{xsg_24vol:1,.2f}$**\n• Market Cap • **{xsg_mcap:1,.0f}$**"
