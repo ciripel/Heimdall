@@ -45,6 +45,17 @@ def send_file(server_adress, username, password, message):
     session.quit()
 
 
+def calculate_supply(block_height):
+    if block_height < 8_000:
+        return 80_000
+
+    epochs, remainder = divmod(block_height - 1, 2102400)
+    previous_epochs_total_reward = sum(2102400 * (20 / (2 ** epoch)) for epoch in range(epochs))
+    current_epoch_reward = 20 / (2 ** epochs)
+    current_total_reward = (remainder + 1) * current_epoch_reward
+    return previous_epochs_total_reward + current_total_reward - 79_980
+
+
 @client.event
 async def on_message(msg):
     # We do not want the bot to respond to Bots or Webhooks
@@ -482,7 +493,7 @@ async def on_message(msg):
                 if blocks_info.status == 200:
                     blocks_api = await blocks_info.json()
                     last_block = blocks_api["blocks"][0]["height"]
-                    xsg_circ_supply = 80000 + (last_block - 7999) * 20
+                    xsg_circ_supply = calculate_supply(last_block)
                     xsg_mcap = xsg_circ_supply * xsg_usd_price
                 else:
                     print(f"{data['blocks_info']} is down")
