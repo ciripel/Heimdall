@@ -162,14 +162,16 @@ async def on_message(msg):
                 else:
                     print(f"{data['masternodes']['link']} is down")
         mn_count = mn_raw.count("ENABLED")
+        mn_rwd = 9
         guide_link = data["masternodes"]["guide_link"]
         asgard = data["masternodes"]["asgard"]
         asgard_vid = data["masternodes"]["asgard_vid"]
-        mn_roi = 9 * 3153600 / avg_bt / mn_count / 10
+        mn_roi = mn_rwd * 3153600 / avg_bt / mn_count / 10
         time_first_payment = 2.6 * mn_count / 60
         message = (
             f"• Active masternodes • **{mn_count: 1.0f} **\n• Coins Locked • **{mn_count*10000:,} XSG**\n• ROI "
-            + f"• **{mn_roi: 1.3f} % **\n• Minimum time before first payment • **{time_first_payment: 1.2f} hours **"
+            + f"• **{mn_roi: 1.3f} % **\n• Minimum time before first payment • **{time_first_payment: 1.2f} hours**"
+            + f"\n• One masternode will give you approximately **{3600*24/avg_bt*mn_rwd/mn_count:1.3f} XSG**"
             + f"\n{asgard}\n{asgard_vid}\n{guide_link}"
         )
     # -------- <hpow/calc> --------
@@ -264,8 +266,15 @@ async def on_message(msg):
         mn_rwd = 9
         if len(args) < 2:
             message = (
-                f"**1** Masternode will give you approximately **{3600*24/avg_bt*mn_rwd/mn_count:1.3f} XSG** _(***"
-                + f"{3600*24/avg_bt*mn_rwd/mn_count*xsg_usd_price:1.3f}$***)_ per **day**."
+                f"**1** Masternode will give you approximately:"
+                + f"\n**{3600*24/avg_bt*mn_rwd/mn_count:1.3f} XSG** _(***"
+                + f"{3600*24/avg_bt*mn_rwd/mn_count*xsg_usd_price:1.3f}$***)_ per **day**"
+                + f"\n**{3600*24*7/avg_bt*mn_rwd/mn_count:1.3f} XSG** _(***"
+                + f"{3600*24*7/avg_bt*mn_rwd/mn_count*xsg_usd_price:1.3f}$***)_ per **week**"
+                + f"\n**{3600*24*30/avg_bt*mn_rwd/mn_count:1.3f} XSG** _(***"
+                + f"{3600*24*30/avg_bt*mn_rwd/mn_count*xsg_usd_price:1.3f}$***)_ per **month**"
+                + f"\n**{3600*24*365/avg_bt*mn_rwd/mn_count:1.3f} XSG** _(***"
+                + f"{3600*24*365/avg_bt*mn_rwd/mn_count*xsg_usd_price:1.3f}$***)_ per **year**"
             )
             await msg.channel.send(message)
             return
@@ -279,8 +288,15 @@ async def on_message(msg):
         elif is_number(cmd1):
             cmd1 = float(cmd1)
             message = (
-                f"**{cmd1:1.0f}** Masternode will give you approximately **{cmd1*3600*24/avg_bt*mn_rwd/mn_count:1.3f}"
-                + f" XSG** _(***{cmd1*3600*24/avg_bt*mn_rwd/mn_count*xsg_usd_price:1.3f}$***)_ per **day**."
+                f"**{cmd1:1.0f}** Masternode will give you approximately:"
+                + f"\n**{cmd1*3600*24/avg_bt*mn_rwd/mn_count:1.3f} XSG** _(***"
+                + f"{cmd1*3600*24/avg_bt*mn_rwd/mn_count*xsg_usd_price:1.3f}$***)_ per **day**"
+                + f"\n**{cmd1*3600*24*7/avg_bt*mn_rwd/mn_count:1.3f} XSG** _(***"
+                + f"{cmd1*3600*24*7/avg_bt*mn_rwd/mn_count*xsg_usd_price:1.3f}$***)_ per **week**"
+                + f"\n**{cmd1*3600*24*30/avg_bt*mn_rwd/mn_count:1.3f} XSG** _(***"
+                + f"{cmd1*3600*24*30/avg_bt*mn_rwd/mn_count*xsg_usd_price:1.3f}$***)_ per **month**"
+                + f"\n**{cmd1*3600*24*365/avg_bt*mn_rwd/mn_count:1.3f} XSG** _(***"
+                + f"{cmd1*3600*24*365/avg_bt*mn_rwd/mn_count*xsg_usd_price:1.3f}$***)_ per **year**"
             )
     # -------- <xsgusd> --------
     elif cmd == "xsgusd":
