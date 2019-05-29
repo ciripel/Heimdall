@@ -171,8 +171,8 @@ async def on_message(msg):
         message = (
             f"• Active masternodes • **{mn_count: 1.0f} **\n• Coins Locked • **{mn_count*10000:,} XSG**\n• ROI "
             + f"• **{mn_roi: 1.3f} % **\n• Minimum time before first payment • **{time_first_payment: 1.2f} hours**"
-            + f"\n• One masternode will give you approximately **{3600*24/avg_bt*mn_rwd/mn_count:1.3f} XSG**"
-            + f"\n{asgard}\n{asgard_vid}\n{guide_link}"
+            + f"\n• One masternode will give you approximately **{3600*24/avg_bt*mn_rwd/mn_count:1.3f} XSG** per"
+            + f" **day**\n{asgard}\n{asgard_vid}\n{guide_link}"
         )
     # -------- <hpow/calc> --------
     elif cmd == "hpow" or cmd == "calc":
