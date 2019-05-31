@@ -162,7 +162,10 @@ async def on_message(msg):
                 else:
                     print(f"{data['masternodes']['link']} is down")
         mn_count = mn_raw.count("ENABLED")
-        mn_rwd = 9
+        if last_block < 760_000:
+            mn_rwd = 9
+        else:
+            mn_rwd = 9.25
         guide_link = data["masternodes"]["guide_link"]
         asgard = data["masternodes"]["asgard"]
         asgard_vid = data["masternodes"]["asgard_vid"]
@@ -223,7 +226,10 @@ async def on_message(msg):
         elif is_number(cmd1) and float(cmd1) < 0:
             message = f"{data['hpow']['neg']}"
         elif is_number(cmd1):
-            mnr_rwd = 9.5
+            if last_block < 760_000:
+                mnr_rwd = 9.5
+            else:
+                mnr_rwd = 9.25
             cmd1 = float(cmd1)
             message = (
                 f"Current network hashrate is **{int(hashrate)/1000:1.2f} KSols/s**.\nA hashrate of **{cmd1:1.0f}"
@@ -263,7 +269,10 @@ async def on_message(msg):
                 else:
                     print(f"{data['masternodes']['link']} is down")
         mn_count = mn_raw.count("ENABLED")
-        mn_rwd = 9
+        if last_block < 760_000:
+            mn_rwd = 9
+        else:
+            mn_rwd = 9.25
         if len(args) < 2:
             message = (
                 f"**1** Masternode will give you approximately:"
