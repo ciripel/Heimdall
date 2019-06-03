@@ -12,6 +12,8 @@ with open("auth.json") as data_file:
     auth = json.load(data_file)
 with open("links.json") as data_file:
     data = json.load(data_file)
+with open("params.json") as data_file:
+    params = json.load(data_file)
 with open("market.json") as data_file:
     markets = json.load(data_file)
 
@@ -134,7 +136,7 @@ async def on_message(msg):
                     net_hash_api = await net_hash.json()
                 else:
                     print(f"{data['net_hash']} is down")
-        version = net_hash_api["info"]["version"]
+        version = params["daemon_ver"]
         hashrate = net_hash_api["info"]["networksolps"]
         message = (
             f"• Version • **{version}**\n• Block Height • **{last_block:,}**\n• Avg Block Time • **{round(avg_bt, 2)}"
@@ -155,7 +157,6 @@ async def on_message(msg):
             avg_bt = (now - before) / max_blocks
         else:
             avg_bt = 60
-        last_block = blocks_api["blocks"][0]["height"]
         async with aiohttp.ClientSession() as session:
             async with session.get(data["masternodes"]["link"]) as masternodes:
                 if masternodes.status == 200:
@@ -163,10 +164,7 @@ async def on_message(msg):
                 else:
                     print(f"{data['masternodes']['link']} is down")
         mn_count = mn_raw.count("ENABLED")
-        if last_block < 760_000:
-            mn_rwd = 9
-        else:
-            mn_rwd = 9.25
+        mn_rwd = float(params["mn_rwd"])
         guide_link = data["masternodes"]["guide_link"]
         asgard = data["masternodes"]["asgard"]
         asgard_vid = data["masternodes"]["asgard_vid"]
@@ -193,7 +191,6 @@ async def on_message(msg):
             avg_bt = (now - before) / max_blocks
         else:
             avg_bt = 60
-        last_block = blocks_api["blocks"][0]["height"]
         async with aiohttp.ClientSession() as session:
             async with session.get(data["cmc"]["cmc_xsg"], headers=HEADERS) as cmc_xsg:
                 if cmc_xsg.status == 200:
@@ -227,10 +224,7 @@ async def on_message(msg):
         elif is_number(cmd1) and float(cmd1) < 0:
             message = f"{data['hpow']['neg']}"
         elif is_number(cmd1):
-            if last_block < 760_000:
-                mnr_rwd = 9.5
-            else:
-                mnr_rwd = 9.25
+            mnr_rwd = float(params["mnr_rwd"])
             cmd1 = float(cmd1)
             message = (
                 f"Current network hashrate is **{int(hashrate)/1000:1.2f} KSols/s**.\nA hashrate of **{cmd1:1.0f}"
@@ -255,7 +249,6 @@ async def on_message(msg):
             avg_bt = (now - before) / max_blocks
         else:
             avg_bt = 60
-        last_block = blocks_api["blocks"][0]["height"]
         async with aiohttp.ClientSession() as session:
             async with session.get(data["cmc"]["cmc_xsg"], headers=HEADERS) as cmc_xsg:
                 if cmc_xsg.status == 200:
@@ -270,10 +263,7 @@ async def on_message(msg):
                 else:
                     print(f"{data['masternodes']['link']} is down")
         mn_count = mn_raw.count("ENABLED")
-        if last_block < 760_000:
-            mn_rwd = 9
-        else:
-            mn_rwd = 9.25
+        mn_rwd = float(params["mn_rwd"])
         if len(args) < 2:
             message = (
                 f"**1** Masternode will give you approximately:"
