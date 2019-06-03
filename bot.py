@@ -134,10 +134,11 @@ async def on_message(msg):
                     net_hash_api = await net_hash.json()
                 else:
                     print(f"{data['net_hash']} is down")
+        version = net_hash_api["info"]["version"]
         hashrate = net_hash_api["info"]["networksolps"]
         message = (
-            f"• Block Height • **{last_block:,}**\n• Avg Block Time • **{round(avg_bt, 2)} s**\n• Network Hashrate • **"
-            + f"{int(hashrate)/1000} kSol/s**\n• Network Difficulty • **{diff:1.3f}**"
+            f"• Version • **{version}**\n• Block Height • **{last_block:,}**\n• Avg Block Time • **{round(avg_bt, 2)}"
+            + f" s**\n• Network Hashrate • **{int(hashrate)/1000} kSol/s**\n• Network Difficulty • **{diff:1.3f}**"
         )
     # -------- <mn/mninfo> --------
     elif cmd == "mn" or cmd == "mninfo":
