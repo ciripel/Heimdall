@@ -39,6 +39,7 @@
   "blocks_info": "https://explorer.snowgem.org/api/blocks?limit=101",
   "difficulty": "https://explorer.snowgem.org/api/status?q=getDifficulty",
   "net_hash": "https://explorer.snowgem.org/api/status",
+  "asgard_managed": "https://asgard.snowgem.org/php/public-api?action=getManagedNodesCount",
   "masternodes": {"link": "https://data.snowgem.org/masternode.html",
                   "asgard": "• Monitoring & management tool • <https://asgard.snowgem.org/>",
                   "asgard_vid": "• Asgard Install Guide • <https://www.youtube.com/watch?v=X8jIZv9JtvU>",
