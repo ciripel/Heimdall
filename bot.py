@@ -224,7 +224,9 @@ async def on_message(msg):
             await msg.channel.send(message)
             return
         cmd1 = args[1].lower()
-        if not is_number(cmd1):
+        if cmd1 == "infinity" or cmd1 == "infinite" or cmd1 == "inf":
+            message = f"{data['hpow']['infinity']}"
+        elif not is_number(cmd1):
             message = f"{data['hpow']['default']}"
         elif cmd1 == "0":
             message = f"{data['hpow']['zero']}"
@@ -374,7 +376,8 @@ async def on_message(msg):
                         async with session.get(markets[a]["api"]) as api:
                             if api.status == 200:
                                 markets_api = await api.json()
-                                markets[a]["volume_24h"] = xsg_usd_price * float(markets_api["ticker"]["vol"])
+                                markets[a]["volume_24h"] = xsg_usd_price * \
+                                    float(markets_api["ticker"]["vol"])
                                 usd_price = btc_usd_price * float(markets_api["ticker"]["last"])
                                 markets[a]["price"] = usd_price
                             else:
@@ -387,7 +390,8 @@ async def on_message(msg):
                                 markets_api = await api.json()
                                 for i in range(len(markets_api)):
                                     if markets_api[i]["market_name"] == "XSG_BTC":
-                                        markets[a]["volume_24h"] = xsg_usd_price * float(markets_api[i]["vol"])
+                                        markets[a]["volume_24h"] = xsg_usd_price * \
+                                            float(markets_api[i]["vol"])
                                         usd_price = btc_usd_price * float(markets_api[i]["last"])
                                         markets[a]["price"] = usd_price
                             else:
@@ -401,7 +405,8 @@ async def on_message(msg):
                                 markets[a]["volume_24h"] = xsg_usd_price * float(
                                     markets_api["pairs"]["XSG_BTC"]["baseVolume"]
                                 )
-                                usd_price = btc_usd_price * float(markets_api["pairs"]["XSG_BTC"]["last"])
+                                usd_price = btc_usd_price * \
+                                    float(markets_api["pairs"]["XSG_BTC"]["last"])
                                 markets[a]["price"] = usd_price
                             else:
                                 print(f"{markets[a]['api']} is down")
@@ -414,7 +419,8 @@ async def on_message(msg):
                                 markets[a]["volume_24h"] = xsg_usd_price * float(
                                     markets_api["pairs"]["XSG_ETH"]["baseVolume"]
                                 )
-                                usd_price = eth_usd_price * float(markets_api["pairs"]["XSG_ETH"]["last"])
+                                usd_price = eth_usd_price * \
+                                    float(markets_api["pairs"]["XSG_ETH"]["last"])
                                 markets[a]["price"] = usd_price
                             else:
                                 print(f"{markets[a]['api']} is down")
@@ -426,7 +432,8 @@ async def on_message(msg):
                                 markets_api = await api.json()
                                 for i in range(len(markets_api)):
                                     if markets_api[i]["id"] == "XSG_BTC":
-                                        markets[a]["volume_24h"] = btc_usd_price * float(markets_api[i]["volume"])
+                                        markets[a]["volume_24h"] = btc_usd_price * \
+                                            float(markets_api[i]["volume"])
                                         usd_price = btc_usd_price * float(markets_api[i]["last"])
                                         markets[a]["price"] = usd_price
                             else:
@@ -437,7 +444,8 @@ async def on_message(msg):
                         async with session.get(markets[a]["api"]) as api:
                             if api.status == 200:
                                 markets_api = await api.json()
-                                markets[a]["volume_24h"] = xsg_usd_price * float(markets_api["volume"])
+                                markets[a]["volume_24h"] = xsg_usd_price * \
+                                    float(markets_api["volume"])
                                 usd_price = btc_usd_price * float(markets_api["close"])
                                 markets[a]["price"] = usd_price
                             else:
@@ -512,7 +520,8 @@ async def on_message(msg):
                     xsg_24vol = float(cmc_xsg_api["data"]["XSG"]["quote"]["USD"]["volume_24h"])
                     # xsg_mcap = float(cmc_xsg_api["data"]["XSG"]["quote"]["USD"]["market_cap"])
                     # xsg_circ_supply = float(cmc_xsg_api["data"]["XSG"]["circulating_supply"])
-                    xsg_24change = float(cmc_xsg_api["data"]["XSG"]["quote"]["USD"]["percent_change_24h"])
+                    xsg_24change = float(cmc_xsg_api["data"]["XSG"]
+                                         ["quote"]["USD"]["percent_change_24h"])
                 else:
                     print(f"{data['cmc']['cmc_xsg']} is down")
         async with aiohttp.ClientSession() as session:
