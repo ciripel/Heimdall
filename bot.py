@@ -177,7 +177,8 @@ async def on_message(msg):
         mn_roi = mn_rwd * 3153600 / avg_bt / mn_count / 10
         time_first_payment = 2.6 * mn_count / 60
         message = (
-            f"• Active masternodes • **{mn_count: 1.0f}** (_**{asgard_managed}** managed by **Asgard**_)\n• Coins Locked • **{mn_count*10000:,} XSG**\n• ROI "
+            f"• Active masternodes • **{mn_count: 1.0f}** (_**{asgard_managed}** managed by **Asgard**_)\n• "
+            + f"Coins Locked • **{mn_count*10000:,} XSG**\n• ROI "
             + f"• **{mn_roi: 1.3f} % **\n• Minimum time before first payment • **{time_first_payment: 1.2f} hours**"
             + f"\n• One masternode will give you approximately **{3600*24/avg_bt*mn_rwd/mn_count:1.3f} XSG** per"
             + f" **day**\n{asgard}\n{asgard_vid}\n{guide_link}"
@@ -428,6 +429,17 @@ async def on_message(msg):
                                         markets[a]["volume_24h"] = btc_usd_price * float(markets_api[i]["volume"])
                                         usd_price = btc_usd_price * float(markets_api[i]["last"])
                                         markets[a]["price"] = usd_price
+                            else:
+                                print(f"{markets[a]['api']} is down")
+                    vol_total = vol_total + float(markets[a]["volume_24h"])
+                elif markets[a]["link"] == "https://exchange.trade.io/trade/classic":
+                    async with aiohttp.ClientSession() as session:
+                        async with session.get(markets[a]["api"]) as api:
+                            if api.status == 200:
+                                markets_api = await api.json()
+                                markets[a]["volume_24h"] = xsg_usd_price * float(markets_api["volume"])
+                                usd_price = btc_usd_price * float(markets_api["close"])
+                                markets[a]["price"] = usd_price
                             else:
                                 print(f"{markets[a]['api']} is down")
                     vol_total = vol_total + float(markets[a]["volume_24h"])
