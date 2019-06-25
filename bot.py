@@ -4,9 +4,11 @@
 import ftplib
 import json
 import random
+from datetime import datetime
 
 import aiohttp
 import discord
+import pytz
 
 with open("auth.json") as data_file:
     auth = json.load(data_file)
@@ -376,8 +378,7 @@ async def on_message(msg):
                         async with session.get(markets[a]["api"]) as api:
                             if api.status == 200:
                                 markets_api = await api.json()
-                                markets[a]["volume_24h"] = xsg_usd_price * \
-                                    float(markets_api["ticker"]["vol"])
+                                markets[a]["volume_24h"] = xsg_usd_price * float(markets_api["ticker"]["vol"])
                                 usd_price = btc_usd_price * float(markets_api["ticker"]["last"])
                                 markets[a]["price"] = usd_price
                             else:
@@ -390,8 +391,7 @@ async def on_message(msg):
                                 markets_api = await api.json()
                                 for i in range(len(markets_api)):
                                     if markets_api[i]["market_name"] == "XSG_BTC":
-                                        markets[a]["volume_24h"] = xsg_usd_price * \
-                                            float(markets_api[i]["vol"])
+                                        markets[a]["volume_24h"] = xsg_usd_price * float(markets_api[i]["vol"])
                                         usd_price = btc_usd_price * float(markets_api[i]["last"])
                                         markets[a]["price"] = usd_price
                             else:
@@ -405,8 +405,7 @@ async def on_message(msg):
                                 markets[a]["volume_24h"] = xsg_usd_price * float(
                                     markets_api["pairs"]["XSG_BTC"]["baseVolume"]
                                 )
-                                usd_price = btc_usd_price * \
-                                    float(markets_api["pairs"]["XSG_BTC"]["last"])
+                                usd_price = btc_usd_price * float(markets_api["pairs"]["XSG_BTC"]["last"])
                                 markets[a]["price"] = usd_price
                             else:
                                 print(f"{markets[a]['api']} is down")
@@ -419,8 +418,7 @@ async def on_message(msg):
                                 markets[a]["volume_24h"] = xsg_usd_price * float(
                                     markets_api["pairs"]["XSG_ETH"]["baseVolume"]
                                 )
-                                usd_price = eth_usd_price * \
-                                    float(markets_api["pairs"]["XSG_ETH"]["last"])
+                                usd_price = eth_usd_price * float(markets_api["pairs"]["XSG_ETH"]["last"])
                                 markets[a]["price"] = usd_price
                             else:
                                 print(f"{markets[a]['api']} is down")
@@ -432,8 +430,7 @@ async def on_message(msg):
                                 markets_api = await api.json()
                                 for i in range(len(markets_api)):
                                     if markets_api[i]["id"] == "XSG_BTC":
-                                        markets[a]["volume_24h"] = btc_usd_price * \
-                                            float(markets_api[i]["volume"])
+                                        markets[a]["volume_24h"] = btc_usd_price * float(markets_api[i]["volume"])
                                         usd_price = btc_usd_price * float(markets_api[i]["last"])
                                         markets[a]["price"] = usd_price
                             else:
@@ -444,8 +441,7 @@ async def on_message(msg):
                         async with session.get(markets[a]["api"]) as api:
                             if api.status == 200:
                                 markets_api = await api.json()
-                                markets[a]["volume_24h"] = xsg_usd_price * \
-                                    float(markets_api["volume"])
+                                markets[a]["volume_24h"] = xsg_usd_price * float(markets_api["volume"])
                                 usd_price = btc_usd_price * float(markets_api["close"])
                                 markets[a]["price"] = usd_price
                             else:
@@ -520,8 +516,7 @@ async def on_message(msg):
                     xsg_24vol = float(cmc_xsg_api["data"]["XSG"]["quote"]["USD"]["volume_24h"])
                     # xsg_mcap = float(cmc_xsg_api["data"]["XSG"]["quote"]["USD"]["market_cap"])
                     # xsg_circ_supply = float(cmc_xsg_api["data"]["XSG"]["circulating_supply"])
-                    xsg_24change = float(cmc_xsg_api["data"]["XSG"]
-                                         ["quote"]["USD"]["percent_change_24h"])
+                    xsg_24change = float(cmc_xsg_api["data"]["XSG"]["quote"]["USD"]["percent_change_24h"])
                 else:
                     print(f"{data['cmc']['cmc_xsg']} is down")
         async with aiohttp.ClientSession() as session:
@@ -552,6 +547,29 @@ async def on_message(msg):
     # -------- <whenmoon> --------
     elif cmd == "whenmoon":
         message = random.choice(data["whenmoon"])
+    # -------- <team> --------
+    elif cmd == "team":
+        message_list = ["SnowGem team members with local time and the languages they support:"]
+        for i in range(len(data["team"])):
+            tz = pytz.timezone(data["team"][i]["time"])
+            local_hour = datetime.now(tz).strftime("%H:%M")
+            member_name = data["team"][i]["name"]
+            covered_language = data["team"][i]["language"]
+            member = f"• {member_name} • {local_hour} - **{covered_language}**"
+            message_list.append(member)
+        message = "\n".join(message_list)
+    # -------- <translators> --------
+    elif cmd == "translators":
+        message_list = [
+            "This is our translation team. If you notice something is not right in a"
+            + " translation please contact the person in charge:"
+        ]
+        for i in range(len(data["translators"])):
+            member_name = data["translators"][i]["name"]
+            covered_language = data["translators"][i]["language"]
+            member = f"• **{covered_language}** • {member_name}"
+            message_list.append(member)
+        message = "\n".join(message_list)
     # -------- <members(CoreTeam only)> --------
     elif (
         cmd == "members"

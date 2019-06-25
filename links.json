@@ -1,15 +1,17 @@
 {
-  "commands": ["-- `!commands` | This are your commands.",
+  "commands": ["-- `!commands` | These are your commands.",
                "-- `!links` | Useful links.",
+               "-- `!team` | List of CoreTeam members with local time and language they support.",
+               "-- `!translators` | List the translation team members.",
                "-- `!net` or `!netinfo` | Show current network stats.",
                "-- `!mn` or `!mninfo` | Masternodes info.",
                "-- `!hpow` or `!calc [your Sols/s]` | Approximate XSG per hour/day.",
                "-- `!xsgusd [amount]` | Current price in USD.",
                "-- `!mnrew` or `!mnrewards [no. of nodes]` | Approximate XSG reward per day.",
                "-- `!roadmap` | Link to SnowGem Road-map.",
-               "-- `!por` | Proof of Review",
+               "-- `!por` | Proof of Review.",
                "-- `!market [info]` | SnowGem exchanges [stats].",
-               "-- `!halving` | Time left until halving",
+               "-- `!halving` | Time left until halving.",
                "-- `!coin` or `!coininfo` | Show coin info.",
                "-- `!about` | Info about this bot."
              ],
@@ -29,7 +31,7 @@
   "roadmap": "• **SnowGem Road-map** •\n<https://snowgem.org/blog/snowgem-roadmap-2019>",
   "por": "• **SnowGem Proof of Review** •\n<https://www.proofofreview.com/wp-content/uploads/2019/02/SNOWGEM_v1.02.pdf>",
   "members": "Number of members on SnowGem Discord: ",
-  "about": ["• Version 1.1",
+  "about": ["• Version 1.2",
             "• Author: ciripel _(Discord: Amitabha#0517)_",
             "• Source Code: <https://github.com/ciripel/Heimdall>"
           ],
@@ -76,5 +78,94 @@
                "Dec. 12 Cold Moon U.S. East:12:12:12 a.m. UTC:05:12",
                "The fool moon for you! :grin:"
              ],
+  "team": [{"name": "**Txid**#2123",
+            "time": "Asia/Ho_Chi_Minh",
+            "language": "English,  Vietnamese"
+           },
+           {"name": "**DaX**#8374",
+            "time": "Europe/Prague",
+            "language": "Czech, English"
+           },
+           {"name": "**IggiPop**#8679",
+            "time": "Europe/Copenhagen",
+            "language": "Icelandic, English"
+           },
+           {"name": "**Abakus**#7835",
+            "time": "Europe/Warsaw",
+            "language": "English, Polish"
+           },
+           {"name": "**Shmocs**#1564",
+            "time": "Europe/Bucharest",
+            "language": "English, Romanian"
+           },
+           {"name": "**Amitabha**#0517",
+            "time": "Europe/Bucharest",
+            "language": "English, Romanian"
+           },
+           {"name": "**BlockMinerMike**#9742",
+            "time": "America/Los_Angeles",
+            "language": "English"
+           },
+           {"name": "**mclaren86**#4535",
+            "time": "America/Vancouver",
+            "language": "English"
+           },
+           {"name": "**Bet-Well**#3211",
+            "time": "Europe/Ljubljana",
+            "language": "English, Slovenian, Croatian, Serbian"
+           },
+           {"name": "**demzet**#8295",
+            "time": "Europe/Warsaw",
+            "language": "English, Polish"
+           },
+           {"name": "**zelim🐼**#0792",
+            "time": "Europe/Vienna",
+            "language": "English, German"
+           },
+           {"name": "**nUm**#7115",
+            "time": "Australia/Sydney",
+            "language": "English"
+           }
+         ],
+  "translators": [{"language": "Chinese",
+                   "name": "**/dev/aux**#8820"
+                  },
+                  {"language": "Czech",
+                   "name": "**DaX**#8374"
+                  },
+                  {"language": "Danish",
+                   "name": "**Ajes**#7852"
+                  },
+                  {"language": "Dutch",
+                   "name": "**Tuxabyte**#6061"
+                  },
+                  {"language": "French",
+                   "name": "**redwater64**#9628"
+                  },
+                  {"language": "German",
+                   "name": "**zelim🐼**#0792"
+                  },
+                  {"language": "Hungarian",
+                  "name": "**AdiFortress**#3533"
+                  },
+                  {"language": "Italian",
+                   "name": "**Pippettando**#5491"
+                  },
+                  {"language": "Icelandic",
+                   "name": "**IggiPop**#8679"
+                  },
+                  {"language": "Polish",
+                   "name": "**Abakus**#7835"
+                  },
+                  {"language": "Romanian",
+                   "name": "**Amitabha**#0517"
+                  },
+                  {"language": "Russian",
+                   "name": "**pipanda**#6772, **ekze**#4953"
+                  },
+                  {"language": "Spanish",
+                   "name": "**CarlosRod**#7564"
+                  }
+                ],
   "welcome": "Welcome young one!\nFor a list usefull links you can go to <#398661977611829278> or in <#405033839417753640> you can type `!links`.\nFor latest news please check <#398660597505458187>.\nYou can type `!commands` in <#405033839417753640> for a complete list of commands that I understand.\nAdditionally you can always ask our helpful community members."
 }
