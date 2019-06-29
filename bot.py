@@ -570,6 +570,36 @@ async def on_message(msg):
             member = f"• **{covered_language}** • {member_name}"
             message_list.append(member)
         message = "\n".join(message_list)
+    # -------- <joingames> --------
+    elif cmd == "joingames" and isinstance(msg.channel, discord.TextChannel):
+        if "Player" not in [role.name for role in msg.author.guild.roles]:
+            message = f"{data['no_role']}"
+        elif "Player" in [role.name for role in msg.author.roles]:
+            return
+        else:
+            role = discord.utils.get(msg.author.guild.roles, name="Player")
+            await msg.author.add_roles(role)
+            emoji = discord.utils.get(msg.author.guild.emojis, name="heimdall")
+            if emoji:
+                await msg.add_reaction(emoji)
+            else:
+                message = "Server do not have :heimdall: emoji."
+                await msg.channel.send(message)
+            return
+    # -------- <leavegames> --------
+    elif cmd == "leavegames" and isinstance(msg.channel, discord.TextChannel):
+        if "Player" not in [role.name for role in msg.author.roles]:
+            return
+        else:
+            role = discord.utils.get(msg.author.guild.roles, name="Player")
+            await msg.author.remove_roles(role)
+            emoji = discord.utils.get(msg.author.guild.emojis, name="heimdall")
+            if emoji:
+                await msg.add_reaction(emoji)
+            else:
+                message = "Server do not have :heimdall: emoji."
+                await msg.channel.send(message)
+            return
     # -------- <members(CoreTeam only)> --------
     elif (
         cmd == "members"
