@@ -167,11 +167,12 @@ async def on_message(msg):
                     print(f"{data['masternodes']['link']} is down")
         mn_count = mn_raw.count("ENABLED")
         async with aiohttp.ClientSession() as session:
-            async with session.get(data["asgard_managed"]) as asgard_mns:
-                if masternodes.status == 200:
-                    asgard_managed = await asgard_mns.text()
-                else:
-                    print(f"{data['asgard_managed']} is down")
+            try:
+                async with session.get(data["asgard_managed"]) as asgard_mns:
+                        asgard_managed = await asgard_mns.text()
+            except Exception:
+                asgard_managed = 0
+                print(f"{data['asgard_managed']} is down")
         mn_rwd = float(params["mn_rwd"])
         guide_link = data["masternodes"]["guide_link"]
         asgard = data["masternodes"]["asgard"]
