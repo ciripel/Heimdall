@@ -543,8 +543,9 @@ async def on_message(msg):
         message = (
             f"• Current Price • **{xsg_usd_price/btc_usd_price:1.8f} BTC ** | **{xsg_usd_price:1.4f}$**\n• 24h Volume •"
             + f" **{xsg_24vol/btc_usd_price:1.3f} BTC ** | **{xsg_24vol:1,.2f}$**\n• Market Cap • **{xsg_mcap:1,.0f}$**"
-            + f"\n• Circulating Supply • **{xsg_circ_supply:1,.0f} XSG **\n• Locked Coins • **"
-            + f"{mn_count*10000:,} XSG **\n• 24h Change • **{xsg_24change:1.2f} % **"
+            + f"\n• Circulating Supply • **{xsg_circ_supply:1,.0f} XSG **\n• Total Supply • **"
+            + f"84,096,000 XSG **\n• Locked Coins • **{mn_count*10000:,} XSG **\n• 24h Change • **"
+            + f"{xsg_24change:1.2f} % **"
         )
     # -------- <about> --------
     elif cmd == "about":
