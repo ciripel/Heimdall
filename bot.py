@@ -504,6 +504,31 @@ async def on_message(msg):
             f"The next halving will be in approximately **{halving_time:1.2f}** days (**{halving_time/365:1.3f}"
             + "** years).\nThe block reward after the halving will be **10** XSG."
         )
+    # -------- <fork> --------
+    elif cmd == "fork":
+        async with aiohttp.ClientSession() as session:
+            async with session.get(data["blocks_info"]) as blocks_info:
+                if blocks_info.status == 200:
+                    blocks_api = await blocks_info.json()
+                else:
+                    print(f"{data['blocks_info']} is down")
+        now = blocks_api["blocks"][0]["time"]
+        if len(blocks_api["blocks"]) > 1:
+            max_blocks = len(blocks_api["blocks"]) - 1
+            before = blocks_api["blocks"][max_blocks]["time"]
+            avg_bt = (now - before) / max_blocks
+        else:
+            avg_bt = 60
+        last_block = blocks_api["blocks"][0]["height"]
+        fork_block = float(params["fork_block"])
+        if fork_block <= last_block:
+            message = "There is not any known planned fork. We are good :heart_eyes:"
+        else:
+            fork_time = (fork_block - last_block) * avg_bt / 3600
+            message = (
+                f"The next planned fork is at block **{fork_block:1,.0f}**.\nThis is approximately in **"
+                + f"{fork_time:1.2f}** hours (**{fork_time/24:1.3f}** days)."
+            )
     # -------- <coin/coininfo> --------
     elif cmd == "coin" or cmd == "coininfo":
         async with aiohttp.ClientSession() as session:

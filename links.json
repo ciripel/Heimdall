@@ -12,6 +12,7 @@
                "-- `!por` | Proof of Review.",
                "-- `!market [info]` | SnowGem exchanges [stats].",
                "-- `!halving` | Time left until halving.",
+               "-- `!fork` | Time left until next planned fork.",
                "-- `!coin` or `!coininfo` | Show coin info.",
                "-- `!joingames` and `!leavegames` | Let a member join/leave #giveaways channel.",
                "-- `!about` | Info about this bot."
