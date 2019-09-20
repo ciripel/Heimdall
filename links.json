@@ -121,13 +121,17 @@
             "time": "Europe/Warsaw",
             "language": "English, Polish"
            },
-           {"name": "**zelim🐼**#0792",
-            "time": "Europe/Vienna",
-            "language": "English, German"
+           {"name": "**billybob**#8074",
+            "time": "Europe/London",
+            "language": "English"
            },
            {"name": "**nUm**#7115",
             "time": "Australia/Sydney",
             "language": "English"
+           },
+           {"name": "**Ajes**#7852",
+            "time": "Europe/Copenhagen",
+            "language": "English, Danish"
            }
          ],
   "translators": [{"language": "Chinese",
