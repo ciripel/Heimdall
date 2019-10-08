@@ -82,16 +82,11 @@ async def on_message(msg):
     args = msg.content[1:].split()
     cmd = args[0].lower()
 
-    # Bot responds to mee6 commands if in unaccepted channel
-    if not msg.channel.name == "bot-commands" and (cmd == "help" or cmd == "rank" or cmd == "levels"):
-        message = f"{data['mee6']}"
-        await msg.channel.send(message)
-        return
     # Bot runs in #bot-commands channel and private channels for everyone
     # Bot runs in all channels for specific roles
     if not (
-        msg.channel.name == "bot-commands"
-        or isinstance(msg.channel, discord.DMChannel)
+        isinstance(msg.channel, discord.DMChannel)
+        or msg.channel.name == "bot-commands"
         or "CoreTeam" in [role.name for role in msg.author.roles]
         or "Moderator" in [role.name for role in msg.author.roles]
         or "Adviser" in [role.name for role in msg.author.roles]
@@ -100,6 +95,13 @@ async def on_message(msg):
         await msg.channel.send(message)
         return
 
+    # Bot responds to mee6 commands if in unaccepted channel
+    if not (isinstance(msg.channel, discord.DMChannel) or msg.channel.name == "bot-commands") and (
+        cmd == "help" or cmd == "rank" or cmd == "levels"
+    ):
+        message = f"{data['mee6']}"
+        await msg.channel.send(message)
+        return
     # ---- <ignored commands in bot-commands> ----
     if cmd == "help" or cmd == "rank" or cmd == "levels" or cmd == "tip":
         return
@@ -171,7 +173,7 @@ async def on_message(msg):
         async with aiohttp.ClientSession() as session:
             try:
                 async with session.get(data["asgard_managed"]) as asgard_mns:
-                        asgard_managed = await asgard_mns.text()
+                    asgard_managed = await asgard_mns.text()
             except Exception:
                 asgard_managed = 0
                 print(f"{data['asgard_managed']} is down")
