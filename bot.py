@@ -375,7 +375,7 @@ async def on_message(msg):
         for a in range(len(markets)):
             message_list.append(f"{a+1}. <{markets[a]['link']}>")
         message_list.append("\n_Use `!market info` for stats of the markets_")
-        if len(args) < 2 or args[1].lower() != "info":
+        if len(args) < 2 or args[1].lower() != "none":
             message = "\n".join(message_list)
         else:
             vol_total = 0
