@@ -1,14 +1,5 @@
 [
   {
-    "source": "Trade.io",
-    "pair": "XSG/BTC",
-    "volume_24h": 29451.772437607855,
-    "price": 0.0576952873968574,
-    "vol_percent": 68.50336057695165,
-    "link": "https://exchange.trade.io/trade/classic",
-    "api": "https://api.exchange.trade.io/marketdata-ws/24hr/xsg_btc"
-  },
-  {
     "source": "Mercatox",
     "pair": "XSG/BTC",
     "volume_24h": 12512.284057216355,
@@ -26,15 +17,7 @@
     "link": "https://app.stex.com/en/trade/pair/BTC/XSG",
     "api": "https://app.stex.com/api2/ticker"
   },
-  {
-    "source": "CryptoBridge",
-    "pair": "XSG/BTC",
-    "volume_24h": 60.822856246801656,
-    "price": 0.050514687228797,
-    "vol_percent": 0.14147094412132327,
-    "link": "https://wallet.crypto-bridge.org/market/BRIDGE.XSG_BRIDGE.BTC",
-    "api": "https://api.crypto-bridge.org/api/v1/ticker"
-  },
+
   {
     "source": "Mercatox",
     "pair": "XSG/ETH",

@@ -430,30 +430,6 @@ async def on_message(msg):
                             else:
                                 print(f"{markets[a]['api']} is down")
                     vol_total = vol_total + float(markets[a]["volume_24h"])
-                elif markets[a]["link"] == "https://wallet.crypto-bridge.org/market/BRIDGE.XSG_BRIDGE.BTC":
-                    async with aiohttp.ClientSession() as session:
-                        async with session.get(markets[a]["api"]) as api:
-                            if api.status == 200:
-                                markets_api = await api.json()
-                                for i in range(len(markets_api)):
-                                    if markets_api[i]["id"] == "XSG_BTC":
-                                        markets[a]["volume_24h"] = btc_usd_price * float(markets_api[i]["volume"])
-                                        usd_price = btc_usd_price * float(markets_api[i]["last"])
-                                        markets[a]["price"] = usd_price
-                            else:
-                                print(f"{markets[a]['api']} is down")
-                    vol_total = vol_total + float(markets[a]["volume_24h"])
-                elif markets[a]["link"] == "https://exchange.trade.io/trade/classic":
-                    async with aiohttp.ClientSession() as session:
-                        async with session.get(markets[a]["api"]) as api:
-                            if api.status == 200:
-                                markets_api = await api.json()
-                                markets[a]["volume_24h"] = xsg_usd_price * float(markets_api["volume"])
-                                usd_price = btc_usd_price * float(markets_api["close"])
-                                markets[a]["price"] = usd_price
-                            else:
-                                print(f"{markets[a]['api']} is down")
-                    vol_total = vol_total + float(markets[a]["volume_24h"])
             max_source = 0
             for a in range(len(markets)):
                 markets[a]["vol_percent"] = float(markets[a]["volume_24h"]) / vol_total * 100
