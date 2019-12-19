@@ -82,10 +82,6 @@
             "time": "Europe/Copenhagen",
             "language": "Icelandic, English"
            },
-           {"name": "**Abakus**#7835",
-            "time": "Europe/Warsaw",
-            "language": "English, Polish"
-           },
            {"name": "**Shmocs**#1564",
             "time": "Europe/Bucharest",
             "language": "English, Romanian"
@@ -93,18 +89,6 @@
            {"name": "**Amitabha**#0517",
             "time": "Europe/Bucharest",
             "language": "English, Romanian"
-           },
-           {"name": "**BlockMinerMike**#9742",
-            "time": "America/Los_Angeles",
-            "language": "English"
-           },
-           {"name": "**mclaren86**#4535",
-            "time": "America/Vancouver",
-            "language": "English"
-           },
-           {"name": "**Bet-Well**#3211",
-            "time": "Europe/Ljubljana",
-            "language": "English, Slovenian, Croatian, Serbian"
            },
            {"name": "**demzet**#8295",
             "time": "Europe/Warsaw",
@@ -118,9 +102,17 @@
             "time": "Australia/Sydney",
             "language": "English"
            },
-           {"name": "**Ajes**#7852",
-            "time": "Europe/Copenhagen",
-            "language": "English, Danish"
+           {"name": "**billybob#8074",
+            "time": "Europe/London",
+            "language": "English"
+           },
+           {"name": "**billybob#8074",
+            "time": "Europe/London",
+            "language": "English"
+           },
+           {"name": "**DarkUnknown#8970",
+            "time": "America/New_York",
+            "language": "English"
            }
          ],
   "translators": [{"language": "Chinese",
