@@ -38,13 +38,24 @@ def is_number(s):
         return False
 
 
-def send_file(server_adress, username, password, message):
+def send_ann_file(server_adress, username, password, message):
     session = ftplib.FTP(server_adress, username, password)
     file = open("announcements.txt", "a")
     file.write(message)
     file.close()
     file = open("announcements.txt", "rb")
     session.storbinary("STOR /web/snowbot/announcements.txt", file)
+    file.close()
+    session.quit()
+
+
+def send_diary_file(server_adress, username, password, message):
+    session = ftplib.FTP(server_adress, username, password)
+    file = open("dev-diary.txt", "a")
+    file.write(message)
+    file.close()
+    file = open("dev-diary.txt", "rb")
+    session.storbinary("STOR /web/snowbot/dev-diary.txt", file)
     file.close()
     session.quit()
 
@@ -68,7 +79,12 @@ async def on_message(msg):
     # Bot will save all the messages in #announcements channel into a text file
     if msg.content and msg.channel.id == 398660597505458187:
         message = f"Ann: {msg.content}\n"
-        send_file(SERVER_ADDRESS, USERNAME, PASSWORD, message)
+        send_ann_file(SERVER_ADDRESS, USERNAME, PASSWORD, message)
+        return
+    # Bot will save all the messages in #dev-diary channel into a text file
+    if msg.content and msg.channel.id == 467740231362150410:
+        message = f"Update-{msg.created_at}: {msg.content}\n"
+        send_diary_file(SERVER_ADDRESS, USERNAME, PASSWORD, message)
         return
     # We want the bot to not answer to messages that have no content
     # (example only attachment messages)
