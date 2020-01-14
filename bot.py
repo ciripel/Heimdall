@@ -82,7 +82,7 @@ async def on_message(msg):
         send_ann_file(SERVER_ADDRESS, USERNAME, PASSWORD, message)
         return
     # Bot will save all the messages in #dev-diary channel into a text file
-    if msg.content and msg.channel.id == 467740231362150410:
+    if msg.channel.id == 467740231362150410:
         message = f"Update-{msg.created_at}: {msg.content}\n"
         send_diary_file(SERVER_ADDRESS, USERNAME, PASSWORD, message)
         return
