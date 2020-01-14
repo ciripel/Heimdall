@@ -105,7 +105,7 @@ async def on_message(msg):
         or msg.channel.name == "bot-commands"
         or "CoreTeam" in [role.name for role in msg.author.roles]
         or "Moderator" in [role.name for role in msg.author.roles]
-        or "Adviser" in [role.name for role in msg.author.roles]
+        or "Ambassador" in [role.name for role in msg.author.roles]
     ):
         message = f"{data['default']}"
         await msg.channel.send(message)
