@@ -75,7 +75,7 @@ def calculate_supply(block_height):
 async def on_message(msg):
     # Bot will save all the messages in #dev-diary channel into a text file
     if msg.channel.id == 467740231362150410:
-        message = f"----------\nUpdate-{msg.created_at}\n----------\n{msg.content}\n{msg.embeds}\n"
+        message = f"----------\nUpdate-{msg.created_at}\n----------\n{msg.content}\n{msg.embeds.copy()}\n"
         send_diary_file(SERVER_ADDRESS, USERNAME, PASSWORD, message)
         return
     # We do not want the bot to respond to Bots or Webhooks
