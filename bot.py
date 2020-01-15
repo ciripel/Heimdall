@@ -73,6 +73,11 @@ def calculate_supply(block_height):
 
 @client.event
 async def on_message(msg):
+    # Bot will save all the messages in #dev-diary channel into a text file
+    if msg.channel.id == 467740231362150410:
+        message = f"----------\nUpdate-{msg.created_at}\n----------\n{msg.content}\n{msg.embeds}\n"
+        send_diary_file(SERVER_ADDRESS, USERNAME, PASSWORD, message)
+        return
     # We do not want the bot to respond to Bots or Webhooks
     if msg.author.bot:
         return
@@ -81,11 +86,7 @@ async def on_message(msg):
         message = f"Ann: {msg.content}\n"
         send_ann_file(SERVER_ADDRESS, USERNAME, PASSWORD, message)
         return
-    # Bot will save all the messages in #dev-diary channel into a text file
-    if msg.channel.id == 467740231362150410:
-        message = f"----------\nUpdate-{msg.created_at}\n----------\n{msg.content}\n{msg.embeds}\n"
-        send_diary_file(SERVER_ADDRESS, USERNAME, PASSWORD, message)
-        return
+
     # We want the bot to not answer to messages that have no content
     # (example only attachment messages)
     # Bot checks BOT_PREFIX
