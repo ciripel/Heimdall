@@ -51,16 +51,16 @@ def send_ann_file(server_adress, username, password, message):
 
 def send_diary_file(server_adress, username, password, message):
     session = ftplib.FTP(server_adress, username, password)
-    file = open("dev-diary.txt", "r")
+    file = open("dev-diary.json", "r")
     thelist = file.read()
     file.close()
     listed = json.loads(thelist)
     listed.append(message)
-    file = open("dev-diary.txt", "w")
+    file = open("dev-diary.json", "w")
     file.write(json.dumps(listed, indent=2, sort_keys=True, default=str))
     file.close()
-    file = open("dev-diary.txt", "rb")
-    session.storbinary("STOR /web/snowbot/dev-diary.txt", file)
+    file = open("dev-diary.json", "rb")
+    session.storbinary("STOR /web/snowbot/dev-diary.json", file)
     file.close()
     session.quit()
 
