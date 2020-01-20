@@ -51,8 +51,13 @@ def send_ann_file(server_adress, username, password, message):
 
 def send_diary_file(server_adress, username, password, message):
     session = ftplib.FTP(server_adress, username, password)
-    file = open("dev-diary.txt", "a")
-    file.write(message)
+    file = open("dev-diary.txt", "r")
+    thelist = file.read()
+    file.close()
+    listed = json.loads(thelist)
+    listed.append(message)
+    file = open("dev-diary.txt", "w")
+    file.write(json.dumps(listed, indent=2, sort_keys=True, default=str))
     file.close()
     file = open("dev-diary.txt", "rb")
     session.storbinary("STOR /web/snowbot/dev-diary.txt", file)
@@ -75,7 +80,14 @@ def calculate_supply(block_height):
 async def on_message(msg):
     # Bot will save all the messages in #dev-diary channel into a text file
     if msg.channel.id == 467740231362150410:
-        message = f"{{\"created_at\": \"{msg.created_at}\", \"content\": \"{msg.content}\", \"embed_{0}\":{json.dumps(msg.embeds[0].to_dict())}}}"
+
+        dictionar = {}
+        dictionar['created_at'] = msg.created_at
+        dictionar['content'] = msg.content
+        for i in range(len(msg.embeds)):
+            key = 'embed_' + str(i)
+            dictionar[key] = msg.embeds[i].to_dict()
+        message = dictionar
         send_diary_file(SERVER_ADDRESS, USERNAME, PASSWORD, message)
         return
     # We do not want the bot to respond to Bots or Webhooks
