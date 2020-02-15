@@ -16,6 +16,8 @@ total_commits = len(listed)
 created_at_1 = listed[-1]["created_at"][:-7]
 created_at_2 = listed[-2]["created_at"][:-7]
 created_at_3 = listed[-3]["created_at"][:-7]
+created_at_4 = listed[-3]["created_at"][:-7]
+created_at_5 = listed[-3]["created_at"][:-7]
 
 shutil.copy('dev-diary.json', PROJECT_PATH)
 file = open(PROJECT_PATH + "/README.md", "w")
@@ -31,6 +33,8 @@ There is a total of {total_commits} commits since 20/01/2020. You can see the co
 | {created_at_1} |  |  |
 | {created_at_2} |  |  |
 | {created_at_3} |  |  |
+| {created_at_4} |  |  |
+| {created_at_5} |  |  |
 
 _You can see more details and commits in our [Discord](https://discord.gg/zumGnbg) in **#dev-diary** channel._
 """
