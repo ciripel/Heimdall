@@ -82,11 +82,11 @@ async def on_message(msg):
     if msg.channel.id == 467740231362150410:
 
         dictionar = {}
-        dictionar['author'] = msg.author.name
-        dictionar['created_at'] = msg.created_at
-        dictionar['content'] = msg.content
+        dictionar["author"] = msg.author.name
+        dictionar["created_at"] = msg.created_at
+        dictionar["content"] = msg.content
         for i in range(len(msg.embeds)):
-            key = 'embed_' + str(i)
+            key = "embed_" + str(i)
             dictionar[key] = msg.embeds[i].to_dict()
         message = dictionar
         send_diary_file(SERVER_ADDRESS, USERNAME, PASSWORD, message)
