@@ -64,7 +64,7 @@ def dev_update():
     file = open(PROJECT_PATH + "/Complete_list.md", "w")
     total_commits = len(complete_list)
     message = """
-### Snowgem Development Progress - Complete history
+### SnowGem Development Progress - Complete history
 
 Here is the complete list of all the commits to the projects we are currently working since 20/01/2020.
 
@@ -89,7 +89,7 @@ _You can see more details and commits in our [Discord](https://discord.gg/zumGnb
     total_commits = len(truncated_list)
     file = open(PROJECT_PATH + "/README.md", "w")
     message = """
-### Snowgem Development Progress
+### SnowGem Development Progress
 
 Here are the last 10 pushes to the projects we are currently working.
 
