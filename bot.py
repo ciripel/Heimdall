@@ -1,5 +1,5 @@
-#!/usr/bin/env python3
-# Work with Python 3
+#!/usr/bin/env python3.7
+# Work with Python 3.7
 
 import ftplib
 import json
@@ -9,7 +9,6 @@ from datetime import datetime
 import aiohttp
 import discord
 import pytz
-from dev_updater import dev_update
 
 with open("auth.json") as data_file:
     auth = json.load(data_file)
@@ -96,7 +95,6 @@ async def on_message(msg):
             dictionar[key] = msg.embeds[i].to_dict()
         message = dictionar
         send_diary_file(SERVER_ADDRESS, USERNAME, PASSWORD, message)
-        dev_update()
         return
     # We do not want the bot to respond to Bots or Webhooks
     if msg.author.bot:
