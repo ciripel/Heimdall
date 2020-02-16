@@ -65,10 +65,10 @@ def send_diary_file(server_adress, username, password, message):
     file = open("dev-diary.json", "w")
     file.write(json.dumps(listed, indent=2, sort_keys=True, default=str))
     file.close()
-    dev_update()
     file = open("dev-diary.json", "rb")
     session.storbinary("STOR /web/snowbot/dev-diary.json", file)
     file.close()
+    dev_update()
     session.quit()
 
 
