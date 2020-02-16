@@ -68,7 +68,6 @@ def send_diary_file(server_adress, username, password, message):
     file = open("dev-diary.json", "rb")
     session.storbinary("STOR /web/snowbot/dev-diary.json", file)
     file.close()
-    dev_update()
     session.quit()
 
 
@@ -97,6 +96,7 @@ async def on_message(msg):
             dictionar[key] = msg.embeds[i].to_dict()
         message = dictionar
         send_diary_file(SERVER_ADDRESS, USERNAME, PASSWORD, message)
+        dev_update()
         return
     # We do not want the bot to respond to Bots or Webhooks
     if msg.author.bot:
