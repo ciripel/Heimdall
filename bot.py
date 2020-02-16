@@ -51,10 +51,8 @@ def send_ann_file(server_adress, username, password, message):
 
 def send_diary_file(server_adress, username, password, message):
     session = ftplib.FTP(server_adress, username, password)
-    file = open("dev-diary.json", "r")
-    thelist = file.read()
-    file.close()
-    listed = json.loads(thelist)
+    with open("dev-diary.json") as data_file:
+        listed = json.load(data_file)
     listed.append(message)
     file = open("dev-diary.json", "w")
     file.write(json.dumps(listed, indent=2, sort_keys=True, default=str))

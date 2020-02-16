@@ -9,11 +9,9 @@ from git import Repo
 PROJECT_PATH = "/home/ciripel/Programe/SnowgemDevelopmentProgress"
 
 
-file = open("dev-diary.json", "r")
-thelist = file.read()
-file.close()
-listed = json.loads(thelist)
-total_commits = len(listed)
+with open("dev-diary.json") as data_file:
+    listed = json.load(data_file)
+truncated_list = listed[-10:]
 
 
 def description(index):
@@ -44,8 +42,8 @@ def commit(index):
 
 
 shutil.copy("dev-diary.json", PROJECT_PATH)
-
 file = open(PROJECT_PATH + "/Complete_list.md", "w")
+total_commits = len(listed)
 message = """
 ### Snowgem Development Progress - Complete history
 
@@ -68,10 +66,8 @@ _You can see more details and commits in our [Discord](https://discord.gg/zumGnb
 )
 file.write(message)
 file.close()
-complete_listed = listed
 
-listed = listed[-10:]
-total_commits = len(listed)
+total_commits = len(truncated_list)
 file = open(PROJECT_PATH + "/README.md", "w")
 message = """
 ### Snowgem Development Progress
@@ -87,7 +83,7 @@ There is a total of {total_commits} commits since 20/01/2020. You can see the co
 
 _You can see more details and commits in our [Discord](https://discord.gg/zumGnbg) in **#dev-diary** channel._
 """.format(
-    total_commits=len(complete_listed),
+    total_commits=len(listed),
     table="\n".join(
         "| <sub>{}</sub> | <sub>{}</sub> | <sub>{}</sub> |".format(
             listed[total_commits - i - 1]["created_at"][:-7],
@@ -100,9 +96,8 @@ _You can see more details and commits in our [Discord](https://discord.gg/zumGnb
 file.write(message)
 file.close()
 
-
 PATH_OF_GIT_REPO = PROJECT_PATH + "/.git"  # make sure .git folder is properly configured
-COMMIT_MESSAGE = "Last work at " + complete_listed[-1]["created_at"][:-7]
+COMMIT_MESSAGE = "Last work at " + listed[-1]["created_at"][:-7]
 
 
 def git_push():
