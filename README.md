@@ -2,7 +2,7 @@
 ### Discord bot for SnowGem https://snowgem.org/
 
 v.1.4 - deployed 16.02.2020
-- implemented Repo feeder into [Snowgem Development Progress](https://github.com/Snowgem/SnowgemDevelopmentProgress)
+- implemented repo feeder into [Snowgem Development Progress](https://github.com/Snowgem/SnowgemDevelopmentProgress)
 
 v.1.0 - deployed 23.01.2019
 - initial version
