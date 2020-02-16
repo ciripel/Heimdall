@@ -117,4 +117,5 @@ _You can see more details and commits in our [Discord](https://discord.gg/zumGnb
     git_push()
 
 
-dev_update()
+if __name__ == "__main__":
+    dev_update()
