@@ -18,18 +18,18 @@ COMMIT_MESSAGE = "Last work at " + complete_list[-1]["created_at"][:-7]
 
 
 def git_push():
-    try:
-        repo = Repo(PATH_OF_GIT_REPO)
-        repo.git.add(update=True)
-        repo.git.commit(m=COMMIT_MESSAGE)
-        origin = repo.remote(name="origin")
-        origin.push()
-        sha = repo.head.object.hexsha
-        print(f"On branch master.\nPushed commit {sha}")
-    except Exception:
-        print(
-            "On branch master.\nYour branch is up to date with 'origin/master'.\nNothing to commit, working tree clean."
-        )
+    #    try:
+    repo = Repo(PATH_OF_GIT_REPO)
+    repo.git.add(update=True)
+    repo.git.commit(m=COMMIT_MESSAGE)
+    origin = repo.remote(name="origin")
+    origin.push()
+    sha = repo.head.object.hexsha
+    print(f"On branch master.\nPushed commit {sha}")
+#    except Exception:
+#        print(
+#            "On branch master.\nYour branch is up to date with 'origin/master'.\nNothing to commit, working tree clean."
+#        )
 
 
 def description(the_list, index):
