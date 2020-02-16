@@ -6,7 +6,7 @@ import shutil
 
 from git import Repo
 
-PROJECT_PATH = "/home/ciripel/Programe/SnowgemDevelopmentProgress"
+PROJECT_PATH = "~/SnowgemDevelopmentProgress"
 
 
 with open("dev-diary.json") as data_file:

@@ -9,6 +9,7 @@ from datetime import datetime
 import aiohttp
 import discord
 import pytz
+from dev_updater import dev_update
 
 with open("auth.json") as data_file:
     auth = json.load(data_file)
@@ -18,6 +19,9 @@ with open("params.json") as data_file:
     params = json.load(data_file)
 with open("market.json") as data_file:
     markets = json.load(data_file)
+with open("dev-diary.json") as data_file:
+    complete_list = json.load(data_file)
+    truncated_list = complete_list[-10:]
 
 TOKEN = auth["token"]
 HEADERS = {}
@@ -26,6 +30,10 @@ BOT_PREFIX = "!"
 SERVER_ADDRESS = auth["ftp_addr"]
 USERNAME = auth["ftp_user"]
 PASSWORD = auth["ftp_pass"]
+PROJECT_PATH = "~/SnowgemDevelopmentProgress"
+PATH_OF_GIT_REPO = PROJECT_PATH + "/.git"
+COMMIT_MESSAGE = "Last work at " + complete_list[-1]["created_at"][:-7]
+
 
 client = discord.Client()
 
@@ -57,6 +65,7 @@ def send_diary_file(server_adress, username, password, message):
     file = open("dev-diary.json", "w")
     file.write(json.dumps(listed, indent=2, sort_keys=True, default=str))
     file.close()
+    dev_update()
     file = open("dev-diary.json", "rb")
     session.storbinary("STOR /web/snowbot/dev-diary.json", file)
     file.close()
