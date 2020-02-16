@@ -67,8 +67,7 @@
                 "neg": "Are you in debt my friend?! How have you arrived in this position in the crypto world?! How can you be in debt in a world without banks?! :thinking:"
               },
   "no_role": "The guild do not have `Player` role. Please create it before using this command.",
-  "whenmoon": ["Dec. 12 Cold Moon U.S. East:12:12:12 a.m. UTC:05:12",
-               "The fool moon for you! :grin:"
+  "whenmoon": ["The fool moon for you! :grin:"
              ],
   "team": [{"name": "**Txid**#2123",
             "time": "Asia/Ho_Chi_Minh",
