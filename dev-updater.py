@@ -87,7 +87,7 @@ There is a total of {total_commits} commits since 20/01/2020. You can see the co
 
 _You can see more details and commits in our [Discord](https://discord.gg/zumGnbg) in **#dev-diary** channel._
 """.format(
-    total_commits=total_commits,
+    total_commits=len(complete_listed),
     table="\n".join(
         "| <sub>{}</sub> | <sub>{}</sub> | <sub>{}</sub> |".format(
             listed[total_commits - i - 1]["created_at"][:-7],
