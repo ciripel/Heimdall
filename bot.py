@@ -18,9 +18,6 @@ with open("params.json") as data_file:
     params = json.load(data_file)
 with open("market.json") as data_file:
     markets = json.load(data_file)
-with open("dev-diary.json") as data_file:
-    complete_list = json.load(data_file)
-    truncated_list = complete_list[-10:]
 
 TOKEN = auth["token"]
 HEADERS = {}
@@ -29,9 +26,6 @@ BOT_PREFIX = "!"
 SERVER_ADDRESS = auth["ftp_addr"]
 USERNAME = auth["ftp_user"]
 PASSWORD = auth["ftp_pass"]
-PROJECT_PATH = "../SnowgemDevelopmentProgress"
-PATH_OF_GIT_REPO = PROJECT_PATH + "/.git"
-COMMIT_MESSAGE = "Last work at " + complete_list[-1]["created_at"][:-7]
 
 
 client = discord.Client()
