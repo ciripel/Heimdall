@@ -148,13 +148,7 @@ async def on_message(msg):
                     blocks_api = await blocks_info.json()
                 else:
                     print(f"{data['blocks_info']} is down")
-        now = blocks_api["blocks"][0]["time"]
-        if len(blocks_api["blocks"]) > 1:
-            max_blocks = len(blocks_api["blocks"]) - 1
-            before = blocks_api["blocks"][max_blocks]["time"]
-            avg_bt = (now - before) / max_blocks
-        else:
-            avg_bt = 60
+        avg_bt = 60
         last_block = blocks_api["blocks"][0]["height"]
         async with aiohttp.ClientSession() as session:
             async with session.get(data["difficulty"]) as difficulty:
@@ -177,19 +171,7 @@ async def on_message(msg):
         )
     # -------- <mn/mninfo> --------
     elif cmd == "mn" or cmd == "mninfo":
-        async with aiohttp.ClientSession() as session:
-            async with session.get(data["blocks_info"]) as blocks_info:
-                if blocks_info.status == 200:
-                    blocks_api = await blocks_info.json()
-                else:
-                    print(f"{data['blocks_info']} is down")
-        now = blocks_api["blocks"][0]["time"]
-        if len(blocks_api["blocks"]) > 1:
-            max_blocks = len(blocks_api["blocks"]) - 1
-            before = blocks_api["blocks"][max_blocks]["time"]
-            avg_bt = (now - before) / max_blocks
-        else:
-            avg_bt = 60
+        avg_bt = 60
         async with aiohttp.ClientSession() as session:
             async with session.get(data["masternodes"]["link"]) as masternodes:
                 if masternodes.status == 200:
@@ -221,19 +203,7 @@ async def on_message(msg):
         )
     # -------- <hpow/calc> --------
     elif cmd == "hpow" or cmd == "calc":
-        async with aiohttp.ClientSession() as session:
-            async with session.get(data["blocks_info"]) as blocks_info:
-                if blocks_info.status == 200:
-                    blocks_api = await blocks_info.json()
-                else:
-                    print(f"{data['blocks_info']} is down")
-        now = blocks_api["blocks"][0]["time"]
-        if len(blocks_api["blocks"]) > 1:
-            max_blocks = len(blocks_api["blocks"]) - 1
-            before = blocks_api["blocks"][max_blocks]["time"]
-            avg_bt = (now - before) / max_blocks
-        else:
-            avg_bt = 60
+        avg_bt = 60
         async with aiohttp.ClientSession() as session:
             async with session.get(data["cmc"]["cmc_xsg"], headers=HEADERS) as cmc_xsg:
                 if cmc_xsg.status == 200:
@@ -281,19 +251,7 @@ async def on_message(msg):
             )
     # -------- <mnrew/mnrewards> --------
     elif cmd == "mnrew" or cmd == "mnrewards":
-        async with aiohttp.ClientSession() as session:
-            async with session.get(data["blocks_info"]) as blocks_info:
-                if blocks_info.status == 200:
-                    blocks_api = await blocks_info.json()
-                else:
-                    print(f"{data['blocks_info']} is down")
-        now = blocks_api["blocks"][0]["time"]
-        if len(blocks_api["blocks"]) > 1:
-            max_blocks = len(blocks_api["blocks"]) - 1
-            before = blocks_api["blocks"][max_blocks]["time"]
-            avg_bt = (now - before) / max_blocks
-        else:
-            avg_bt = 60
+        avg_bt = 60
         async with aiohttp.ClientSession() as session:
             async with session.get(data["cmc"]["cmc_xsg"], headers=HEADERS) as cmc_xsg:
                 if cmc_xsg.status == 200:
@@ -492,19 +450,7 @@ async def on_message(msg):
             )
     # -------- <halving> --------
     elif cmd == "halving":
-        async with aiohttp.ClientSession() as session:
-            async with session.get(data["blocks_info"]) as blocks_info:
-                if blocks_info.status == 200:
-                    blocks_api = await blocks_info.json()
-                else:
-                    print(f"{data['blocks_info']} is down")
-        now = blocks_api["blocks"][0]["time"]
-        if len(blocks_api["blocks"]) > 1:
-            max_blocks = len(blocks_api["blocks"]) - 1
-            before = blocks_api["blocks"][max_blocks]["time"]
-            avg_bt = (now - before) / max_blocks
-        else:
-            avg_bt = 60
+        avg_bt = 60
         last_block = blocks_api["blocks"][0]["height"]
         halving_time = (2102400 - last_block) * avg_bt / 86400
         message = (
@@ -513,19 +459,7 @@ async def on_message(msg):
         )
     # -------- <fork> --------
     elif cmd == "fork":
-        async with aiohttp.ClientSession() as session:
-            async with session.get(data["blocks_info"]) as blocks_info:
-                if blocks_info.status == 200:
-                    blocks_api = await blocks_info.json()
-                else:
-                    print(f"{data['blocks_info']} is down")
-        now = blocks_api["blocks"][0]["time"]
-        if len(blocks_api["blocks"]) > 1:
-            max_blocks = len(blocks_api["blocks"]) - 1
-            before = blocks_api["blocks"][max_blocks]["time"]
-            avg_bt = (now - before) / max_blocks
-        else:
-            avg_bt = 60
+        avg_bt = 60
         last_block = blocks_api["blocks"][0]["height"]
         fork_block = float(params["fork_block"])
         if fork_block <= last_block:
