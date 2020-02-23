@@ -221,19 +221,7 @@ async def on_message(msg):
         )
     # -------- <hpow/calc> --------
     elif cmd == "hpow" or cmd == "calc":
-        async with aiohttp.ClientSession() as session:
-            async with session.get(data["blocks_info"]) as blocks_info:
-                if blocks_info.status == 200:
-                    blocks_api = await blocks_info.json()
-                else:
-                    print(f"{data['blocks_info']} is down")
-        now = blocks_api["blocks"][0]["time"]
-        if len(blocks_api["blocks"]) > 1:
-            max_blocks = len(blocks_api["blocks"]) - 1
-            before = blocks_api["blocks"][max_blocks]["time"]
-            avg_bt = (now - before) / max_blocks
-        else:
-            avg_bt = 60
+        avg_bt = 60
         async with aiohttp.ClientSession() as session:
             async with session.get(data["cmc"]["cmc_xsg"], headers=HEADERS) as cmc_xsg:
                 if cmc_xsg.status == 200:
