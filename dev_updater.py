@@ -33,30 +33,49 @@ def git_push():
 
 
 def description(the_list, index):
-    if the_list[index]["author"] == "shmocs":
-        return the_list[index]["content"]
+    if the_list[index]["author"] in ("shmocs", "GitLab"):
+        try:
+            return the_list[index]["content"]
+        except KeyError:
+            return "_No Description_"
+    elif the_list[index]["author"] in ("BitBucket", "GitHub"):
+        try:
+            return "[" + the_list[index]["embed_0"]["title"] + "](" + the_list[index]["embed_0"]["url"] + ")"
+        except KeyError:
+            return "_No Description_"
     else:
-        return "[" + the_list[index]["embed_0"]["title"] + "](" + the_list[index]["embed_0"]["url"] + ")"
+        return ""
 
 
 def commit(the_list, index):
-    if the_list[index]["author"] == "shmocs":
-        raw_commits = the_list[index]["embed_0"]["description"]
-        raw_commits = raw_commits.replace("\n\n", "<br>")
-        raw_commits = raw_commits.replace("\n", "")
-        return raw_commits
+    if the_list[index]["author"] in ("shmocs", "GitLab"):
+        try:
+            raw_commits = the_list[index]["embed_0"]["description"]
+            raw_commits = raw_commits.replace("\n\n", "<br>")
+            raw_commits = raw_commits.replace("\n", "")
+            return raw_commits
+        except KeyError:
+            return "_No Commits_"
     elif the_list[index]["author"] == "GitHub":
-        raw_commits = the_list[index]["embed_0"]["description"]
-        raw_commits = raw_commits.replace("\n", "<br>")
-        raw_commits = raw_commits.replace("`", "")
-        return raw_commits
+        try:
+            raw_commits = the_list[index]["embed_0"]["description"]
+            raw_commits = raw_commits.replace("\n", "<br>")
+            raw_commits = raw_commits.replace("`", "")
+            return raw_commits
+        except KeyError:
+            return "_No Commits_"
+    elif the_list[index]["author"] == "BitBucket":
+        try:
+            raw_commits = ""
+            for i in range(len(the_list[index]["embed_0"]["fields"])):
+                raw_commits = raw_commits + "<br>" + the_list[index]["embed_0"]["fields"][i]["value"]
+            raw_commits = raw_commits[4:]
+            raw_commits = raw_commits.replace("`", "")
+            return raw_commits
+        except KeyError:
+            return "_No Commits_"
     else:
-        raw_commits = ""
-        for i in range(len(the_list[index]["embed_0"]["fields"])):
-            raw_commits = raw_commits + "<br>" + the_list[index]["embed_0"]["fields"][i]["value"]
-        raw_commits = raw_commits[4:]
-        raw_commits = raw_commits.replace("`", "")
-        return raw_commits
+        return ""
 
 
 def dev_update():
