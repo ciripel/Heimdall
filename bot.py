@@ -383,11 +383,9 @@ async def on_message(msg):
                         async with session.get(markets[a]["api"]) as api:
                             if api.status == 200:
                                 markets_api = await api.json()
-                                for i in range(len(markets_api)):
-                                    if markets_api[i]["market_name"] == "XSG_BTC":
-                                        markets[a]["volume_24h"] = xsg_usd_price * float(markets_api[i]["vol"])
-                                        usd_price = btc_usd_price * float(markets_api[i]["last"])
-                                        markets[a]["price"] = usd_price
+                                markets[a]["volume_24h"] = xsg_usd_price * float(markets_api["data"]["volumeQuote"])
+                                usd_price = btc_usd_price * float(markets_api["data"]["last"])
+                                markets[a]["price"] = usd_price
                             else:
                                 print(f"{markets[a]['api']} is down")
                     vol_total = vol_total + float(markets[a]["volume_24h"])
