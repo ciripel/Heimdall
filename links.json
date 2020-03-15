@@ -4,7 +4,7 @@
                "-- `!team` | List of CoreTeam members with local time and language they support.",
                "-- `!translators` | List the translation team members.",
                "-- `!net` or `!netinfo` | Show current network stats.",
-               "-- `!mn` or `!mninfo` | Masternodes info.",
+               "-- `!mn` or `!mninfo [address]` | Masternodes info.",
                "-- `!hpow` or `!calc [your Sols/s]` | Approximate XSG per hour/day.",
                "-- `!xsgusd [amount]` | Current price in USD.",
                "-- `!mnrew` or `!mnrewards [no. of nodes]` | Approximate XSG reward per day.",
@@ -33,7 +33,7 @@
   "roadmap": "• **SnowGem Road-map** •\n<https://snowgem.org/blog/snowgem-roadmap-2019>",
   "por": "• **SnowGem Proof of Review** •\n<https://www.proofofreview.com/wp-content/uploads/2019/02/SNOWGEM_v1.02.pdf>",
   "members": "Number of members on SnowGem Discord: ",
-  "about": ["• Version 1.4",
+  "about": ["• Version 1.5",
             "• Author: ciripel _(Discord: Amitabha#0517)_",
             "• Source Code: <https://github.com/ciripel/Heimdall>"
           ],
@@ -95,10 +95,6 @@
            },
            {"name": "**billybob**#8074",
             "time": "Europe/London",
-            "language": "English"
-           },
-           {"name": "**nUm**#7115",
-            "time": "Australia/Sydney",
             "language": "English"
            },
            {"name": "**billybob#8074**",

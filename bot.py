@@ -178,29 +178,59 @@ async def on_message(msg):
                     mn_raw = await masternodes.text()
                 else:
                     print(f"{data['masternodes']['link']} is down")
-        mn_count = mn_raw.count("ENABLED")
-        if mn_count == 0:
-            mn_count = 1000
-        async with aiohttp.ClientSession() as session:
-            try:
-                async with session.get(data["asgard_managed"]) as asgard_mns:
-                    asgard_managed = await asgard_mns.text()
-            except Exception:
-                asgard_managed = 0
-                print(f"{data['asgard_managed']} is down")
-        mn_rwd = float(params["mn_rwd"])
-        guide_link = data["masternodes"]["guide_link"]
-        asgard = data["masternodes"]["asgard"]
-        asgard_vid = data["masternodes"]["asgard_vid"]
-        mn_roi = mn_rwd * 3153600 / avg_bt / mn_count / 10
-        time_first_payment = 2.6 * mn_count / 60
-        message = (
-            f"• Active masternodes • **{mn_count: 1.0f}** (_**{asgard_managed}** managed by **Asgard**_)\n• "
-            + f"Coins Locked • **{mn_count*10000:,} XSG**\n• ROI "
-            + f"• **{mn_roi: 1.3f} % **\n• Minimum time before first payment • **{time_first_payment: 1.2f} hours**"
-            + f"\n• One masternode will give you approximately **{3600*24/avg_bt*mn_rwd/mn_count:1.3f} XSG** per"
-            + f" **day**\n{asgard}\n{asgard_vid}\n{guide_link}"
-        )
+        if len(args) < 2:
+            mn_count = mn_raw.count("ENABLED")
+            if mn_count == 0:
+                mn_count = 1000
+            async with aiohttp.ClientSession() as session:
+                try:
+                    async with session.get(data["asgard_managed"]) as asgard_mns:
+                        asgard_managed = await asgard_mns.text()
+                except Exception:
+                    asgard_managed = 0
+                    print(f"{data['asgard_managed']} is down")
+            mn_rwd = float(params["mn_rwd"])
+            guide_link = data["masternodes"]["guide_link"]
+            asgard = data["masternodes"]["asgard"]
+            asgard_vid = data["masternodes"]["asgard_vid"]
+            mn_roi = mn_rwd * 3153600 / avg_bt / mn_count / 10
+            time_first_payment = 2.6 * mn_count / 60
+            message = (
+                f"• Active masternodes • **{mn_count: 1.0f}** (_**{asgard_managed}** managed by **Asgard**_)\n• "
+                + f"Coins Locked • **{mn_count*10000:,} XSG**\n• ROI "
+                + f"• **{mn_roi: 1.3f} % **\n• Minimum time before first payment • **{time_first_payment: 1.2f} hours**"
+                + f"\n• One masternode will give you approximately **{3600*24/avg_bt*mn_rwd/mn_count:1.3f} XSG** per"
+                + f" **day**\n{asgard}\n{asgard_vid}\n{guide_link}"
+            )
+            await msg.channel.send(message)
+            return
+        cmd1 = args[1]
+        mn_list = eval(mn_raw)
+        if any(d["addr"] == cmd1 for d in mn_list):
+            for i in range(len(mn_list)):
+                if mn_list[i]["addr"].lower() == cmd1.lower():
+                    address = mn_list[i]["addr"]
+                    status = mn_list[i]["status"]
+                    rank = mn_list[i]["rank"]
+                    lastseen = datetime.fromtimestamp(mn_list[i]["lastseen"]).strftime("%d-%m-%Y %H:%M:%S")
+                    activetime = mn_list[i]["activetime"]
+                    days = activetime // (24 * 3600)
+                    activetime = activetime % (24 * 3600)
+                    hours = activetime // 3600
+                    activetime %= 3600
+                    minutes = activetime // 60
+                    activetime %= 60
+                    seconds = activetime
+                    lastpaid = datetime.fromtimestamp(mn_list[i]["lastpaid"]).strftime("%d-%m-%Y %H:%M:%S")
+                    message = (
+                        f"• Address • **{address}**\n• Status • **{status}**\n• Rank • **{rank}**\n• Last seen • **"
+                        + f"{lastseen}**\n• Active time • **{days} days {hours}h:{minutes}m:{seconds}s**\n• Last paid"
+                        + f" • **{lastpaid}**"
+                    )
+                    await msg.channel.send(message)
+                    return
+        else:
+            message = "Masternode not found! Please check it in your wallet."
     # -------- <hpow/calc> --------
     elif cmd == "hpow" or cmd == "calc":
         avg_bt = 60

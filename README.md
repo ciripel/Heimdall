@@ -1,6 +1,9 @@
 ## Heimdall
 ### Discord bot for SnowGem https://snowgem.org/
 
+v.1.5 - deployed 15.03.2020
+- implemented !mn [address] command that can check information about a specific masternode
+
 v.1.4 - deployed 16.02.2020
 - implemented repo feeder into [Snowgem Development Progress](https://github.com/Snowgem/SnowgemDevelopmentProgress)
 
