@@ -1,6 +1,9 @@
 ## Heimdall
 ### Discord bot for SnowGem https://snowgem.org/
 
+v.1.6 - deployed 25.03.2020
+- implemented !ban [substring] command that ban all users with the name containing the substring
+
 v.1.5 - deployed 15.03.2020
 - implemented !mn [address] command that can check information about a specific masternode
 

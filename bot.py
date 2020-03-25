@@ -608,6 +608,31 @@ async def on_message(msg):
     ):
         members = msg.author.guild.member_count
         message = f"Current number of members: {members}"
+    # -------- <ban(CoreTeam only)> --------
+    elif (
+        cmd == "ban"
+        and isinstance(msg.channel, discord.TextChannel)
+        and "CoreTeam" in [role.name for role in msg.author.roles]
+    ):
+        if len(args) < 2:
+            message = (
+                f"Input a substring of users to ban, like `!ban SnowGem` will ban all users containing"
+                + f" `SnowGem` in their names (_fuction is case-sensitive_)."
+            )
+            await msg.channel.send(message)
+            return
+        cmd1 = args[1]
+        member = discord.utils.find(lambda m: cmd1 in m.name, msg.channel.guild.members)
+        if member is None:
+            count = 0
+        else:
+            count = 1
+        while not (member is None):
+            await msg.channel.guild.ban(member)
+            member = discord.utils.find(lambda m: cmd1 in m.name, msg.channel.guild.members)
+            if not (member is None):
+                count += 1
+        message = f"Banned {count} members! Nice!"
 
     else:
         message = f"{data['unknown']}"
