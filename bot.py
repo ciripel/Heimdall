@@ -478,6 +478,12 @@ async def on_message(msg):
             )
     # -------- <halving> --------
     elif cmd == "halving":
+        async with aiohttp.ClientSession() as session:
+            async with session.get(data["blocks_info"]) as blocks_info:
+                if blocks_info.status == 200:
+                    blocks_api = await blocks_info.json()
+                else:
+                    print(f"{data['blocks_info']} is down")
         avg_bt = 60
         last_block = blocks_api["blocks"][0]["height"]
         halving_time = (2102400 - last_block) * avg_bt / 86400
@@ -487,6 +493,12 @@ async def on_message(msg):
         )
     # -------- <fork> --------
     elif cmd == "fork":
+        async with aiohttp.ClientSession() as session:
+            async with session.get(data["blocks_info"]) as blocks_info:
+                if blocks_info.status == 200:
+                    blocks_api = await blocks_info.json()
+                else:
+                    print(f"{data['blocks_info']} is down")
         avg_bt = 60
         last_block = blocks_api["blocks"][0]["height"]
         fork_block = float(params["fork_block"])
