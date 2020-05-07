@@ -53,7 +53,10 @@ def commit(the_list, index):
             raw_commits = the_list[index]["embed_0"]["description"]
             raw_commits = raw_commits.replace("\n\n", "<br>")
             raw_commits = raw_commits.replace("\n", "")
-            return raw_commits
+            if raw_commits == "GitLab.com":
+                return "_No Commits_"
+            else:
+                return raw_commits
         except KeyError:
             return "_No Commits_"
     elif the_list[index]["author"] == "GitHub":
