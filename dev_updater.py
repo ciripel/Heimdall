@@ -20,7 +20,7 @@ COMMIT_MESSAGE = "Last work at " + complete_list[-1]["created_at"][:-7]
 def git_push():
     try:
         repo = Repo(PATH_OF_GIT_REPO)
-        repo.config_writer().set_value("user", "name", "Snowgem").release()
+        repo.config_writer().set_value("user", "name", "ciripel").release()
         repo.config_writer().set_value("user", "email", "Ceo@snowgem.org").release()
         repo.git.add(update=True)
         repo.git.commit(m=COMMIT_MESSAGE)
