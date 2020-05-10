@@ -1,42 +1,45 @@
 {
-  "commands": ["-- `!commands` | These are your commands.",
-               "-- `!links` | Useful links.",
-               "-- `!team` | List of CoreTeam members with local time and language they support.",
-               "-- `!translators` | List the translation team members.",
-               "-- `!net` or `!netinfo` | Show current network stats.",
-               "-- `!mn` or `!mninfo [address]` | Masternodes info.",
-               "-- `!hpow` or `!calc [your Sols/s]` | Approximate XSG per hour/day.",
-               "-- `!xsgusd [amount]` | Current price in USD.",
-               "-- `!mnrew` or `!mnrewards [no. of nodes]` | Approximate XSG reward per day.",
-               "-- `!roadmap` | Link to SnowGem Road-map.",
-               "-- `!por` | Proof of Review.",
-               "-- `!market [info]` | SnowGem exchanges [stats].",
-               "-- `!halving` | Time left until halving.",
-               "-- `!fork` | Time left until next planned fork.",
-               "-- `!coin` or `!coininfo` | Show coin info.",
-               "-- `!joingames` and `!leavegames` | Let a member join/leave #giveaways channel.",
-               "-- `!about` | Info about this bot."
-             ],
-  "links": ["**SnowGem Website** • <https://snowgem.org/>",
-            "**SnowGem Announcement** • <https://bitcointalk.org/index.php?topic=2630198>",
-            "**SnowGem Whitepaper** • <https://snowgem.org/whitepaper/SnowGem_Whitepaper.pdf>",
-            "**SnowGem Blog** • <https://snowgem.org/blog>",
-            "**SnowGem Book** • Online - <https://snowgem.org/files/snowgem_book.pdf> | Amazon - <https://www.amazon.com/SnowGem-Seamless-Solutions-Concise-History-ebook/dp/B07NS7FLDC>",
-            "**SnowGem Forums** • <https://forums.snowgem.org/>",
-            "**SnowGem Github** • <https://github.com/SnowGem>",
-            "**SnowGem Wallets** • <https://github.com/SnowGem/ModernWallet/releases> <https://wallet.snowgem.org/>",
-            "**SnowGem Block Explorers** • <https://explorer.snowgem.org/>",
-            "**SnowGem Asgard** • <https://asgard.snowgem.org/>",
-            "**SnowGem Explorer API** • <https://github.com/snowgem/insight-api-snowgem>",
-            "**SnowGem Community** • <https://www.reddit.com/r/SnowGem/> <https://t.me/snowgemofficial> <https://www.facebook.com/snowgemofficial/> <https://twitter.com/snowgemofficial> <https://discord.gg/jy8gsxn>"
-          ],
+  "commands": [
+    "-- `!commands` | These are your commands.",
+    "-- `!links` | Useful links.",
+    "-- `!team` | List of CoreTeam members with local time and language they support.",
+    "-- `!translators` | List the translation team members.",
+    "-- `!net` or `!netinfo` | Show current network stats.",
+    "-- `!mn` or `!mninfo [address]` | Masternodes info.",
+    "-- `!hpow` or `!calc [your Sols/s]` | Approximate XSG per hour/day.",
+    "-- `!xsgusd [amount]` | Current price in USD.",
+    "-- `!mnrew` or `!mnrewards [no. of nodes]` | Approximate XSG reward per day.",
+    "-- `!roadmap` | Link to SnowGem Road-map.",
+    "-- `!por` | Proof of Review.",
+    "-- `!market [info]` | SnowGem exchanges [stats].",
+    "-- `!halving` | Time left until halving.",
+    "-- `!fork` | Time left until next planned fork.",
+    "-- `!coin` or `!coininfo` | Show coin info.",
+    "-- `!joingames` and `!leavegames` | Let a member join/leave #giveaways channel.",
+    "-- `!about` | Info about this bot."
+  ],
+  "links": [
+    "**SnowGem Website** • <https://snowgem.org/>",
+    "**SnowGem Announcement** • <https://bitcointalk.org/index.php?topic=2630198>",
+    "**SnowGem Whitepaper** • <https://snowgem.org/whitepaper/SnowGem_Whitepaper.pdf>",
+    "**SnowGem Blog** • <https://snowgem.org/blog>",
+    "**SnowGem Book** • Online - <https://snowgem.org/files/snowgem_book.pdf> | Amazon - <https://www.amazon.com/SnowGem-Seamless-Solutions-Concise-History-ebook/dp/B07NS7FLDC>",
+    "**SnowGem Forums** • <https://forums.snowgem.org/>",
+    "**SnowGem Github** • <https://github.com/SnowGem>",
+    "**SnowGem Wallets** • <https://github.com/SnowGem/ModernWallet/releases> <https://wallet.snowgem.org/>",
+    "**SnowGem Block Explorers** • <https://explorer.snowgem.org/>",
+    "**SnowGem Asgard** • <https://asgard.snowgem.org/>",
+    "**SnowGem Explorer API** • <https://github.com/snowgem/insight-api-snowgem>",
+    "**SnowGem Community** • <https://www.reddit.com/r/SnowGem/> <https://t.me/snowgemofficial> <https://www.facebook.com/snowgemofficial/> <https://twitter.com/snowgemofficial> <https://discord.gg/jy8gsxn>"
+  ],
   "roadmap": "• **SnowGem Road-map** •\n<https://snowgem.org/blog/snowgem-roadmap-2019>",
   "por": "• **SnowGem Proof of Review** •\n<https://www.proofofreview.com/wp-content/uploads/2019/02/SNOWGEM_v1.02.pdf>",
   "members": "Number of members on SnowGem Discord: ",
-  "about": ["• Version 1.6",
-            "• Author: ciripel _(Discord: Amitabha#0517)_",
-            "• Source Code: <https://github.com/ciripel/Heimdall>"
-          ],
+  "about": [
+    "• Version 1.6",
+    "• Author: ciripel _(Discord: Amitabha#0517)_",
+    "• Source Code: <https://github.com/ciripel/Heimdall>"
+  ],
   "unknown": "Command not recognized. `!commands` to get a list of my commands or `!help` if you need the list of commands for my little brother Mee6",
   "default": "All the bot calls are allowed only in <#405033839417753640> channel or you can wisper me your secrets...",
   "mee6": "My little brother Mee6 is awaiting commands just like me in <#405033839417753640> channel only.",
@@ -44,110 +47,140 @@
   "difficulty": "https://explorer.snowgem.org/api/status?q=getDifficulty",
   "net_hash": "https://explorer.snowgem.org/api/status",
   "asgard_managed": "https://asgard.snowgem.org/php/public-api?action=getManagedNodesCount",
-  "masternodes": {"link": "https://data.snowgem.org/masternode.html",
-                  "asgard": "• Monitoring & management tool • <https://asgard.snowgem.org/>",
-                  "asgard_vid": "• Asgard Install Guide • <https://www.youtube.com/watch?v=X8jIZv9JtvU>",
-                  "guide_link": "• Classic Install Guide • <https://snowgem.org/resources/masternode-setup/masternode-windows-linux>"
-            },
-  "cmc": {"cmc_btc": "https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest?symbol=BTC",
-          "cmc_eth": "https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest?symbol=ETH",
-          "cmc_xsg": "https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest?symbol=XSG"
-        },
-  "xsgusd": {"default": "_The price of ***1 XSG*** is ***",
-             "zero": "Welcome young one! We have all started with **0 XSG** zilions of aeons ago!",
-             "neg": "Hmm! Yup! I feel sorry for you! You owe **XSG**... I feel your pain friend!"
-          },
-  "hpow": {"default": "Input your hashpower in Sols/s, like `!hpow 123`.",
-           "infinity": "“Two things are infinite: the universe and human stupidity; and I'm not sure about the universe.” ",
-           "zero": "And you call yourself a miner?! Ha :smile: Even my grandma's processor can mine more than this!",
-           "neg": "You deffinatly have reached something umbelievable! Nobody have **unmined** anything till now! Do not forget to register the tech! :joy:"
-         },
-  "mnrewards": {"default": "Input the the number of nodes, like `!mnrewards 1`.",
-                "zero": "Wow, You did it friend! You have reached the unmeasurable valor of zero masternodes!",
-                "neg": "Are you in debt my friend?! How have you arrived in this position in the crypto world?! How can you be in debt in a world without banks?! :thinking:"
-              },
+  "masternodes": {
+    "link": "https://data.snowgem.org/masternode.html",
+    "asgard": "• Monitoring & management tool • <https://asgard.snowgem.org/>",
+    "asgard_vid": "• Asgard Install Guide • <https://www.youtube.com/watch?v=X8jIZv9JtvU>",
+    "guide_link": "• Classic Install Guide • <https://snowgem.org/resources/masternode-setup/masternode-windows-linux>"
+  },
+  "cmc": {
+    "cmc_btc": "https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest?symbol=BTC",
+    "cmc_eth": "https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest?symbol=ETH",
+    "cmc_xsg": "https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest?symbol=XSG"
+  },
+  "xsgusd": {
+    "default": "_The price of ***1 XSG*** is ***",
+    "zero": "Welcome young one! We have all started with **0 XSG** zilions of aeons ago!",
+    "neg": "Hmm! Yup! I feel sorry for you! You owe **XSG**... I feel your pain friend!"
+  },
+  "hpow": {
+    "default": "Input your hashpower in Sols/s, like `!hpow 123`.",
+    "infinity": "“Two things are infinite: the universe and human stupidity; and I'm not sure about the universe.” ",
+    "zero": "And you call yourself a miner?! Ha :smile: Even my grandma's processor can mine more than this!",
+    "neg": "You deffinatly have reached something umbelievable! Nobody have **unmined** anything till now! Do not forget to register the tech! :joy:"
+  },
+  "mnrewards": {
+    "default": "Input the the number of nodes, like `!mnrewards 1`.",
+    "zero": "Wow, You did it friend! You have reached the unmeasurable valor of zero masternodes!",
+    "neg": "Are you in debt my friend?! How have you arrived in this position in the crypto world?! How can you be in debt in a world without banks?! :thinking:"
+  },
   "no_role": "The guild do not have `Player` role. Please create it before using this command.",
-  "whenmoon": ["The fool moon for you! :grin:"
-             ],
-  "team": [{"name": "**Txid**#2123",
-            "time": "Asia/Ho_Chi_Minh",
-            "language": "English,  Vietnamese"
-           },
-           {"name": "**DaX**#8374",
-            "time": "Europe/Prague",
-            "language": "Czech, English"
-           },
-           {"name": "**IggiPop**#8679",
-            "time": "Europe/Copenhagen",
-            "language": "Icelandic, English"
-           },
-           {"name": "**Shmocs**#1564",
-            "time": "Europe/Bucharest",
-            "language": "English, Romanian"
-           },
-           {"name": "**Amitabha**#0517",
-            "time": "Europe/Bucharest",
-            "language": "English, Romanian"
-           },
-           {"name": "**demzet**#8295",
-            "time": "Europe/Warsaw",
-            "language": "English, Polish"
-           },
-           {"name": "**billybob**#8074",
-            "time": "Europe/London",
-            "language": "English"
-           },
-           {"name": "**billybob#8074**",
-            "time": "Europe/London",
-            "language": "English"
-           },
-           {"name": "**DarkUnknown#8970**",
-            "time": "America/New_York",
-            "language": "English"
-           }
-         ],
-  "translators": [{"language": "Chinese",
-                   "name": "**/dev/aux**#8820"
-                  },
-                  {"language": "Czech",
-                   "name": "**DaX**#8374"
-                  },
-                  {"language": "Danish",
-                   "name": "**Ajes**#7852"
-                  },
-                  {"language": "Dutch",
-                   "name": "**Tuxabyte**#6061"
-                  },
-                  {"language": "French",
-                   "name": "**redwater64**#9628"
-                  },
-                  {"language": "German",
-                   "name": "**zelim🐼**#0792, **jackD**#2324, **/dev/aux**#8820"
-                  },
-                  {"language": "Hungarian",
-                  "name": "**AdiFortress**#3533"
-                  },
-                  {"language": "Italian",
-                   "name": "**Pippettando**#5491"
-                  },
-                  {"language": "Icelandic",
-                   "name": "**IggiPop**#8679"
-                  },
-                  {"language": "Korean",
-                   "name": "**lapa**#3245"
-                  },
-                  {"language": "Polish",
-                   "name": "**Abakus**#7835"
-                  },
-                  {"language": "Romanian",
-                   "name": "**Amitabha**#0517"
-                  },
-                  {"language": "Russian",
-                   "name": "**pipanda**#6772, **ekze (bsod.pw)**#4953, **Amadyus**#6274"
-                  },
-                  {"language": "Spanish",
-                   "name": "**CarlosRod**#7564, **stefano**#1858"
-                  }
-                ],
+  "whenmoon": [
+    "The fool moon for you! :grin:"
+  ],
+  "team": [
+    {
+      "name": "**Txid**#2123",
+      "time": "Asia/Ho_Chi_Minh",
+      "language": "English,  Vietnamese"
+    },
+    {
+      "name": "**DaX**#8374",
+      "time": "Europe/Prague",
+      "language": "Czech, English"
+    },
+    {
+      "name": "**IggiPop**#8679",
+      "time": "Europe/Copenhagen",
+      "language": "Icelandic, English"
+    },
+    {
+      "name": "**Shmocs**#1564",
+      "time": "Europe/Bucharest",
+      "language": "English, Romanian"
+    },
+    {
+      "name": "**Amitabha**#0517",
+      "time": "Europe/Bucharest",
+      "language": "English, Romanian"
+    },
+    {
+      "name": "**demzet**#8295",
+      "time": "Europe/Warsaw",
+      "language": "English, Polish"
+    },
+    {
+      "name": "**billybob#8074**",
+      "time": "Europe/London",
+      "language": "English"
+    },
+    {
+      "name": "**DarkUnknown#8970**",
+      "time": "America/New_York",
+      "language": "English"
+    }
+  ],
+  "translators": [
+    {
+      "language": "Arabic",
+      "name": "**Bbkoopsta**#5676"
+    },
+    {
+      "language": "Chinese",
+      "name": "**/dev/aux**#8820"
+    },
+    {
+      "language": "Czech",
+      "name": "**DaX**#8374, **MisterJ249**#7343"
+    },
+    {
+      "language": "Danish",
+      "name": "**Ajes**#7852"
+    },
+    {
+      "language": "Dutch",
+      "name": "**Tuxabyte**#6061, **BlackHitama**#9128"
+    },
+    {
+      "language": "French",
+      "name": "**redwater64**#9628"
+    },
+    {
+      "language": "German",
+      "name": "**zelim🐼**#0792, **jackD**#2324, **/dev/aux**#8820"
+    },
+    {
+      "language": "Hungarian",
+      "name": "**AdiFortress**#3533"
+    },
+    {
+      "language": "Italian",
+      "name": "**Pippettando**#5491"
+    },
+    {
+      "language": "Icelandic",
+      "name": "**IggiPop**#8679"
+    },
+    {
+      "language": "Korean",
+      "name": "**lapa**#3245"
+    },
+    {
+      "language": "Polish",
+      "name": "**Abakus**#7835"
+    },
+    {
+      "language": "Romanian",
+      "name": "**Amitabha**#0517"
+    },
+    {
+      "language": "Russian",
+      "name": "**pipanda**#6772, **ekze (bsod.pw)**#4953, **Amadyus**#6274"
+    },
+    {
+      "language": "Spanish",
+      "name": "**CarlosRod**#7564, **stefano**#1858"
+    }
+  ],
   "welcome": "Welcome young one!\nFor a list usefull links you can go to <#398661977611829278> or in <#405033839417753640> you can type `!links`.\nFor latest news please check <#398660597505458187>.\nYou can type `!commands` in <#405033839417753640> for a complete list of commands that I understand.\nAdditionally you can always ask our helpful community members."
 }
