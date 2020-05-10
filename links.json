@@ -9,8 +9,6 @@
     "-- `!hpow` or `!calc [your Sols/s]` | Approximate XSG per hour/day.",
     "-- `!xsgusd [amount]` | Current price in USD.",
     "-- `!mnrew` or `!mnrewards [no. of nodes]` | Approximate XSG reward per day.",
-    "-- `!roadmap` | Link to SnowGem Road-map.",
-    "-- `!por` | Proof of Review.",
     "-- `!market [info]` | SnowGem exchanges [stats].",
     "-- `!halving` | Time left until halving.",
     "-- `!fork` | Time left until next planned fork.",

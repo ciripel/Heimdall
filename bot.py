@@ -359,11 +359,11 @@ async def on_message(msg):
                 + f"{data['xsgusd']['default']}{round(xsg_usd_price, 3)}$***_"
             )
     # -------- <roadmap> --------
-    elif cmd == "roadmap":
-        message = f"{data['roadmap']}"
+    # elif cmd == "roadmap":
+    #    message = f"{data['roadmap']}"
     # -------- <proof of review> --------
-    elif cmd == "por":
-        message = f"{data['por']}"
+    # elif cmd == "por":
+    #    message = f"{data['por']}"
     # -------- <market [stats]> --------
     elif cmd == "market":
         async with aiohttp.ClientSession() as session:
