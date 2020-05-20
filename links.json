@@ -74,6 +74,14 @@
   },
   "no_role": "The guild do not have `Player` role. Please create it before using this command.",
   "whenmoon": [
+    "Full Strawberry Moon - June 5, 20:12:43 (Greenwich)",
+    "Full Buck Moon - July 5, 5:44:57 (Greenwich)",
+    "Full Sturgeon Moon - August 3, 16:59:38 (Greenwich)",
+    "Full Corn Moon - September 2, 6:23:12 (Greenwich)",
+    "Full Hunter’s Moon - October 1, 22:06:55 (Greenwich)",
+    "Blue Moon - October 31, 14:51:29 (Greenwich)",
+    "Full Beaver Moon - November 30, 9:32:04 (Greenwich)",
+    "Full Cold Moon - December 30, 3:30:24 (Greenwich)",
     "The fool moon for you! :grin:"
   ],
   "banned_words": [
