@@ -76,6 +76,16 @@
   "whenmoon": [
     "The fool moon for you! :grin:"
   ],
+  "banned_words": [
+    "BOT",
+    "SnowGem",
+    "Snowgem",
+    "snowgem",
+    "News",
+    "Wallet",
+    "Update",
+    "XSG"
+  ],
   "team": [
     {
       "name": "**Txid**#2123",

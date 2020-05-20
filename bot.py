@@ -654,8 +654,20 @@ async def on_message(msg):
 
 @client.event
 async def on_member_join(mbr):
+    for ban_word in data["banned_words"]:
+        if ban_word in mbr.name:
+            await mbr.ban()
+            return
     message = f"{data['welcome']}"
     await mbr.send(message)
+
+
+@client.event
+async def on_member_update(before, after):
+    for ban_word in data["banned_words"]:
+        if ban_word in after.name:
+            await after.ban()
+            return
 
 
 @client.event
