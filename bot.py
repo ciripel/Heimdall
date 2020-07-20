@@ -181,7 +181,7 @@ async def on_message(msg):
         if len(args) < 2:
             mn_count = mn_raw.count("ENABLED")
             if mn_count == 0:
-                mn_count = 1000
+                mn_count = float(params["mn_count"])
             async with aiohttp.ClientSession() as session:
                 try:
                     async with session.get(data["asgard_managed"]) as asgard_mns:
@@ -297,7 +297,7 @@ async def on_message(msg):
                     print(f"{data['masternodes']['link']} is down")
         mn_count = mn_raw.count("ENABLED")
         if mn_count == 0:
-            mn_count = 1000
+            mn_count = float(params["mn_count"])
         mn_rwd = float(params["mn_rwd"])
         if len(args) < 2:
             message = (
