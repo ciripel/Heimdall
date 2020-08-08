@@ -1,7 +1,7 @@
 {
-  "daemon_ver": "3000457",
+  "daemon_ver": "3000458",
   "fork_block": "916000",
   "mnr_rwd": "6",
   "mn_rwd": "10",
-  "mn_count": "1600"
+  "mn_count": "1750"
 }
