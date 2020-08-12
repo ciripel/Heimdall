@@ -519,6 +519,7 @@ async def on_message(msg):
                 else:
                     print(f"{data['masternodes']['link']} is down")
         mn_count = mn_raw.count("ENABLED")
+        locked_coins = mn_count * 10000
         async with aiohttp.ClientSession() as session:
             async with session.get(data["cmc"]["cmc_xsg"], headers=HEADERS) as cmc_xsg:
                 if cmc_xsg.status == 200:
@@ -546,11 +547,12 @@ async def on_message(msg):
                     xsg_mcap = xsg_circ_supply * xsg_usd_price
                 else:
                     print(f"{data['blocks_info']} is down")
+        locked_proc = locked_coins / xsg_circ_supply * 100
         message = (
             f"• Current Price • **{xsg_usd_price/btc_usd_price:1.8f} BTC ** | **{xsg_usd_price:1.4f}$**\n• 24h Volume •"
             + f" **{xsg_24vol/btc_usd_price:1.3f} BTC ** | **{xsg_24vol:1,.2f}$**\n• Market Cap • **{xsg_mcap:1,.0f}$**"
             + f"\n• Circulating Supply • **{xsg_circ_supply:1,.0f} XSG **\n• Total Supply • **"
-            + f"84,096,000 XSG **\n• Locked Coins • **{mn_count*10000:,} XSG **\n• 24h Change • **"
+            + f"84,096,000 XSG **\n• Locked Coins • **{locked_coins:,} XSG ({locked_proc:.2f}%)**\n• 24h Change • **"
             + f"{xsg_24change:1.2f} % **"
         )
     # -------- <about> --------
