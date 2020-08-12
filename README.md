@@ -16,4 +16,4 @@ v.1.0 - deployed 23.01.2019
   help, netinfo, mninfo, hpow, xsgusd, mnrewards, roadmap, coininfo, about, members (CoreTeam only)
 
 
-  NOTE: need to create a empty list file `[]` with name dev-diary.json in main folder
+  NOTE: need to create a empty list file `[]` with name dev-diary.json in main folder if it does not exist.
