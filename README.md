@@ -1,4 +1,5 @@
 ## Heimdall
+[![](https://img.shields.io/github/license/ciripel/heimdall)](LICENSE)
 ### Discord bot for SnowGem https://snowgem.org/
 
 v.1.6 - deployed 25.03.2020
