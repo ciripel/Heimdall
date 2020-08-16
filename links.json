@@ -61,6 +61,7 @@
     "zero": "Welcome young one! We have all started with **0 XSG** zilions of aeons ago!",
     "neg": "Hmm! Yup! I feel sorry for you! You owe **XSG**... I feel your pain friend!"
   },
+  "rates": "https://rates.snowgem.org/rates/",
   "hpow": {
     "default": "Input your hashpower in Sols/s, like `!hpow 123`.",
     "infinity": "“Two things are infinite: the universe and human stupidity; and I'm not sure about the universe.” ",

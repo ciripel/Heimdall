@@ -9,6 +9,7 @@ verify_ssl = true
 discord-py = "*"
 pytz = "*"
 gitpython = "*"
+asyncio = "*"
 
 [requires]
 python_version = "3.7"

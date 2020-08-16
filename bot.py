@@ -6,6 +6,7 @@ import json
 import random
 from datetime import datetime
 
+import asyncio
 import aiohttp
 import discord
 import pytz
@@ -73,6 +74,23 @@ def calculate_supply(block_height):
     current_epoch_reward = 20 / (2 ** epochs)
     current_total_reward = (remainder + 1) * current_epoch_reward
     return previous_epochs_total_reward + current_total_reward - 79_980
+
+
+async def price_update_channel():
+    await client.wait_until_ready()
+    channel = client.get_channel(405033839417753640)
+    while not client.is_closed():
+        async with aiohttp.ClientSession() as session:
+            async with session.get(data["rates"]) as rates_data:
+                if rates_data.status == 200:
+                    rates_api = await rates_data.json(content_type="text/html")
+                    price_in_sats = round(pow(10, 8) * 1 / float(rates_api[6]["rate"]))
+                else:
+                    print(f"{data['rates']} is down")
+                    price_in_sats = "unknown"
+        channel_name = f"xsg-{price_in_sats}-sats"
+        await channel.edit(name=channel_name)
+        await asyncio.sleep(240)  # task runs every 60 seconds
 
 
 @client.event
@@ -676,5 +694,5 @@ async def on_member_update(before, after):
 async def on_ready():
     print(f"Logged in as: {client.user.name} {{{client.user.id}}}")
 
-
+client.loop.create_task(price_update_channel())
 client.run(TOKEN)
