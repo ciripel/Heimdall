@@ -1,4 +1,5 @@
 ## Heimdall
+[![](https://img.shields.io/github/pipenv/locked/python-version/ciripel/heimdall)]() [![](https://img.shields.io/github/pipenv/locked/dependency-version/ciripel/heimdall/discord-py)]() [![](https://img.shields.io/github/pipenv/locked/dependency-version/ciripel/heimdall/pytz)]() [![](https://img.shields.io/github/pipenv/locked/dependency-version/ciripel/heimdall/gitpython)]() [![](https://img.shields.io/github/license/ciripel/heimdall)](LICENSE) [![](https://img.shields.io/github/issues/ciripel/heimdall)](https://github.com/ciripel/Heimdall/issues) [![](https://img.shields.io/github/issues-closed/ciripel/heimdall)](https://github.com/ciripel/Heimdall/issues)
 ### Discord bot for SnowGem https://snowgem.org/
 
 v.1.6 - deployed 25.03.2020
