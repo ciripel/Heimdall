@@ -78,7 +78,7 @@ def calculate_supply(block_height):
 
 async def price_update_channel():
     await client.wait_until_ready()
-    channel = client.get_channel(405033839417753640)
+    channel = client.get_channel(592633967346188307)
     while not client.is_closed():
         async with aiohttp.ClientSession() as session:
             async with session.get(data["rates"]) as rates_data:
