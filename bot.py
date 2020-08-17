@@ -1,7 +1,6 @@
 #!/usr/bin/env python3.7
 # Work with Python 3.7
 
-import ftplib
 import json
 import random
 from datetime import datetime
@@ -24,10 +23,6 @@ TOKEN = auth["token"]
 HEADERS = {}
 HEADERS["X-CMC_PRO_API_KEY"] = auth["cmc_headers"]
 BOT_PREFIX = "!"
-SERVER_ADDRESS = auth["ftp_addr"]
-USERNAME = auth["ftp_user"]
-PASSWORD = auth["ftp_pass"]
-
 
 client = discord.Client()
 
@@ -40,29 +35,13 @@ def is_number(s):
         return False
 
 
-def send_ann_file(server_adress, username, password, message):
-    session = ftplib.FTP(server_adress, username, password)
-    file = open("announcements.txt", "a")
-    file.write(message)
-    file.close()
-    file = open("announcements.txt", "rb")
-    session.storbinary("STOR /web/snowbot/announcements.txt", file)
-    file.close()
-    session.quit()
-
-
-def send_diary_file(server_adress, username, password, message):
-    session = ftplib.FTP(server_adress, username, password)
+def save_diary_file(message):
     with open("dev-diary.json") as data_file:
         listed = json.load(data_file)
     listed.append(message)
     file = open("dev-diary.json", "w")
     file.write(json.dumps(listed, indent=2, sort_keys=True, default=str))
     file.close()
-    file = open("dev-diary.json", "rb")
-    session.storbinary("STOR /web/snowbot/dev-diary.json", file)
-    file.close()
-    session.quit()
 
 
 def calculate_supply(block_height):
@@ -106,17 +85,11 @@ async def on_message(msg):
             key = "embed_" + str(i)
             dictionar[key] = msg.embeds[i].to_dict()
         message = dictionar
-        send_diary_file(SERVER_ADDRESS, USERNAME, PASSWORD, message)
+        save_diary_file(message)
         return
     # We do not want the bot to respond to Bots or Webhooks
     if msg.author.bot:
         return
-    # Bot will save all the messages in #announcements channel into a text file
-    if msg.content and msg.channel.id == 398660597505458187:
-        message = f"Ann: {msg.content}\n"
-        send_ann_file(SERVER_ADDRESS, USERNAME, PASSWORD, message)
-        return
-
     # We want the bot to not answer to messages that have no content
     # (example only attachment messages)
     # Bot checks BOT_PREFIX
