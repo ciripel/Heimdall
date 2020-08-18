@@ -60,16 +60,16 @@ async def price_update_channel():
     channel = client.get_channel(592633967346188307)
     while not client.is_closed():
         async with aiohttp.ClientSession() as session:
-            async with session.get(data["rates"]) as rates_data:
-                if rates_data.status == 200:
-                    rates_api = await rates_data.json(content_type="text/html")
-                    price_in_sats = round(pow(10, 8) * 1 / float(rates_api[6]["rate"]))
+            async with session.get(data["stex"]) as stex_data:
+                if stex_data.status == 200:
+                    stex_api = await stex_data.json(content_type="application/json")
+                    price_in_sats = pow(10, 8) * float(stex_api["data"]["last"])
                 else:
                     print(f"{data['rates']} is down")
                     price_in_sats = "unknown"
-        channel_name = f"xsg-{price_in_sats}-sats"
+        channel_name = f"xsg-{price_in_sats:.0f}-sats"
         await channel.edit(name=channel_name)
-        await asyncio.sleep(240)  # task runs every 60 seconds
+        await asyncio.sleep(300)  # task runs every 5 minutes
 
 
 @client.event
