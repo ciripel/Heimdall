@@ -492,15 +492,24 @@ async def on_message(msg):
                     print(f"{data['blocks_info']} is down")
         avg_bt = 60
         last_block = blocks_api["blocks"][0]["height"]
+        fork = params["fork"]
         fork_block = float(params["fork_block"])
+        version = params["daemon_ver"]
         if fork_block <= last_block:
             message = "There is not any known planned fork. We are good :heart_eyes:"
         else:
             fork_time = (fork_block - last_block) * avg_bt / 3600
-            message = (
-                f"The next planned fork is at block **{fork_block:1,.0f}**.\nThis is approximately in **"
-                + f"{fork_time:1.2f}** hours (**{fork_time/24:1.3f}** days)."
-            )
+            if fork = 1:
+                message = (
+                    f"The next planned fork is at block **{fork_block:1,.0f}**.\nThis is approximately in **"
+                    + f"{fork_time:1.2f}** hours (**{fork_time/24:1.3f}** days)."
+                )
+            else:
+                message = (
+                    f"There is no planned fork but modes must be updated to ver.{version} till block **"
+                    + f"{fork_block:1,.0f}**.\nThis is approximately in **"
+                    + f"{fork_time:1.2f}** hours (**{fork_time/24:1.3f}** days)."
+                )
     # -------- <coin/coininfo> --------
     elif cmd == "coin" or cmd == "coininfo":
         async with aiohttp.ClientSession() as session:
