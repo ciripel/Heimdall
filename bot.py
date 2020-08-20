@@ -506,7 +506,7 @@ async def on_message(msg):
                 )
             else:
                 message = (
-                    f"There is no planned fork but modes must be updated to ver.{version} till block **"
+                    f"There is no planned fork but modes must be updated to **ver.{version}** till block **"
                     + f"{fork_block:1,.0f}**.\nThis is approximately in **"
                     + f"{fork_time:1.2f}** hours (**{fork_time/24:1.3f}** days)."
                 )
