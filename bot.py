@@ -87,6 +87,16 @@ async def on_message(msg):
         message = dictionar
         save_diary_file(message)
         return
+    # Bot will keep #asgard-reporting channel clean &
+    # will keep only last report of each server
+    if msg.channel.id == 747732496350838806:
+        list_of_messages = []
+        async for x in msg.channel.history():
+            list_of_messages.append(x)
+            if len(list_of_messages) > 3:
+                list_of_messages = list_of_messages[3:]
+                await msg.channel.delete_messages(list_of_messages)
+        return
     # We do not want the bot to respond to Bots or Webhooks
     if msg.author.bot:
         return
