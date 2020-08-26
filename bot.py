@@ -647,6 +647,19 @@ async def on_message(msg):
             if not (member is None):
                 count += 1
         message = f"Banned {count} members! Nice!"
+    # -------- <del(Amitabha only)> --------
+    elif (
+        cmd == "del"
+        and isinstance(msg.channel, discord.TextChannel)
+        and msg.author.id == 359782573066551320
+    ):
+        if len(args) < 2:
+            message = "Enter the number of messages to delete"
+            await msg.channel.send(message)
+            return
+        cmd1 = args[1]
+        deleted = await msg.channel.purge(limit=int(cmd1))
+        message = f"Deleted {len(deleted)} message(s)"
 
     else:
         message = f"{data['unknown']}"
