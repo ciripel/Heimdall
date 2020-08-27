@@ -92,7 +92,7 @@ async def on_message(msg):
     if msg.channel.id == 747732496350838806:
         list_of_messages = []
         async for x in msg.channel.history():
-            if msg.author.id == 748432826981941268:
+            if msg.author.bot:
                 list_of_messages.append(x)
                 if len(list_of_messages) > 3:
                     list_of_messages = list_of_messages[3:]
