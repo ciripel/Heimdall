@@ -97,7 +97,6 @@ async def on_message(msg):
                 if len(list_of_messages) > 3:
                     list_of_messages = list_of_messages[3:]
                     await msg.channel.delete_messages(list_of_messages)
-        return
     # We do not want the bot to respond to Bots or Webhooks
     if msg.author.bot:
         return
