@@ -75,7 +75,7 @@ async def price_update_channel():
 @client.event
 async def on_message(msg):
     # Bot will save all the messages in #dev-diary channel into a text file
-    if msg.channel.id == 467740231362150410:
+    if msg.channel.id == 757921991201128500:
 
         dictionar = {}
         dictionar["author"] = msg.author.name
