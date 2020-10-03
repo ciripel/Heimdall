@@ -39,8 +39,8 @@
     "• Source Code: <https://github.com/ciripel/Heimdall>"
   ],
   "unknown": "Command not recognized. `!commands` to get a list of my commands or `!help` if you need the list of commands for my little brother Mee6",
-  "default": "All the bot calls are allowed only in <#405033839417753640> channel or you can wisper me your secrets...",
-  "mee6": "My little brother Mee6 is awaiting commands just like me in <#405033839417753640> channel only.",
+  "default": "All the bot calls are allowed only in <#757958963273793556> channel or you can wisper me your secrets...",
+  "mee6": "My little brother Mee6 is awaiting commands just like me in <#757958963273793556> channel only.",
   "blocks_info": "https://explorer.snowgem.org/api/blocks?limit=101",
   "difficulty": "https://explorer.snowgem.org/api/status?q=getDifficulty",
   "net_hash": "https://explorer.snowgem.org/api/status",
@@ -198,5 +198,5 @@
       "name": "**CarlosRod**#7564, **stefano**#1858"
     }
   ],
-  "welcome": "Welcome young one!\nFor a list usefull links you can go to <#398661977611829278> or in <#405033839417753640> you can type `!links`.\nFor latest news please check <#398660597505458187>.\nYou can type `!commands` in <#405033839417753640> for a complete list of commands that I understand.\nAdditionally you can always ask our helpful community members."
+  "welcome": "Welcome young one!\nFor a list usefull links you can go to <#398661977611829278> or in <#757958963273793556> you can type `!links`.\nFor latest news please check <#398660597505458187>.\nYou can type `!commands` in <#757958963273793556> for a complete list of commands that I understand.\nAdditionally you can always ask our helpful community members."
 }
