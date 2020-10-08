@@ -143,11 +143,11 @@
     },
     {
       "language": "Chinese",
-      "name": "**/dev/aux**#8820"
+      "name": "**NOT COVERED"
     },
     {
       "language": "Czech",
-      "name": "**DaX**#8374, **MisterJ249**#7343"
+      "name": "**NOT COVERED"
     },
     {
       "language": "Danish",
@@ -155,15 +155,15 @@
     },
     {
       "language": "Dutch",
-      "name": "**Tuxabyte**#6061"
+      "name": "**NOT COVERED"
     },
     {
       "language": "French",
-      "name": "**redwater64**#9628, pierrem#7509"
+      "name": "**redwater64**#9628"
     },
     {
       "language": "German",
-      "name": "**zelim🐼**#0792, **jackD**#2324, **/dev/aux**#8820"
+      "name": "**NOT COVERED"
     },
     {
       "language": "Hungarian",
@@ -175,15 +175,15 @@
     },
     {
       "language": "Icelandic",
-      "name": "**IggiPop**#8679"
+      "name": "**NOT COVERED"
     },
     {
       "language": "Korean",
-      "name": "**lapa**#3245"
+      "name": "**NOT COVERED"
     },
     {
       "language": "Polish",
-      "name": "**Abakus**#7835"
+      "name": "**NOT COVERED"
     },
     {
       "language": "Romanian",
@@ -191,11 +191,11 @@
     },
     {
       "language": "Russian",
-      "name": "**pipanda**#6772, **ekze (bsod.pw)**#4953, **Amadyus**#6274"
+      "name": "**pipanda**#6772, **Amadyus**#6274"
     },
     {
       "language": "Spanish",
-      "name": "**CarlosRod**#7564, **stefano**#1858"
+      "name": "**NOT COVERED"
     }
   ],
   "welcome": "Welcome young one!\nFor a list usefull links you can go to <#398661977611829278> or in <#757958963273793556> you can type `!links`.\nFor latest news please check <#398660597505458187>.\nYou can type `!commands` in <#757958963273793556> for a complete list of commands that I understand.\nAdditionally you can always ask our helpful community members."
