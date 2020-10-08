@@ -143,11 +143,11 @@
     },
     {
       "language": "Chinese",
-      "name": "**NOT COVERED"
+      "name": "**NOT COVERED**"
     },
     {
       "language": "Czech",
-      "name": "**NOT COVERED"
+      "name": "**NOT COVERED**"
     },
     {
       "language": "Danish",
@@ -155,7 +155,7 @@
     },
     {
       "language": "Dutch",
-      "name": "**NOT COVERED"
+      "name": "**NOT COVERED**"
     },
     {
       "language": "French",
@@ -163,7 +163,7 @@
     },
     {
       "language": "German",
-      "name": "**NOT COVERED"
+      "name": "**NOT COVERED**"
     },
     {
       "language": "Hungarian",
@@ -175,15 +175,15 @@
     },
     {
       "language": "Icelandic",
-      "name": "**NOT COVERED"
+      "name": "**NOT COVERED**"
     },
     {
       "language": "Korean",
-      "name": "**NOT COVERED"
+      "name": "**NOT COVERED**"
     },
     {
       "language": "Polish",
-      "name": "**NOT COVERED"
+      "name": "**NOT COVERED**"
     },
     {
       "language": "Romanian",
@@ -195,7 +195,7 @@
     },
     {
       "language": "Spanish",
-      "name": "**NOT COVERED"
+      "name": "**NOT COVERED**"
     }
   ],
   "welcome": "Welcome young one!\nFor a list usefull links you can go to <#398661977611829278> or in <#757958963273793556> you can type `!links`.\nFor latest news please check <#398660597505458187>.\nYou can type `!commands` in <#757958963273793556> for a complete list of commands that I understand.\nAdditionally you can always ask our helpful community members."
