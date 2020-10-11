@@ -1,6 +1,7 @@
 #!/usr/bin/env python3.7
 # Work with Python 3.7
 
+import logging
 import json
 import random
 from datetime import datetime
@@ -9,6 +10,11 @@ import asyncio
 import aiohttp
 import discord
 import pytz
+
+
+logging.basicConfig(format="%(asctime)s | %(levelname)s:%(name)s:%(message)s",
+                    filename='heimdall.log', level=logging.INFO)
+logging.info('----- Started -----')
 
 with open("auth.json") as data_file:
     auth = json.load(data_file)
@@ -729,3 +735,4 @@ async def on_ready():
 
 client.loop.create_task(price_update_channel())
 client.run(TOKEN)
+logging.info('----- Finished -----')
