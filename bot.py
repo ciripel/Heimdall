@@ -24,7 +24,14 @@ HEADERS = {}
 HEADERS["X-CMC_PRO_API_KEY"] = auth["cmc_headers"]
 BOT_PREFIX = "!"
 
-client = discord.Client()
+intents = discord.Intents(messages=True, guilds=True)
+intents.reactions = True
+intents.members = True
+intents.emojis = True
+intents.presences = True
+intents.typing = False
+
+client = discord.Client(intents=intents)
 
 
 def is_number(s):
@@ -676,6 +683,26 @@ async def on_message(msg):
         message = f"{data['unknown']}"
 
     await msg.channel.send(message)
+
+
+@client.event
+async def on_raw_reaction_add(payload):
+    guild = client.get_guild(398513312696107008)
+    role = guild.get_role(693175238720094318)
+    mbr = guild.get_member(payload.user_id)
+
+    if (payload.message_id == 764746968516919307 and payload.emoji.name == "xsg"):
+        await mbr.add_roles(role)
+
+
+@client.event
+async def on_raw_reaction_remove(payload):
+    guild = client.get_guild(398513312696107008)
+    role = guild.get_role(693175238720094318)
+    mbr = guild.get_member(payload.user_id)
+
+    if (payload.message_id == 764746968516919307 and payload.emoji.name == "xsg"):
+        await mbr.remove_roles(role)
 
 
 @client.event
