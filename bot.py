@@ -75,12 +75,12 @@ async def price_update_channel():
         async with aiohttp.ClientSession() as session:
             async with session.get(data["stex"]) as stex_data:
                 if stex_data.status == 200:
-                    stex_api = await stex_data.json(content_type="application/json")
+                    stex_api = await stex_data.json(content_type=None)
                     price_in_sats = pow(10, 8) * float(stex_api["data"]["last"])
+                    channel_name = f"xsg-{price_in_sats:.0f}-sats"
                 else:
                     print(f"{data['rates']} is down")
-                    price_in_sats = "unknown"
-        channel_name = f"xsg-{price_in_sats:.0f}-sats"
+                    channel_name = "xsg-unknown-sats"
         await channel.edit(name=channel_name)
         await asyncio.sleep(300)  # task runs every 5 minutes
 
