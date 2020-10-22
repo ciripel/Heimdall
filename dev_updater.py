@@ -1,10 +1,12 @@
 #!/usr/bin/env python3.7
 # Work with Python 3.7
 
+import os
 import json
 import shutil
 
 from git import Repo
+from git import Git
 
 PROJECT_PATH = "/root/SnowgemDevelopmentProgress"
 
@@ -15,6 +17,8 @@ with open("dev-diary.json") as data_file:
 
 PATH_OF_GIT_REPO = PROJECT_PATH + "/.git"  # make sure .git folder is properly configured
 COMMIT_MESSAGE = "Last work at " + complete_list[-1]["created_at"][:-7]
+GIT_SSH_IDENTITY_FILE = os.path.expanduser('~/.ssh/id_rsa')
+GIT_SSH_CMD = f"ssh -i {GIT_SSH_IDENTITY_FILE}"
 
 
 def git_push():
@@ -25,7 +29,8 @@ def git_push():
         repo.git.add(update=True)
         repo.git.commit(m=COMMIT_MESSAGE)
         origin = repo.remote(name="origin")
-        origin.push()
+        with Git().custom_environment(GIT_SSH_COMMAND=GIT_SSH_CMD):
+            origin.push()
         sha = repo.head.object.hexsha
         print(f"On branch master.\nPushed commit {sha}")
     except Exception:
