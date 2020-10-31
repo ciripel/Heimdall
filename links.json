@@ -82,6 +82,16 @@
     "The fool moon for you! :grin:"
   ],
   "banned_words": [
+    "Txid",
+    "DaX",
+    "IggiPop",
+    "demzet",
+    "Amitabha",
+    "billybob",
+    "storkandstars",
+    "DavidC",
+    "RCE",
+    "rejdek",
     "BOT",
     "SnowGem",
     "Snowgem",
@@ -90,6 +100,18 @@
     "Wallet",
     "Update",
     "XSG"
+  ],
+  "ignored_ids": [
+    398512532895039499,
+    398885783395893258,
+    283899213845233664,
+    455093165225934888,
+    359782573066551320,
+    453293661485269023,
+    705093497740460072,
+    750661126592790588,
+    761514159505801216,
+    758149988391059497
   ],
   "team": [
     {

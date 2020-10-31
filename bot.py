@@ -714,8 +714,9 @@ async def on_raw_reaction_remove(payload):
 @client.event
 async def on_member_join(mbr):
     for ban_word in data["banned_words"]:
-        if ban_word in mbr.name:
+        if mbr.guild.get_member(mbr.id) is not None and ban_word in mbr.name:
             await mbr.ban()
+            logging.warning(f'Banned {mbr.name} with id: {mbr.id}')
             return
     message = f"{data['welcome']}"
     await mbr.send(message)
@@ -723,9 +724,13 @@ async def on_member_join(mbr):
 
 @client.event
 async def on_member_update(before, after):
+    # Bot ignore all members that have MEMBER_ID in ignored_ids list
+    if after.id in data["ignored_ids"]:
+        return
     for ban_word in data["banned_words"]:
-        if ban_word in after.name:
+        if after.guild.get_member(after.id) is not None and ban_word in after.name:
             await after.ban()
+            logging.warning(f'Banned {after.name} with id: {after.id}')
             return
 
 
