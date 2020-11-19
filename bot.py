@@ -196,7 +196,7 @@ async def on_message(msg):
         if len(args) < 2:
             mn_count = mn_raw.count("ENABLED")
             if mn_count == 0:
-                mn_count = float(params["mn_count"])
+                mn_count = params["mn_count"]
             async with aiohttp.ClientSession() as session:
                 try:
                     async with session.get(data["asgard_managed"]) as asgard_mns:
@@ -204,7 +204,7 @@ async def on_message(msg):
                 except Exception:
                     asgard_managed = 0
                     print(f"{data['asgard_managed']} is down")
-            mn_rwd = float(params["mn_rwd"])
+            mn_rwd = params["mn_rwd"]
             guide_link = data["masternodes"]["guide_link"]
             asgard = data["masternodes"]["asgard"]
             asgard_vid = data["masternodes"]["asgard_vid"]
@@ -284,7 +284,7 @@ async def on_message(msg):
         elif is_number(cmd1) and float(cmd1) < 0:
             message = f"{data['hpow']['neg']}"
         elif is_number(cmd1):
-            mnr_rwd = float(params["mnr_rwd"])
+            mnr_rwd = params["mnr_rwd"]
             cmd1 = float(cmd1)
             message = (
                 f"Current network hashrate is **{int(hashrate)/1000:1.2f} KSols/s**.\nA hashrate of **{cmd1:1.0f}"
@@ -312,8 +312,8 @@ async def on_message(msg):
                     print(f"{data['masternodes']['link']} is down")
         mn_count = mn_raw.count("ENABLED")
         if mn_count == 0:
-            mn_count = float(params["mn_count"])
-        mn_rwd = float(params["mn_rwd"])
+            mn_count = params["mn_count"]
+        mn_rwd = params["mn_rwd"]
         if len(args) < 2:
             message = (
                 f"**1** Masternode will give you approximately:"
@@ -517,7 +517,7 @@ async def on_message(msg):
         avg_bt = 60
         last_block = blocks_api["blocks"][0]["height"]
         fork = params["fork"]
-        fork_block = float(params["fork_block"])
+        fork_block = params["fork_block"]
         version = params["daemon_ver"]
         if fork_block <= last_block:
             message = "There is not any known planned fork. We are good :heart_eyes:"
@@ -543,6 +543,8 @@ async def on_message(msg):
                 else:
                     print(f"{data['masternodes']['link']} is down")
         mn_count = mn_raw.count("ENABLED")
+        if mn_count == 0:
+            mn_count = params["mn_count"]
         locked_coins = mn_count * 10000
         async with aiohttp.ClientSession() as session:
             async with session.get(data["cmc"]["cmc_xsg"], headers=HEADERS) as cmc_xsg:
