@@ -1,6 +1,6 @@
 {
   "daemon_ver": "3000458",
-  "fork": "0",
+  "fork": false,
   "fork_block": "1414160",
   "mnr_rwd": "6",
   "mn_rwd": "10",

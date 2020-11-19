@@ -523,7 +523,7 @@ async def on_message(msg):
             message = "There is not any known planned fork. We are good :heart_eyes:"
         else:
             fork_time = (fork_block - last_block) * avg_bt / 3600
-            if fork == 1:
+            if fork:
                 message = (
                     f"The next planned fork is at block **{fork_block:1,.0f}**.\nThis is approximately in **"
                     + f"{fork_time:1.2f}** hours (**{fork_time/24:1.3f}** days)."
