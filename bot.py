@@ -525,7 +525,8 @@ async def on_message(msg):
             fork_time = (fork_block - last_block) * avg_bt / 3600
             if fork:
                 message = (
-                    f"The next planned fork is at block **{fork_block:1,.0f}**.\nThis is approximately in **"
+                    f"The next planned fork is at block **{fork_block:1,.0f}** so all nodes must be updated "
+                    + f"to **ver.{version}**.\nThis is approximately in **"
                     + f"{fork_time:1.2f}** hours (**{fork_time/24:1.3f}** days)."
                 )
             else:
