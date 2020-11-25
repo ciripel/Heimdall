@@ -29,6 +29,7 @@ TOKEN = auth["token"]
 HEADERS = {}
 HEADERS["X-CMC_PRO_API_KEY"] = auth["cmc_headers"]
 BOT_PREFIX = "!"
+TICKER = "TENT"
 
 intents = discord.Intents(messages=True, guilds=True)
 intents.reactions = True
@@ -212,9 +213,9 @@ async def on_message(msg):
             time_first_payment = 2.6 * mn_count / 60
             message = (
                 f"• Active masternodes • **{mn_count: 1.0f}** (_**{asgard_managed}** managed by **Asgard**_)\n• "
-                + f"Coins Locked • **{mn_count*10000:,} XSG**\n• ROI "
+                + f"Coins Locked • **{mn_count*10000:,} {TICKER}**\n• ROI "
                 + f"• **{mn_roi: 1.3f} % **\n• Minimum time before first payment • **{time_first_payment: 1.2f} hours**"
-                + f"\n• One masternode will give you approximately **{3600*24/avg_bt*mn_rwd/mn_count:1.3f} XSG** per"
+                + f"\n• One masternode will give you approximately **{3600*24/avg_bt*mn_rwd/mn_count:1.3f} {TICKER}** per"
                 + f" **day**\n{asgard}\n{asgard_vid}\n{guide_link}"
             )
             await msg.channel.send(message)
@@ -288,9 +289,9 @@ async def on_message(msg):
             cmd1 = float(cmd1)
             message = (
                 f"Current network hashrate is **{int(hashrate)/1000:1.2f} KSols/s**.\nA hashrate of **{cmd1:1.0f}"
-                + f" Sols/s** will get you approximately **{cmd1/hashrate*3600*mnr_rwd/avg_bt:1.2f} XSG** _(***"
+                + f" Sols/s** will get you approximately **{cmd1/hashrate*3600*mnr_rwd/avg_bt:1.2f} {TICKER}** _(***"
                 + f"{cmd1/hashrate*3600*mnr_rwd/avg_bt*xsg_usd_price:1.2f}$***)_ per **hour** and **"
-                + f"{cmd1/hashrate*3600*mnr_rwd*24/avg_bt:1.2f} XSG** _(***"
+                + f"{cmd1/hashrate*3600*mnr_rwd*24/avg_bt:1.2f} {TICKER}** _(***"
                 + f"{cmd1/hashrate*3600*mnr_rwd*24/avg_bt*xsg_usd_price:1.2f}$***)_ per **day** at current "
                 + "network difficulty."
             )
@@ -317,13 +318,13 @@ async def on_message(msg):
         if len(args) < 2:
             message = (
                 f"**1** Masternode will give you approximately:"
-                + f"\n**{3600*24/avg_bt*mn_rwd/mn_count:1.3f} XSG** _(***"
+                + f"\n**{3600*24/avg_bt*mn_rwd/mn_count:1.3f} {TICKER}** _(***"
                 + f"{3600*24/avg_bt*mn_rwd/mn_count*xsg_usd_price:1.3f}$***)_ per **day**"
-                + f"\n**{3600*24*7/avg_bt*mn_rwd/mn_count:1.3f} XSG** _(***"
+                + f"\n**{3600*24*7/avg_bt*mn_rwd/mn_count:1.3f} {TICKER}** _(***"
                 + f"{3600*24*7/avg_bt*mn_rwd/mn_count*xsg_usd_price:1.3f}$***)_ per **week**"
-                + f"\n**{3600*24*30/avg_bt*mn_rwd/mn_count:1.3f} XSG** _(***"
+                + f"\n**{3600*24*30/avg_bt*mn_rwd/mn_count:1.3f} {TICKER}** _(***"
                 + f"{3600*24*30/avg_bt*mn_rwd/mn_count*xsg_usd_price:1.3f}$***)_ per **month**"
-                + f"\n**{3600*24*365/avg_bt*mn_rwd/mn_count:1.3f} XSG** _(***"
+                + f"\n**{3600*24*365/avg_bt*mn_rwd/mn_count:1.3f} {TICKER}** _(***"
                 + f"{3600*24*365/avg_bt*mn_rwd/mn_count*xsg_usd_price:1.3f}$***)_ per **year**"
             )
             await msg.channel.send(message)
@@ -339,13 +340,13 @@ async def on_message(msg):
             cmd1 = float(cmd1)
             message = (
                 f"**{cmd1:1.0f}** Masternode will give you approximately:"
-                + f"\n**{cmd1*3600*24/avg_bt*mn_rwd/mn_count:1.3f} XSG** _(***"
+                + f"\n**{cmd1*3600*24/avg_bt*mn_rwd/mn_count:1.3f} {TICKER}** _(***"
                 + f"{cmd1*3600*24/avg_bt*mn_rwd/mn_count*xsg_usd_price:1.3f}$***)_ per **day**"
-                + f"\n**{cmd1*3600*24*7/avg_bt*mn_rwd/mn_count:1.3f} XSG** _(***"
+                + f"\n**{cmd1*3600*24*7/avg_bt*mn_rwd/mn_count:1.3f} {TICKER}** _(***"
                 + f"{cmd1*3600*24*7/avg_bt*mn_rwd/mn_count*xsg_usd_price:1.3f}$***)_ per **week**"
-                + f"\n**{cmd1*3600*24*30/avg_bt*mn_rwd/mn_count:1.3f} XSG** _(***"
+                + f"\n**{cmd1*3600*24*30/avg_bt*mn_rwd/mn_count:1.3f} {TICKER}** _(***"
                 + f"{cmd1*3600*24*30/avg_bt*mn_rwd/mn_count*xsg_usd_price:1.3f}$***)_ per **month**"
-                + f"\n**{cmd1*3600*24*365/avg_bt*mn_rwd/mn_count:1.3f} XSG** _(***"
+                + f"\n**{cmd1*3600*24*365/avg_bt*mn_rwd/mn_count:1.3f} {TICKER}** _(***"
                 + f"{cmd1*3600*24*365/avg_bt*mn_rwd/mn_count*xsg_usd_price:1.3f}$***)_ per **year**"
             )
     # -------- <xsgusd> --------
@@ -370,7 +371,7 @@ async def on_message(msg):
             message = f"{data['xsgusd']['neg']}"
         elif is_number(cmd1):
             message = (
-                f"**{round(float(cmd1),2):,} XSG** = **{round(float(xsg_usd_price)*float(cmd1),2):,}$**\n"
+                f"**{round(float(cmd1),2):,} {TICKER}** = **{round(float(xsg_usd_price)*float(cmd1),2):,}$**\n"
                 + f"{data['xsgusd']['default']}{round(xsg_usd_price, 3)}$***_"
             )
     # -------- <roadmap> --------
@@ -403,7 +404,7 @@ async def on_message(msg):
                 else:
                     print(f"{data['cmc']['cmc_btc']} is down")
         message_list = []
-        message_list.append("**SnowGem** is listed on the following exchanges:")
+        message_list.append("**TENT** is listed on the following exchanges:")
         for a in range(len(markets)):
             message_list.append(f"{a+1}. <{markets[a]['link']}>")
         message_list.append("\n_Use `!market info` for stats of the markets_")
@@ -504,7 +505,7 @@ async def on_message(msg):
         halving_time = (2102400 - last_block) * avg_bt / 86400
         message = (
             f"The next halving will be in approximately **{halving_time:1.2f}** days (**{halving_time/365:1.3f}"
-            + "** years).\nThe block reward after the halving will be **10** XSG."
+            + "** years).\nThe block reward after the halving will be **10** {TICKER}."
         )
     # -------- <fork> --------
     elif cmd == "fork":
@@ -578,8 +579,8 @@ async def on_message(msg):
         message = (
             f"• Current Price • **{xsg_usd_price/btc_usd_price:1.8f} BTC ** | **{xsg_usd_price:1.4f}$**\n• 24h Volume •"
             + f" **{xsg_24vol/btc_usd_price:1.3f} BTC ** | **{xsg_24vol:1,.2f}$**\n• Market Cap • **{xsg_mcap:1,.0f}$**"
-            + f"\n• Circulating Supply • **{xsg_circ_supply:1,.0f} XSG **\n• Total Supply • **"
-            + f"84,096,000 XSG **\n• Locked Coins • **{locked_coins:,} XSG ({locked_proc:.2f}%)**\n• 24h Change • **"
+            + f"\n• Circulating Supply • **{xsg_circ_supply:1,.0f} {TICKER} **\n• Total Supply • **"
+            + f"84,096,000 {TICKER} **\n• Locked Coins • **{locked_coins:,} {TICKER} ({locked_proc:.2f}%)**\n• 24h Change • **"
             + f"{xsg_24change:1.2f} % **"
         )
     # -------- <about> --------
@@ -590,7 +591,7 @@ async def on_message(msg):
         message = random.choice(data["whenmoon"])
     # -------- <team> --------
     elif cmd == "team":
-        message_list = ["SnowGem team members with local time and the languages they support:"]
+        message_list = ["TENT team members with local time and the languages they support:"]
         for i in range(len(data["team"])):
             tz = pytz.timezone(data["team"][i]["time"])
             local_hour = datetime.now(tz).strftime("%H:%M")
@@ -657,8 +658,8 @@ async def on_message(msg):
     ):
         if len(args) < 2:
             message = (
-                f"Input a substring of users to ban, like `!ban SnowGem` will ban all users containing"
-                + f" `SnowGem` in their names (_fuction is case-sensitive_)."
+                f"Input a substring of users to ban, like `!ban TENT` will ban all users containing"
+                + f" `TENT` in their names (_fuction is case-sensitive_)."
             )
             await msg.channel.send(message)
             return
