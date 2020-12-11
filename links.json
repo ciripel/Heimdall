@@ -19,19 +19,17 @@
   "links": [
     "**TENT Website** • <https://snowgem.org/>",
     "**TENT Announcement** • <https://bitcointalk.org/index.php?topic=2630198>",
-    "**TENT Whitepaper** • <https://snowgem.org/whitepaper/SnowGem_Whitepaper.pdf>",
     "**TENT Blog** • <https://snowgem.org/blog>",
     "**TENT Book** • Online - <https://snowgem.org/files/snowgem_book.pdf> | Amazon - <https://www.amazon.com/SnowGem-Seamless-Solutions-Concise-History-ebook/dp/B07NS7FLDC>",
     "**TENT Forums** • <https://forums.snowgem.org/>",
     "**TENT Github** • <https://github.com/TENTOfficial>",
-    "**TENT Wallets** • <https://github.com/TENTOfficial/ModernWallet/releases> <https://wallet.snowgem.org/>",
-    "**TENT Block Explorers** • <https://explorer.snowgem.org/>",
+    "**TENT Wallets** • <https://github.com/TENTOfficial/TENT-Core/releases/latest> <https://wallet.snowgem.org/>",
+    "**TENT Block Explorer** • <https://explorer.tent.app/>",
     "**TENT Asgard** • <https://asgard.snowgem.org/>",
-    "**TENT Explorer API** • <https://github.com/TENTOfficial/insight-api-snowgem>",
-    "**TENT Community** • <https://www.reddit.com/r/SnowGem/> <https://t.me/snowgemofficial> <https://www.facebook.com/snowgemofficial/> <https://twitter.com/snowgemofficial> <https://discord.gg/78rVJcH>"
+    "**TENT Explorer API** • <https://github.com/TENTOfficial/insight-api-tent>",
+    "**TENT Community** • <https://www.reddit.com/r/SnowGem/> <https://t.me/snowgemofficial> <https://www.facebook.com/snowgemofficial/> <https://twitter.com/tentpay> <https://discord.gg/78rVJcH>"
   ],
   "roadmap": "• **TENT Road-map** •\n<https://snowgem.org/blog/snowgem-roadmap-2019>",
-  "por": "• **TENT Proof of Review** •\n<https://www.proofofreview.com/wp-content/uploads/2019/02/SNOWGEM_v1.02.pdf>",
   "members": "Number of members on TENT Discord: ",
   "about": [
     "• Version 1.6",
@@ -41,9 +39,9 @@
   "unknown": "Command not recognized. `!commands` to get a list of my commands or `!help` if you need the list of commands for my little brother Mee6",
   "default": "All the bot calls are allowed only in <#757958963273793556> channel or you can wisper me your secrets...",
   "mee6": "My little brother Mee6 is awaiting commands just like me in <#757958963273793556> channel only.",
-  "blocks_info": "https://explorer.snowgem.org/api/blocks?limit=101",
-  "difficulty": "https://explorer.snowgem.org/api/status?q=getDifficulty",
-  "net_hash": "https://explorer.snowgem.org/api/status",
+  "blocks_info": "https://explorer.tent.app/api/blocks?limit=101",
+  "difficulty": "https://explorer.tent.app/api/status?q=getDifficulty",
+  "net_hash": "https://explorer.tent.app/api/status",
   "asgard_managed": "https://asgard.snowgem.org/php/public-api?action=getManagedNodesCount",
   "masternodes": {
     "link": "https://data.snowgem.org/masternode.html",

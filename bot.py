@@ -424,7 +424,7 @@ async def on_message(msg):
                             else:
                                 print(f"{markets[a]['api']} is down")
                     vol_total = vol_total + float(markets[a]["volume_24h"])
-                elif markets[a]["link"] == "https://app.stex.com/en/trade/pair/BTC/XSG":
+                elif markets[a]["link"] == "https://app.stex.com/en/trade/pair/BTC/TENT":
                     async with aiohttp.ClientSession() as session:
                         async with session.get(markets[a]["api"]) as api:
                             if api.status == 200:

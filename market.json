@@ -10,14 +10,13 @@
   },
   {
     "source": "Stex",
-    "pair": "XSG/BTC",
+    "pair": "TENT/BTC",
     "volume_24h": 967.6366701244291,
     "price": 0.051349640736711,
     "vol_percent": 2.250674857054495,
     "link": "https://app.stex.com/en/trade/pair/BTC/XSG",
     "api": "https://api3.stex.com/public/ticker/250"
   },
-
   {
     "source": "Mercatox",
     "pair": "XSG/ETH",
@@ -30,9 +29,9 @@
   {
     "source": "Graviex",
     "pair": "XSG/BTC",
-    "volume_24h": 0.0,
+    "volume_24h": 0,
     "price": 0.0518506128414594,
-    "vol_percent": 0.0,
+    "vol_percent": 0,
     "link": "https://graviex.net/markets/xsgbtc",
     "api": "https://graviex.net/api/v2/tickers/xsgbtc"
   }
