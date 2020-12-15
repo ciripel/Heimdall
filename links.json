@@ -17,17 +17,15 @@
     "-- `!about` | Info about this bot."
   ],
   "links": [
-    "**TENT Website** • <https://snowgem.org/>",
+    "**TENT Website** • <https://tent.app/>",
     "**TENT Announcement** • <https://bitcointalk.org/index.php?topic=2630198>",
-    "**TENT Blog** • <https://snowgem.org/blog>",
-    "**TENT Book** • Online - <https://snowgem.org/files/snowgem_book.pdf> | Amazon - <https://www.amazon.com/SnowGem-Seamless-Solutions-Concise-History-ebook/dp/B07NS7FLDC>",
-    "**TENT Forums** • <https://forums.snowgem.org/>",
+    "**TENT Forums** • <https://discuss.snowgem.org/>",
     "**TENT Github** • <https://github.com/TENTOfficial>",
-    "**TENT Wallets** • <https://github.com/TENTOfficial/TENT-Core/releases/latest> <https://wallet.snowgem.org/>",
+    "**TENT Wallets** • <https://github.com/TENTOfficial/TENT-Core/releases/latest> <https://play.google.com/store/apps/details?id=wallet.snowgem.bitfrost> <https://apps.apple.com/us/app/bitfrost/id1513205882>",
     "**TENT Block Explorer** • <https://explorer.tent.app/>",
     "**TENT Asgard** • <https://asgard.snowgem.org/>",
     "**TENT Explorer API** • <https://github.com/TENTOfficial/insight-api-tent>",
-    "**TENT Community** • <https://www.reddit.com/r/SnowGem/> <https://t.me/snowgemofficial> <https://www.facebook.com/snowgemofficial/> <https://twitter.com/tentpay> <https://discord.gg/78rVJcH>"
+    "**TENT Community** • <https://www.reddit.com/r/SnowGem/> <https://t.me/snowgemofficial> <https://twitter.com/tentpay> <https://discord.gg/78rVJcH>"
   ],
   "roadmap": "• **TENT Road-map** •\n<https://snowgem.org/blog/snowgem-roadmap-2019>",
   "members": "Number of members on TENT Discord: ",
@@ -86,7 +84,7 @@
     "demzet",
     "Amitabha",
     "billybob",
-    "storkandstars",
+    "qNaN",
     "DavidC",
     "RCE",
     "rejdek",
@@ -151,9 +149,14 @@
       "language": "English"
     },
     {
-      "name": "**storkandstars**#0603",
+      "name": "**qNaN**#0603",
       "time": "Europe/Prague",
       "language": "Czech, English, Portuguese"
+    },
+    {
+      "name": "**DavidC**#9161",
+      "time": "Europe/Prague",
+      "language": "Czech, English"
     }
   ],
   "translators": [
