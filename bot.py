@@ -78,10 +78,10 @@ async def price_update_channel():
                 if stex_data.status == 200:
                     stex_api = await stex_data.json(content_type=None)
                     price_in_sats = pow(10, 8) * float(stex_api["data"]["last"])
-                    channel_name = f"xsg-{price_in_sats:.0f}-sats"
+                    channel_name = f"tent-{price_in_sats:.0f}-sats"
                 else:
                     print(f"{data['rates']} is down")
-                    channel_name = "xsg-unknown-sats"
+                    channel_name = "tent-unknown-sats"
         await channel.edit(name=channel_name)
         await asyncio.sleep(300)  # task runs every 5 minutes
 
@@ -251,12 +251,12 @@ async def on_message(msg):
     elif cmd == "hpow" or cmd == "calc":
         avg_bt = 60
         async with aiohttp.ClientSession() as session:
-            async with session.get(data["cmc"]["cmc_xsg"], headers=HEADERS) as cmc_xsg:
-                if cmc_xsg.status == 200:
-                    cmc_xsg_api = await cmc_xsg.json()
-                    xsg_usd_price = float(cmc_xsg_api["data"]["TENT"]["quote"]["USD"]["price"])
+            async with session.get(data["cmc"]["cmc_tent"], headers=HEADERS) as cmc_tent:
+                if cmc_tent.status == 200:
+                    cmc_tent_api = await cmc_tent.json()
+                    tent_usd_price = float(cmc_tent_api["data"]["TENT"]["quote"]["USD"]["price"])
                 else:
-                    print(f"{data['cmc']['cmc_xsg']} is down")
+                    print(f"{data['cmc']['cmc_tent']} is down")
         async with aiohttp.ClientSession() as session:
             async with session.get(data["difficulty"]) as difficulty:
                 if difficulty.status == 200:
@@ -290,21 +290,21 @@ async def on_message(msg):
             message = (
                 f"Current network hashrate is **{int(hashrate)/1000:1.2f} KSols/s**.\nA hashrate of **{cmd1:1.0f}"
                 + f" Sols/s** will get you approximately **{cmd1/hashrate*3600*mnr_rwd/avg_bt:1.2f} {TICKER}** _(***"
-                + f"{cmd1/hashrate*3600*mnr_rwd/avg_bt*xsg_usd_price:1.2f}$***)_ per **hour** and **"
+                + f"{cmd1/hashrate*3600*mnr_rwd/avg_bt*tent_usd_price:1.2f}$***)_ per **hour** and **"
                 + f"{cmd1/hashrate*3600*mnr_rwd*24/avg_bt:1.2f} {TICKER}** _(***"
-                + f"{cmd1/hashrate*3600*mnr_rwd*24/avg_bt*xsg_usd_price:1.2f}$***)_ per **day** at current "
+                + f"{cmd1/hashrate*3600*mnr_rwd*24/avg_bt*tent_usd_price:1.2f}$***)_ per **day** at current "
                 + "network difficulty."
             )
     # -------- <mnrew/mnrewards> --------
     elif cmd == "mnrew" or cmd == "mnrewards":
         avg_bt = 60
         async with aiohttp.ClientSession() as session:
-            async with session.get(data["cmc"]["cmc_xsg"], headers=HEADERS) as cmc_xsg:
-                if cmc_xsg.status == 200:
-                    cmc_xsg_api = await cmc_xsg.json()
-                    xsg_usd_price = float(cmc_xsg_api["data"]["TENT"]["quote"]["USD"]["price"])
+            async with session.get(data["cmc"]["cmc_tent"], headers=HEADERS) as cmc_tent:
+                if cmc_tent.status == 200:
+                    cmc_tent_api = await cmc_tent.json()
+                    tent_usd_price = float(cmc_tent_api["data"]["TENT"]["quote"]["USD"]["price"])
                 else:
-                    print(f"{data['cmc']['cmc_xsg']} is down")
+                    print(f"{data['cmc']['cmc_tent']} is down")
         async with aiohttp.ClientSession() as session:
             async with session.get(data["masternodes"]["link"]) as masternodes:
                 if masternodes.status == 200:
@@ -319,13 +319,13 @@ async def on_message(msg):
             message = (
                 f"**1** Masternode will give you approximately:"
                 + f"\n**{3600*24/avg_bt*mn_rwd/mn_count:1.3f} {TICKER}** _(***"
-                + f"{3600*24/avg_bt*mn_rwd/mn_count*xsg_usd_price:1.3f}$***)_ per **day**"
+                + f"{3600*24/avg_bt*mn_rwd/mn_count*tent_usd_price:1.3f}$***)_ per **day**"
                 + f"\n**{3600*24*7/avg_bt*mn_rwd/mn_count:1.3f} {TICKER}** _(***"
-                + f"{3600*24*7/avg_bt*mn_rwd/mn_count*xsg_usd_price:1.3f}$***)_ per **week**"
+                + f"{3600*24*7/avg_bt*mn_rwd/mn_count*tent_usd_price:1.3f}$***)_ per **week**"
                 + f"\n**{3600*24*30/avg_bt*mn_rwd/mn_count:1.3f} {TICKER}** _(***"
-                + f"{3600*24*30/avg_bt*mn_rwd/mn_count*xsg_usd_price:1.3f}$***)_ per **month**"
+                + f"{3600*24*30/avg_bt*mn_rwd/mn_count*tent_usd_price:1.3f}$***)_ per **month**"
                 + f"\n**{3600*24*365/avg_bt*mn_rwd/mn_count:1.3f} {TICKER}** _(***"
-                + f"{3600*24*365/avg_bt*mn_rwd/mn_count*xsg_usd_price:1.3f}$***)_ per **year**"
+                + f"{3600*24*365/avg_bt*mn_rwd/mn_count*tent_usd_price:1.3f}$***)_ per **year**"
             )
             await msg.channel.send(message)
             return
@@ -341,38 +341,38 @@ async def on_message(msg):
             message = (
                 f"**{cmd1:1.0f}** Masternode will give you approximately:"
                 + f"\n**{cmd1*3600*24/avg_bt*mn_rwd/mn_count:1.3f} {TICKER}** _(***"
-                + f"{cmd1*3600*24/avg_bt*mn_rwd/mn_count*xsg_usd_price:1.3f}$***)_ per **day**"
+                + f"{cmd1*3600*24/avg_bt*mn_rwd/mn_count*tent_usd_price:1.3f}$***)_ per **day**"
                 + f"\n**{cmd1*3600*24*7/avg_bt*mn_rwd/mn_count:1.3f} {TICKER}** _(***"
-                + f"{cmd1*3600*24*7/avg_bt*mn_rwd/mn_count*xsg_usd_price:1.3f}$***)_ per **week**"
+                + f"{cmd1*3600*24*7/avg_bt*mn_rwd/mn_count*tent_usd_price:1.3f}$***)_ per **week**"
                 + f"\n**{cmd1*3600*24*30/avg_bt*mn_rwd/mn_count:1.3f} {TICKER}** _(***"
-                + f"{cmd1*3600*24*30/avg_bt*mn_rwd/mn_count*xsg_usd_price:1.3f}$***)_ per **month**"
+                + f"{cmd1*3600*24*30/avg_bt*mn_rwd/mn_count*tent_usd_price:1.3f}$***)_ per **month**"
                 + f"\n**{cmd1*3600*24*365/avg_bt*mn_rwd/mn_count:1.3f} {TICKER}** _(***"
-                + f"{cmd1*3600*24*365/avg_bt*mn_rwd/mn_count*xsg_usd_price:1.3f}$***)_ per **year**"
+                + f"{cmd1*3600*24*365/avg_bt*mn_rwd/mn_count*tent_usd_price:1.3f}$***)_ per **year**"
             )
-    # -------- <xsgusd> --------
-    elif cmd == "xsgusd":
+    # -------- <tentusd> --------
+    elif cmd == "tentusd":
         async with aiohttp.ClientSession() as session:
-            async with session.get(data["cmc"]["cmc_xsg"], headers=HEADERS) as cmc_xsg:
-                if cmc_xsg.status == 200:
-                    cmc_xsg_api = await cmc_xsg.json()
-                    xsg_usd_price = float(cmc_xsg_api["data"]["TENT"]["quote"]["USD"]["price"])
+            async with session.get(data["cmc"]["cmc_tent"], headers=HEADERS) as cmc_tent:
+                if cmc_tent.status == 200:
+                    cmc_tent_api = await cmc_tent.json()
+                    tent_usd_price = float(cmc_tent_api["data"]["TENT"]["quote"]["USD"]["price"])
                 else:
-                    print(f"{data['cmc']['cmc_xsg']} is down")
+                    print(f"{data['cmc']['cmc_tent']} is down")
         if len(args) < 2:
-            message = f"{data['xsgusd']['default']}{round(xsg_usd_price, 3)}$***._"
+            message = f"{data['tentusd']['default']}{round(tent_usd_price, 3)}$***._"
             await msg.channel.send(message)
             return
         cmd1 = args[1].lower()
         if not is_number(cmd1):
-            message = f"{data['xsgusd']['default']}{round(xsg_usd_price, 3)}$***._"
+            message = f"{data['tentusd']['default']}{round(tent_usd_price, 3)}$***._"
         elif cmd1 == "0":
-            message = f"{data['xsgusd']['zero']}"
+            message = f"{data['tentusd']['zero']}"
         elif is_number(cmd1) and float(cmd1) < 0:
-            message = f"{data['xsgusd']['neg']}"
+            message = f"{data['tentusd']['neg']}"
         elif is_number(cmd1):
             message = (
-                f"**{round(float(cmd1),2):,} {TICKER}** = **{round(float(xsg_usd_price)*float(cmd1),2):,}$**\n"
-                + f"{data['xsgusd']['default']}{round(xsg_usd_price, 3)}$***_"
+                f"**{round(float(cmd1),2):,} {TICKER}** = **{round(float(tent_usd_price)*float(cmd1),2):,}$**\n"
+                + f"{data['tentusd']['default']}{round(tent_usd_price, 3)}$***_"
             )
     # -------- <roadmap> --------
     # elif cmd == "roadmap":
@@ -383,12 +383,12 @@ async def on_message(msg):
     # -------- <market [stats]> --------
     elif cmd == "market":
         async with aiohttp.ClientSession() as session:
-            async with session.get(data["cmc"]["cmc_xsg"], headers=HEADERS) as cmc_xsg:
-                if cmc_xsg.status == 200:
-                    cmc_xsg_api = await cmc_xsg.json()
-                    xsg_usd_price = float(cmc_xsg_api["data"]["TENT"]["quote"]["USD"]["price"])
+            async with session.get(data["cmc"]["cmc_tent"], headers=HEADERS) as cmc_tent:
+                if cmc_tent.status == 200:
+                    cmc_tent_api = await cmc_tent.json()
+                    tent_usd_price = float(cmc_tent_api["data"]["TENT"]["quote"]["USD"]["price"])
                 else:
-                    print(f"{data['cmc']['cmc_xsg']} is down")
+                    print(f"{data['cmc']['cmc_tent']} is down")
         async with aiohttp.ClientSession() as session:
             async with session.get(data["cmc"]["cmc_btc"], headers=HEADERS) as cmc_btc:
                 if cmc_btc.status == 200:
@@ -418,7 +418,7 @@ async def on_message(msg):
                         async with session.get(markets[a]["api"]) as api:
                             if api.status == 200:
                                 markets_api = await api.json()
-                                markets[a]["volume_24h"] = xsg_usd_price * float(markets_api["data"]["volumeQuote"])
+                                markets[a]["volume_24h"] = tent_usd_price * float(markets_api["data"]["volumeQuote"])
                                 usd_price = btc_usd_price * float(markets_api["data"]["last"])
                                 markets[a]["price"] = usd_price
                             else:
@@ -429,7 +429,7 @@ async def on_message(msg):
                         async with session.get(markets[a]["api"]) as api:
                             if api.status == 200:
                                 markets_api = await api.json(content_type="text/html")
-                                markets[a]["volume_24h"] = xsg_usd_price * float(
+                                markets[a]["volume_24h"] = tent_usd_price * float(
                                     markets_api["pairs"]["XSG_BTC"]["baseVolume"]
                                 )
                                 usd_price = btc_usd_price * float(markets_api["pairs"]["XSG_BTC"]["last"])
@@ -442,7 +442,7 @@ async def on_message(msg):
                         async with session.get(markets[a]["api"]) as api:
                             if api.status == 200:
                                 markets_api = await api.json(content_type="text/html")
-                                markets[a]["volume_24h"] = xsg_usd_price * float(
+                                markets[a]["volume_24h"] = tent_usd_price * float(
                                     markets_api["pairs"]["XSG_ETH"]["baseVolume"]
                                 )
                                 usd_price = eth_usd_price * float(markets_api["pairs"]["XSG_ETH"]["last"])
@@ -538,14 +538,14 @@ async def on_message(msg):
             mn_count = params["mn_count"]
         locked_coins = mn_count * 10000
         async with aiohttp.ClientSession() as session:
-            async with session.get(data["cmc"]["cmc_xsg"], headers=HEADERS) as cmc_xsg:
-                if cmc_xsg.status == 200:
-                    cmc_xsg_api = await cmc_xsg.json()
-                    xsg_usd_price = float(cmc_xsg_api["data"]["TENT"]["quote"]["USD"]["price"])
-                    xsg_24vol = float(cmc_xsg_api["data"]["TENT"]["quote"]["USD"]["volume_24h"])
-                    xsg_24change = float(cmc_xsg_api["data"]["TENT"]["quote"]["USD"]["percent_change_24h"])
+            async with session.get(data["cmc"]["cmc_tent"], headers=HEADERS) as cmc_tent:
+                if cmc_tent.status == 200:
+                    cmc_tent_api = await cmc_tent.json()
+                    tent_usd_price = float(cmc_tent_api["data"]["TENT"]["quote"]["USD"]["price"])
+                    tent_24vol = float(cmc_tent_api["data"]["TENT"]["quote"]["USD"]["volume_24h"])
+                    tent_24change = float(cmc_tent_api["data"]["TENT"]["quote"]["USD"]["percent_change_24h"])
                 else:
-                    print(f"{data['cmc']['cmc_xsg']} is down")
+                    print(f"{data['cmc']['cmc_tent']} is down")
         async with aiohttp.ClientSession() as session:
             async with session.get(data["cmc"]["cmc_btc"], headers=HEADERS) as cmc_btc:
                 if cmc_btc.status == 200:
@@ -558,17 +558,17 @@ async def on_message(msg):
                 if blocks_info.status == 200:
                     blocks_api = await blocks_info.json()
                     last_block = blocks_api["blocks"][0]["height"]
-                    xsg_circ_supply = calculate_supply(last_block)
-                    xsg_mcap = xsg_circ_supply * xsg_usd_price
+                    tent_circ_supply = calculate_supply(last_block)
+                    tent_mcap = tent_circ_supply * tent_usd_price
                 else:
                     print(f"{data['blocks_info']} is down")
-        locked_proc = locked_coins / xsg_circ_supply * 100
+        locked_proc = locked_coins / tent_circ_supply * 100
         message = (
-            f"• Current Price • **{xsg_usd_price/btc_usd_price:1.8f} BTC ** | **{xsg_usd_price:1.4f}$**\n• 24h Volume •"
-            + f" **{xsg_24vol/btc_usd_price:1.3f} BTC ** | **{xsg_24vol:1,.2f}$**\n• Market Cap • **{xsg_mcap:1,.0f}$**"
-            + f"\n• Circulating Supply • **{xsg_circ_supply:1,.0f} {TICKER} **\n• Total Supply • **"
+            f"• Current Price • **{tent_usd_price/btc_usd_price:1.8f} BTC ** | **{tent_usd_price:1.4f}$**\n• 24h Volume •"
+            + f" **{tent_24vol/btc_usd_price:1.3f} BTC ** | **{tent_24vol:1,.2f}$**\n• Market Cap • **{tent_mcap:1,.0f}$**"
+            + f"\n• Circulating Supply • **{tent_circ_supply:1,.0f} {TICKER} **\n• Total Supply • **"
             + f"84,096,000 {TICKER} **\n• Locked Coins • **{locked_coins:,} {TICKER} ({locked_proc:.2f}%)**\n• 24h Change • **"
-            + f"{xsg_24change:1.2f} % **"
+            + f"{tent_24change:1.2f} % **"
         )
     # -------- <about> --------
     elif cmd == "about":
