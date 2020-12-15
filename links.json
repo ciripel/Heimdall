@@ -52,7 +52,7 @@
   "cmc": {
     "cmc_btc": "https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest?symbol=BTC",
     "cmc_eth": "https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest?symbol=ETH",
-    "cmc_xsg": "https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest?symbol=XSG"
+    "cmc_xsg": "https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest?symbol=TENT"
   },
   "xsgusd": {
     "default": "_The price of ***1 TENT*** is ***",

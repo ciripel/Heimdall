@@ -254,7 +254,7 @@ async def on_message(msg):
             async with session.get(data["cmc"]["cmc_xsg"], headers=HEADERS) as cmc_xsg:
                 if cmc_xsg.status == 200:
                     cmc_xsg_api = await cmc_xsg.json()
-                    xsg_usd_price = float(cmc_xsg_api["data"]["XSG"]["quote"]["USD"]["price"])
+                    xsg_usd_price = float(cmc_xsg_api["data"]["TENT"]["quote"]["USD"]["price"])
                 else:
                     print(f"{data['cmc']['cmc_xsg']} is down")
         async with aiohttp.ClientSession() as session:
@@ -302,7 +302,7 @@ async def on_message(msg):
             async with session.get(data["cmc"]["cmc_xsg"], headers=HEADERS) as cmc_xsg:
                 if cmc_xsg.status == 200:
                     cmc_xsg_api = await cmc_xsg.json()
-                    xsg_usd_price = float(cmc_xsg_api["data"]["XSG"]["quote"]["USD"]["price"])
+                    xsg_usd_price = float(cmc_xsg_api["data"]["TENT"]["quote"]["USD"]["price"])
                 else:
                     print(f"{data['cmc']['cmc_xsg']} is down")
         async with aiohttp.ClientSession() as session:
@@ -355,7 +355,7 @@ async def on_message(msg):
             async with session.get(data["cmc"]["cmc_xsg"], headers=HEADERS) as cmc_xsg:
                 if cmc_xsg.status == 200:
                     cmc_xsg_api = await cmc_xsg.json()
-                    xsg_usd_price = float(cmc_xsg_api["data"]["XSG"]["quote"]["USD"]["price"])
+                    xsg_usd_price = float(cmc_xsg_api["data"]["TENT"]["quote"]["USD"]["price"])
                 else:
                     print(f"{data['cmc']['cmc_xsg']} is down")
         if len(args) < 2:
@@ -386,7 +386,7 @@ async def on_message(msg):
             async with session.get(data["cmc"]["cmc_xsg"], headers=HEADERS) as cmc_xsg:
                 if cmc_xsg.status == 200:
                     cmc_xsg_api = await cmc_xsg.json()
-                    xsg_usd_price = float(cmc_xsg_api["data"]["XSG"]["quote"]["USD"]["price"])
+                    xsg_usd_price = float(cmc_xsg_api["data"]["TENT"]["quote"]["USD"]["price"])
                 else:
                     print(f"{data['cmc']['cmc_xsg']} is down")
         async with aiohttp.ClientSession() as session:
@@ -413,18 +413,7 @@ async def on_message(msg):
         else:
             vol_total = 0
             for a in range(len(markets)):
-                if markets[a]["link"] == "https://graviex.net/markets/xsgbtc":
-                    async with aiohttp.ClientSession() as session:
-                        async with session.get(markets[a]["api"]) as api:
-                            if api.status == 200:
-                                markets_api = await api.json()
-                                markets[a]["volume_24h"] = xsg_usd_price * float(markets_api["ticker"]["vol"])
-                                usd_price = btc_usd_price * float(markets_api["ticker"]["last"])
-                                markets[a]["price"] = usd_price
-                            else:
-                                print(f"{markets[a]['api']} is down")
-                    vol_total = vol_total + float(markets[a]["volume_24h"])
-                elif markets[a]["link"] == "https://app.stex.com/en/trade/pair/BTC/TENT":
+                if markets[a]["link"] == "https://app.stex.com/en/trade/pair/BTC/TENT":
                     async with aiohttp.ClientSession() as session:
                         async with session.get(markets[a]["api"]) as api:
                             if api.status == 200:
@@ -552,11 +541,9 @@ async def on_message(msg):
             async with session.get(data["cmc"]["cmc_xsg"], headers=HEADERS) as cmc_xsg:
                 if cmc_xsg.status == 200:
                     cmc_xsg_api = await cmc_xsg.json()
-                    xsg_usd_price = float(cmc_xsg_api["data"]["XSG"]["quote"]["USD"]["price"])
-                    xsg_24vol = float(cmc_xsg_api["data"]["XSG"]["quote"]["USD"]["volume_24h"])
-                    # xsg_mcap = float(cmc_xsg_api["data"]["XSG"]["quote"]["USD"]["market_cap"])
-                    # xsg_circ_supply = float(cmc_xsg_api["data"]["XSG"]["circulating_supply"])
-                    xsg_24change = float(cmc_xsg_api["data"]["XSG"]["quote"]["USD"]["percent_change_24h"])
+                    xsg_usd_price = float(cmc_xsg_api["data"]["TENT"]["quote"]["USD"]["price"])
+                    xsg_24vol = float(cmc_xsg_api["data"]["TENT"]["quote"]["USD"]["volume_24h"])
+                    xsg_24change = float(cmc_xsg_api["data"]["TENT"]["quote"]["USD"]["percent_change_24h"])
                 else:
                     print(f"{data['cmc']['cmc_xsg']} is down")
         async with aiohttp.ClientSession() as session:
