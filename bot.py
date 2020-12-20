@@ -494,7 +494,7 @@ async def on_message(msg):
         halving_time = (2102400 - last_block) * avg_bt / 86400
         message = (
             f"The next halving will be in approximately **{halving_time:1.2f}** days (**{halving_time/365:1.3f}"
-            + "** years).\nThe block reward after the halving will be **10** {TICKER}."
+            + f"** years).\nThe block reward after the halving will be **10** {TICKER}."
         )
     # -------- <fork> --------
     elif cmd == "fork":

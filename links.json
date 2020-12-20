@@ -60,7 +60,7 @@
   "rates": "https://rates.snowgem.org/rates/",
   "stex": "https://api3.stex.com/public/ticker/250",
   "hpow": {
-    "default": "Input your hashpower in Sols/s, like `!hpow 123`.",
+    "default": "Input your hashpower in Sols/s, like `!hpow 123` or `!calc 123`.",
     "infinity": "“Two things are infinite: the universe and human stupidity; and I'm not sure about the universe.” ",
     "zero": "And you call yourself a miner?! Ha :smile: Even my grandma's processor can mine more than this!",
     "neg": "You deffinatly have reached something umbelievable! Nobody have **unmined** anything till now! Do not forget to register the tech! :joy:"
