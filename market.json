@@ -2,26 +2,26 @@
   {
     "source": "Stex",
     "pair": "TENT/BTC",
-    "volume_24h": 78467.36029790701,
-    "price": 0.0467763463010832,
-    "vol_percent": 62.36847441421946,
+    "volume_24h": 186657.33404543888,
+    "price": 0.04972467876992746,
+    "vol_percent": 80.60343563020375,
     "link": "https://app.stex.com/en/trade/pair/BTC/TENT",
     "api": "https://api3.stex.com/public/ticker/250"
   },
   {
     "source": "Mercatox",
-    "pair": "XSG/BTC",
-    "volume_24h": 47345.17726196176,
-    "price": 0.043530640639375395,
-    "vol_percent": 37.63152558578054,
+    "pair": "TENT/BTC",
+    "volume_24h": 44917.57660947939,
+    "price": 0.04972467876992746,
+    "vol_percent": 19.396564369796256,
     "link": "https://mercatox.com/exchange/XSG/BTC",
     "api": "https://mercatox.com/public/json24"
   },
   {
     "source": "Mercatox",
-    "pair": "XSG/ETH",
+    "pair": "TENT/ETH",
     "volume_24h": 0.0,
-    "price": 0.03487647311091104,
+    "price": 0.038646609175266404,
     "vol_percent": 0.0,
     "link": "https://mercatox.com/exchange/XSG/ETH",
     "api": "https://mercatox.com/public/json24"

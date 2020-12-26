@@ -430,9 +430,9 @@ async def on_message(msg):
                             if api.status == 200:
                                 markets_api = await api.json(content_type="text/html")
                                 markets[a]["volume_24h"] = tent_usd_price * float(
-                                    markets_api["pairs"]["XSG_BTC"]["baseVolume"]
+                                    markets_api["pairs"]["TENT_BTC"]["baseVolume"]
                                 )
-                                usd_price = btc_usd_price * float(markets_api["pairs"]["XSG_BTC"]["last"])
+                                usd_price = btc_usd_price * float(markets_api["pairs"]["TENT_BTC"]["last"])
                                 markets[a]["price"] = usd_price
                             else:
                                 print(f"{markets[a]['api']} is down")
@@ -443,9 +443,9 @@ async def on_message(msg):
                             if api.status == 200:
                                 markets_api = await api.json(content_type="text/html")
                                 markets[a]["volume_24h"] = tent_usd_price * float(
-                                    markets_api["pairs"]["XSG_ETH"]["baseVolume"]
+                                    markets_api["pairs"]["TENT_ETH"]["baseVolume"]
                                 )
-                                usd_price = eth_usd_price * float(markets_api["pairs"]["XSG_ETH"]["last"])
+                                usd_price = eth_usd_price * float(markets_api["pairs"]["TENT_ETH"]["last"])
                                 markets[a]["price"] = usd_price
                             else:
                                 print(f"{markets[a]['api']} is down")
