@@ -4,7 +4,7 @@
 import logging
 import json
 import random
-from datetime import datetime
+from datetime import datetime, timedelta
 
 import asyncio
 import aiohttp
@@ -84,6 +84,23 @@ async def price_update_channel():
                     channel_name = "tent-unknown-sats"
         await channel.edit(name=channel_name)
         await asyncio.sleep(300)  # task runs every 5 minutes
+
+
+async def report_not_reporting():
+    await client.wait_until_ready()
+    channel = client.get_channel(747732496350838806)
+    while not client.is_closed():
+        fetchMessage = await channel.history(limit=50).find(lambda m: m.author.id == 747733342899798017)
+        if fetchMessage is not None:
+            message_time = fetchMessage.created_at
+            utc_time_now = datetime.utcnow()
+            if message_time + timedelta(hours=1, minutes=15) < utc_time_now:
+                message = (
+                    f"<@246215587464740864><@359782573066551320><@283899213845233664><@398885783395893258>\n"
+                    + f"\nLast report time: {message_time}\nTime now: {utc_time_now}\nHave not seen a report in "
+                    + f"last 2 minutes!!!\n\n**CHECK IF THE SERVER IS BURNING!!!!**")
+                await channel.send(message)
+        await asyncio.sleep(240)  # task runs every 4 minutes
 
 
 @client.event
@@ -730,5 +747,6 @@ async def on_ready():
     print(f"Logged in as: {client.user.name} {{{client.user.id}}}")
 
 client.loop.create_task(price_update_channel())
+client.loop.create_task(report_not_reporting())
 client.run(TOKEN)
 logging.info('----- Finished -----')
