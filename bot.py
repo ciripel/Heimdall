@@ -1,5 +1,5 @@
-#!/usr/bin/env python3.7
-# Work with Python 3.7
+#!/usr/bin/env python3
+# Work with Python 3.7+
 
 import logging
 import json
