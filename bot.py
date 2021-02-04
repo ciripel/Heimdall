@@ -392,8 +392,8 @@ async def on_message(msg):
                 + f"{data['tentusd']['default']}{round(tent_usd_price, 3)}$***_"
             )
     # -------- <roadmap> --------
-    # elif cmd == "roadmap":
-    #    message = f"{data['roadmap']}"
+    elif cmd == "roadmap":
+        message = f"{data['roadmap']}"
     # -------- <proof of review> --------
     # elif cmd == "por":
     #    message = f"{data['por']}"
