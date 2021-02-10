@@ -7,7 +7,7 @@
     "-- `!net` or `!netinfo` | Show current network stats.",
     "-- `!mn` or `!mninfo [address]` | Masternodes info.",
     "-- `!hpow` or `!calc [your Sols/s]` | Approximate TENT per hour/day.",
-    "-- `!tentusd [amount]` | Current price in USD.",
+    "-- `!tentusd / !usdtent [amount]` | Current price in USD.",
     "-- `!mnrew` or `!mnrewards [no. of nodes]` | Approximate TENT reward per day.",
     "-- `!market [info]` | TENT exchanges [stats].",
     "-- `!halving` | Time left until halving.",
@@ -53,7 +53,7 @@
     "cmc_tent": "https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest?symbol=TENT"
   },
   "tentusd": {
-    "default": "_The price of ***1 TENT*** is ***",
+    "default": "_The price of **1 TENT** is **",
     "zero": "Welcome young one! We have all started with **0 TENT** zilions of aeons ago!",
     "neg": "Hmm! Yup! I feel sorry for you! You owe **TENT**... I feel your pain friend!"
   },

@@ -391,6 +391,31 @@ async def on_message(msg):
                 f"**{round(float(cmd1),2):,} {TICKER}** = **{round(float(tent_usd_price)*float(cmd1),2):,}$**\n"
                 + f"{data['tentusd']['default']}{round(tent_usd_price, 3)}$***_"
             )
+    # -------- <usdtent> --------
+    elif cmd == "usdtent":
+        async with aiohttp.ClientSession() as session:
+            async with session.get(data["cmc"]["cmc_tent"], headers=HEADERS) as cmc_tent:
+                if cmc_tent.status == 200:
+                    cmc_tent_api = await cmc_tent.json()
+                    tent_usd_price = float(cmc_tent_api["data"]["TENT"]["quote"]["USD"]["price"])
+                else:
+                    print(f"{data['cmc']['cmc_tent']} is down")
+        if len(args) < 2:
+            message = f"{data['tentusd']['default']}{round(tent_usd_price, 3)}$***._"
+            await msg.channel.send(message)
+            return
+        cmd1 = args[1].lower()
+        if not is_number(cmd1):
+            message = f"{data['tentusd']['default']}{round(tent_usd_price, 3)}$***._"
+        elif cmd1 == "0":
+            message = f"{data['tentusd']['zero']}"
+        elif is_number(cmd1) and float(cmd1) < 0:
+            message = f"{data['tentusd']['neg']}"
+        elif is_number(cmd1):
+            message = (
+                f"**{round(float(cmd1),2):,}$** = **{round(float(cmd1)/float(tent_usd_price),2):,} {TICKER}**\n"
+                + f"{data['tentusd']['default']}{round(tent_usd_price, 3)}$**_"
+            )
     # -------- <roadmap> --------
     elif cmd == "roadmap":
         message = f"{data['roadmap']}"
