@@ -376,7 +376,7 @@ async def on_message(msg):
                 else:
                     print(f"{data['cmc']['cmc_tent']} is down")
         if len(args) < 2:
-            message = f"{data['tentusd']['default']}{round(tent_usd_price, 3)}$***._"
+            message = f"{data['tentusd']['default']}{round(tent_usd_price, 3)}$**._"
             await msg.channel.send(message)
             return
         cmd1 = args[1].lower()
@@ -389,7 +389,7 @@ async def on_message(msg):
         elif is_number(cmd1):
             message = (
                 f"**{round(float(cmd1),2):,} {TICKER}** = **{round(float(tent_usd_price)*float(cmd1),2):,}$**\n"
-                + f"{data['tentusd']['default']}{round(tent_usd_price, 3)}$***_"
+                + f"{data['tentusd']['default']}{round(tent_usd_price, 3)}$**_"
             )
     # -------- <usdtent> --------
     elif cmd == "usdtent":
@@ -401,12 +401,12 @@ async def on_message(msg):
                 else:
                     print(f"{data['cmc']['cmc_tent']} is down")
         if len(args) < 2:
-            message = f"{data['tentusd']['default']}{round(tent_usd_price, 3)}$***._"
+            message = f"{data['tentusd']['default']}{round(tent_usd_price, 3)}$**._"
             await msg.channel.send(message)
             return
         cmd1 = args[1].lower()
         if not is_number(cmd1):
-            message = f"{data['tentusd']['default']}{round(tent_usd_price, 3)}$***._"
+            message = f"{data['tentusd']['default']}{round(tent_usd_price, 3)}$**._"
         elif cmd1 == "0":
             message = f"{data['tentusd']['zero']}"
         elif is_number(cmd1) and float(cmd1) < 0:
