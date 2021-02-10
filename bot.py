@@ -98,7 +98,7 @@ async def report_not_reporting():
                 message = (
                     f"<@246215587464740864><@359782573066551320><@283899213845233664><@398885783395893258>\n"
                     + f"\nLast report time: {message_time}\nTime now: {utc_time_now}\nHave not seen a report in "
-                    + f"last 2 minutes!!!\n\n**CHECK IF THE SERVER IS BURNING!!!!**")
+                    + f"last 75 minutes!!!\n\n**CHECK IF THE SERVER IS BURNING!!!!**")
                 await channel.send(message)
         await asyncio.sleep(240)  # task runs every 4 minutes
 
@@ -126,7 +126,7 @@ async def on_message(msg):
             if msg.author.bot:
                 list_of_messages.append(x)
                 if len(list_of_messages) > 3:
-                    list_of_messages = list_of_messages[3:]
+                    list_of_messages = list_of_messages[10:]
                     await msg.channel.delete_messages(list_of_messages)
         return
     # We do not want the bot to respond to Bots or Webhooks
