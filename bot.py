@@ -125,7 +125,7 @@ async def on_message(msg):
         async for x in msg.channel.history():
             if msg.author.bot:
                 list_of_messages.append(x)
-                if len(list_of_messages) > 3:
+                if len(list_of_messages) > 10:
                     list_of_messages = list_of_messages[10:]
                     await msg.channel.delete_messages(list_of_messages)
         return
