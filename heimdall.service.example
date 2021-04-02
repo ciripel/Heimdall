@@ -1,0 +1,16 @@
+[Unit]
+Description=Heimdall - Discord Bot for TENT
+
+[Service]
+User=root
+Group=root
+Restart=always
+RestartSec=5s
+WorkingDirectory=/root/Heimdall
+ExecStart=/usr/bin/python3 bot.py
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=heimdall
+
+[Install]
+WantedBy=default.target
