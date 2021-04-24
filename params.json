@@ -1,8 +1,8 @@
 {
-  "daemon_ver": "3010150",
+  "daemon_ver": "3010250",
   "fork": true,
-  "fork_block": 1545000,
+  "fork_block": 1760000,
   "mnr_rwd": 6,
   "mn_rwd": 10,
-  "mn_count": 2300
+  "mn_count": 2400
 }
