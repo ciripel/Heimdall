@@ -63,7 +63,8 @@ def calculate_supply(block_height):
         return 80_000
 
     epochs, remainder = divmod(block_height - 1, 2102400)
-    previous_epochs_total_reward = sum(2102400 * (20 / (2 ** epoch)) for epoch in range(epochs))
+    previous_epochs_total_reward = sum(
+        2102400 * (20 / (2 ** epoch)) for epoch in range(epochs))
     current_epoch_reward = 20 / (2 ** epochs)
     current_total_reward = (remainder + 1) * current_epoch_reward
     return previous_epochs_total_reward + current_total_reward - 79_980
@@ -77,7 +78,8 @@ async def price_update_channel():
             async with session.get(data["stex"]) as stex_data:
                 if stex_data.status == 200:
                     stex_api = await stex_data.json(content_type=None)
-                    price_in_sats = pow(10, 8) * float(stex_api["data"]["last"])
+                    price_in_sats = pow(10, 8) * \
+                        float(stex_api["data"]["last"])
                     channel_name = f"tent-{price_in_sats:.0f}-sats"
                 else:
                     print(f"{data['rates']} is down")
@@ -245,7 +247,8 @@ async def on_message(msg):
                     address = mn_list[i]["addr"]
                     status = mn_list[i]["status"]
                     rank = mn_list[i]["rank"]
-                    lastseen = datetime.fromtimestamp(mn_list[i]["lastseen"]).strftime("%d-%m-%Y %H:%M:%S")
+                    lastseen = datetime.fromtimestamp(
+                        mn_list[i]["lastseen"]).strftime("%d-%m-%Y %H:%M:%S")
                     activetime = mn_list[i]["activetime"]
                     days = activetime // (24 * 3600)
                     activetime = activetime % (24 * 3600)
@@ -254,7 +257,8 @@ async def on_message(msg):
                     minutes = activetime // 60
                     activetime %= 60
                     seconds = activetime
-                    lastpaid = datetime.fromtimestamp(mn_list[i]["lastpaid"]).strftime("%d-%m-%Y %H:%M:%S")
+                    lastpaid = datetime.fromtimestamp(
+                        mn_list[i]["lastpaid"]).strftime("%d-%m-%Y %H:%M:%S")
                     message = (
                         f"• Address • **{address}**\n• Status • **{status}**\n• Rank • **{rank}**\n• Last seen • **"
                         + f"{lastseen}**\n• Active time • **{days} days {hours}h:{minutes}m:{seconds}s**\n• Last paid"
@@ -271,7 +275,8 @@ async def on_message(msg):
             async with session.get(data["cmc"]["cmc_tent"], headers=HEADERS) as cmc_tent:
                 if cmc_tent.status == 200:
                     cmc_tent_api = await cmc_tent.json()
-                    tent_usd_price = float(cmc_tent_api["data"]["TENT"]["quote"]["USD"]["price"])
+                    tent_usd_price = float(
+                        cmc_tent_api["data"]["TENT"]["quote"]["USD"]["price"])
                 else:
                     print(f"{data['cmc']['cmc_tent']} is down")
         async with aiohttp.ClientSession() as session:
@@ -319,7 +324,8 @@ async def on_message(msg):
             async with session.get(data["cmc"]["cmc_tent"], headers=HEADERS) as cmc_tent:
                 if cmc_tent.status == 200:
                     cmc_tent_api = await cmc_tent.json()
-                    tent_usd_price = float(cmc_tent_api["data"]["TENT"]["quote"]["USD"]["price"])
+                    tent_usd_price = float(
+                        cmc_tent_api["data"]["TENT"]["quote"]["USD"]["price"])
                 else:
                     print(f"{data['cmc']['cmc_tent']} is down")
         async with aiohttp.ClientSession() as session:
@@ -372,7 +378,8 @@ async def on_message(msg):
             async with session.get(data["cmc"]["cmc_tent"], headers=HEADERS) as cmc_tent:
                 if cmc_tent.status == 200:
                     cmc_tent_api = await cmc_tent.json()
-                    tent_usd_price = float(cmc_tent_api["data"]["TENT"]["quote"]["USD"]["price"])
+                    tent_usd_price = float(
+                        cmc_tent_api["data"]["TENT"]["quote"]["USD"]["price"])
                 else:
                     print(f"{data['cmc']['cmc_tent']} is down")
         if len(args) < 2:
@@ -397,7 +404,8 @@ async def on_message(msg):
             async with session.get(data["cmc"]["cmc_tent"], headers=HEADERS) as cmc_tent:
                 if cmc_tent.status == 200:
                     cmc_tent_api = await cmc_tent.json()
-                    tent_usd_price = float(cmc_tent_api["data"]["TENT"]["quote"]["USD"]["price"])
+                    tent_usd_price = float(
+                        cmc_tent_api["data"]["TENT"]["quote"]["USD"]["price"])
                 else:
                     print(f"{data['cmc']['cmc_tent']} is down")
         if len(args) < 2:
@@ -428,21 +436,24 @@ async def on_message(msg):
             async with session.get(data["cmc"]["cmc_tent"], headers=HEADERS) as cmc_tent:
                 if cmc_tent.status == 200:
                     cmc_tent_api = await cmc_tent.json()
-                    tent_usd_price = float(cmc_tent_api["data"]["TENT"]["quote"]["USD"]["price"])
+                    tent_usd_price = float(
+                        cmc_tent_api["data"]["TENT"]["quote"]["USD"]["price"])
                 else:
                     print(f"{data['cmc']['cmc_tent']} is down")
         async with aiohttp.ClientSession() as session:
             async with session.get(data["cmc"]["cmc_btc"], headers=HEADERS) as cmc_btc:
                 if cmc_btc.status == 200:
                     cmc_btc_api = await cmc_btc.json()
-                    btc_usd_price = float(cmc_btc_api["data"]["BTC"]["quote"]["USD"]["price"])
+                    btc_usd_price = float(
+                        cmc_btc_api["data"]["BTC"]["quote"]["USD"]["price"])
                 else:
                     print(f"{data['cmc']['cmc_btc']} is down")
         async with aiohttp.ClientSession() as session:
             async with session.get(data["cmc"]["cmc_eth"], headers=HEADERS) as cmc_eth:
                 if cmc_eth.status == 200:
                     cmc_eth_api = await cmc_eth.json()
-                    eth_usd_price = float(cmc_eth_api["data"]["ETH"]["quote"]["USD"]["price"])
+                    eth_usd_price = float(
+                        cmc_eth_api["data"]["ETH"]["quote"]["USD"]["price"])
                 else:
                     print(f"{data['cmc']['cmc_btc']} is down")
         message_list = []
@@ -460,8 +471,10 @@ async def on_message(msg):
                         async with session.get(markets[a]["api"]) as api:
                             if api.status == 200:
                                 markets_api = await api.json()
-                                markets[a]["volume_24h"] = tent_usd_price * float(markets_api["data"]["volumeQuote"])
-                                usd_price = btc_usd_price * float(markets_api["data"]["last"])
+                                markets[a]["volume_24h"] = tent_usd_price * \
+                                    float(markets_api["data"]["volumeQuote"])
+                                usd_price = btc_usd_price * \
+                                    float(markets_api["data"]["last"])
                                 markets[a]["price"] = usd_price
                             else:
                                 print(f"{markets[a]['api']} is down")
@@ -474,7 +487,9 @@ async def on_message(msg):
                                 markets[a]["volume_24h"] = tent_usd_price * float(
                                     markets_api["pairs"]["TENT_BTC"]["baseVolume"]
                                 )
-                                usd_price = btc_usd_price * float(markets_api["pairs"]["TENT_BTC"]["last"])
+                                usd_price = btc_usd_price * \
+                                    float(markets_api["pairs"]
+                                          ["TENT_BTC"]["last"])
                                 markets[a]["price"] = usd_price
                             else:
                                 print(f"{markets[a]['api']} is down")
@@ -487,14 +502,17 @@ async def on_message(msg):
                                 markets[a]["volume_24h"] = tent_usd_price * float(
                                     markets_api["pairs"]["TENT_ETH"]["baseVolume"]
                                 )
-                                usd_price = eth_usd_price * float(markets_api["pairs"]["TENT_ETH"]["last"])
+                                usd_price = eth_usd_price * \
+                                    float(markets_api["pairs"]
+                                          ["TENT_ETH"]["last"])
                                 markets[a]["price"] = usd_price
                             else:
                                 print(f"{markets[a]['api']} is down")
                     vol_total = vol_total + float(markets[a]["volume_24h"])
             max_source = 0
             for a in range(len(markets)):
-                markets[a]["vol_percent"] = float(markets[a]["volume_24h"]) / vol_total * 100
+                markets[a]["vol_percent"] = float(
+                    markets[a]["volume_24h"]) / vol_total * 100
                 max_source = max(6, max_source, len(markets[a]["source"]))
             markets.sort(key=lambda x: x["volume_24h"], reverse=True)
             with open("market.json", "w") as file:
@@ -583,16 +601,20 @@ async def on_message(msg):
             async with session.get(data["cmc"]["cmc_tent"], headers=HEADERS) as cmc_tent:
                 if cmc_tent.status == 200:
                     cmc_tent_api = await cmc_tent.json()
-                    tent_usd_price = float(cmc_tent_api["data"]["TENT"]["quote"]["USD"]["price"])
-                    tent_24vol = float(cmc_tent_api["data"]["TENT"]["quote"]["USD"]["volume_24h"])
-                    tent_24change = float(cmc_tent_api["data"]["TENT"]["quote"]["USD"]["percent_change_24h"])
+                    tent_usd_price = float(
+                        cmc_tent_api["data"]["TENT"]["quote"]["USD"]["price"])
+                    tent_24vol = float(
+                        cmc_tent_api["data"]["TENT"]["quote"]["USD"]["volume_24h"])
+                    tent_24change = float(
+                        cmc_tent_api["data"]["TENT"]["quote"]["USD"]["percent_change_24h"])
                 else:
                     print(f"{data['cmc']['cmc_tent']} is down")
         async with aiohttp.ClientSession() as session:
             async with session.get(data["cmc"]["cmc_btc"], headers=HEADERS) as cmc_btc:
                 if cmc_btc.status == 200:
                     cmc_btc_api = await cmc_btc.json()
-                    btc_usd_price = float(cmc_btc_api["data"]["BTC"]["quote"]["USD"]["price"])
+                    btc_usd_price = float(
+                        cmc_btc_api["data"]["BTC"]["quote"]["USD"]["price"])
                 else:
                     print(f"{data['cmc']['cmc_btc']} is down")
         async with aiohttp.ClientSession() as session:
@@ -618,29 +640,6 @@ async def on_message(msg):
     # -------- <whenmoon> --------
     elif cmd == "whenmoon":
         message = random.choice(data["whenmoon"])
-    # -------- <team> --------
-    elif cmd == "team":
-        message_list = ["TENT team members with local time and the languages they support:"]
-        for i in range(len(data["team"])):
-            tz = pytz.timezone(data["team"][i]["time"])
-            local_hour = datetime.now(tz).strftime("%H:%M")
-            member_name = data["team"][i]["name"]
-            covered_language = data["team"][i]["language"]
-            member = f"• {member_name} • {local_hour} - **{covered_language}**"
-            message_list.append(member)
-        message = "\n".join(message_list)
-    # -------- <translators> --------
-    elif cmd == "translators":
-        message_list = [
-            "This is our translation team. If you notice something is not right in a"
-            + " translation please contact the person in charge:"
-        ]
-        for i in range(len(data["translators"])):
-            member_name = data["translators"][i]["name"]
-            covered_language = data["translators"][i]["language"]
-            member = f"• **{covered_language}** • {member_name}"
-            message_list.append(member)
-        message = "\n".join(message_list)
     # -------- <joingames> --------
     elif cmd == "joingames" and isinstance(msg.channel, discord.TextChannel):
         if "Player" not in [role.name for role in msg.author.guild.roles]:
@@ -693,14 +692,16 @@ async def on_message(msg):
             await msg.channel.send(message)
             return
         cmd1 = args[1]
-        member = discord.utils.find(lambda m: cmd1 in m.name, msg.channel.guild.members)
+        member = discord.utils.find(
+            lambda m: cmd1 in m.name, msg.channel.guild.members)
         if member is None:
             count = 0
         else:
             count = 1
         while not (member is None):
             await msg.channel.guild.ban(member)
-            member = discord.utils.find(lambda m: cmd1 in m.name, msg.channel.guild.members)
+            member = discord.utils.find(
+                lambda m: cmd1 in m.name, msg.channel.guild.members)
             if not (member is None):
                 count += 1
         message = f"Banned {count} members! Nice!"

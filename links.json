@@ -2,8 +2,6 @@
   "commands": [
     "-- `!commands` | These are your commands.",
     "-- `!links` | Useful links.",
-    "-- `!team` | List of CoreTeam members with local time and language they support.",
-    "-- `!translators` | List the translation team members.",
     "-- `!net` or `!netinfo` | Show current network stats.",
     "-- `!mn` or `!mninfo [address]` | Masternodes info.",
     "-- `!hpow` or `!calc [your Sols/s]` | Approximate TENT per hour/day.",
@@ -23,7 +21,6 @@
     "**TENT Github** • <https://github.com/TENTOfficial>",
     "**TENT Wallets** • <https://github.com/TENTOfficial/TENT-Core/releases/latest> <https://play.google.com/store/apps/details?id=wallet.snowgem.bitfrost> <https://apps.apple.com/us/app/bitfrost/id1513205882>",
     "**TENT Block Explorer** • <https://explorer.tent.app/>",
-    "**TENT Asgard** • <https://asgard.snowgem.org/>",
     "**TENT Explorer API** • <https://github.com/TENTOfficial/insight-api-tent>",
     "**TENT Community** • <https://t.me/TENTOfficial> <https://twitter.com/tentpay> <https://discord.gg/78rVJcH>"
   ],
@@ -111,103 +108,6 @@
     750661126592790588,
     761514159505801216,
     758149988391059497
-  ],
-  "team": [
-    {
-      "name": "**Txid**#2123",
-      "time": "Asia/Ho_Chi_Minh",
-      "language": "English,  Vietnamese"
-    },
-    {
-      "name": "**DaX**#8374",
-      "time": "Europe/Prague",
-      "language": "Czech, English"
-    },
-    {
-      "name": "**IggiPop**#8679",
-      "time": "Europe/Copenhagen",
-      "language": "Icelandic, English"
-    },
-    {
-      "name": "**Shmocs**#1564",
-      "time": "Europe/Bucharest",
-      "language": "English, Romanian"
-    },
-    {
-      "name": "**Amitabha**#0517",
-      "time": "Europe/Bucharest",
-      "language": "English, Romanian"
-    },
-    {
-      "name": "**demzet**#8295",
-      "time": "Europe/Warsaw",
-      "language": "English, Polish"
-    },
-    {
-      "name": "**billybob**#8074",
-      "time": "Europe/London",
-      "language": "English"
-    },
-    {
-      "name": "**qNaN**#0603",
-      "time": "Europe/Prague",
-      "language": "Czech, English, Portuguese"
-    },
-    {
-      "name": "**DavidC**#9161",
-      "time": "Europe/Prague",
-      "language": "Czech, English"
-    }
-  ],
-  "translators": [
-    {
-      "language": "Arabic",
-      "name": "**Bbkoopsta**#5676"
-    },
-    {
-      "language": "Chinese",
-      "name": "**NOT COVERED**"
-    },
-    {
-      "language": "Czech",
-      "name": "**tryskac**#1852"
-    },
-    {
-      "language": "French",
-      "name": "**Bbkoopsta**#5676"
-    },
-    {
-      "language": "German",
-      "name": "**baartch**#5796, **pocal**#0496"
-    },
-    {
-      "language": "Hungarian",
-      "name": "**AdiFortress**#3533"
-    },
-    {
-      "language": "Italian",
-      "name": "**Pippettando**#5491"
-    },
-    {
-      "language": "Korean",
-      "name": "**JM**#4327"
-    },
-    {
-      "language": "Polish",
-      "name": "**Cyberart**#1271"
-    },
-    {
-      "language": "Romanian",
-      "name": "**seba**#9960"
-    },
-    {
-      "language": "Russian",
-      "name": "**pipanda**#6772, **Amadyus**#6274"
-    },
-    {
-      "language": "Spanish",
-      "name": "**catilinafiol**#5571"
-    }
   ],
   "welcome": "Welcome young one!\nFor a list usefull links you can go to <#398661977611829278> or in <#757958963273793556> you can type `!links`.\nFor latest news please check <#398660597505458187>.\nYou can type `!commands` in <#757958963273793556> for a complete list of commands that I understand.\nAdditionally you can always ask our helpful community members."
 }
