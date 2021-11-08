@@ -747,6 +747,9 @@ async def on_raw_reaction_remove(payload):
 
 @client.event
 async def on_member_join(mbr):
+    # Bot ignore all members that have MEMBER_ID in ignored_ids list
+    if mbr.id in data["ignored_ids"]:
+        return
     for ban_word in data["banned_words"]:
         if mbr.guild.get_member(mbr.id) is not None and ban_word in mbr.name:
             await mbr.ban()
